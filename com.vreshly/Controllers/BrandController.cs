@@ -59,7 +59,7 @@ namespace com.vreshly.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddBrand([FromBody] BrandDto model)
+        public async Task<ActionResult> AddBrand([FromForm] BrandDto model)
         {
             string uniqueFileName = null;
             if (string.IsNullOrEmpty(model.BrandName)) return BadRequest(new ApiResponse(400, "Brand Name was not supplied"));
@@ -82,7 +82,7 @@ namespace com.vreshly.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> UpdateBrand([FromBody] BrandDto model)
+        public async Task<ActionResult> UpdateBrand([FromForm] BrandDto model)
         {
             if (string.IsNullOrEmpty(model.BrandName)) return BadRequest(new ApiResponse(400, "Brand Name was not supplied"));
 
@@ -152,9 +152,9 @@ namespace com.vreshly.Controllers
             if (result == 1)
             {
                 if (System.IO.File.Exists(CurrentImage))
-                {
-                    System.IO.File.Delete(CurrentImage);
-                }
+                    {
+                        System.IO.File.Delete(CurrentImage);
+                    }
                 return Ok(new ApiResponse(200, "Brand Successfully Deleted"));
             }
 

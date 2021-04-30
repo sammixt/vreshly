@@ -15,7 +15,11 @@ namespace com.vreshly.Helper
 
             CreateMap<SubCategoryDto, SubCategory>();
 
-            CreateMap<Brand, BrandDto>().ReverseMap();
+            
+            CreateMap<Brand, BrandDto>()
+                .ForMember(b => b.BrandLogo, o => o.MapFrom<BrandUrlRsolver>());
+            CreateMap<BrandDto, Brand>();
+
 
         }
     }

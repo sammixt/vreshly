@@ -79,3 +79,4 @@
 /Users/esc/Documents/Projects/com.vreshly/com.vreshly/bin/Debug/net5.0/AutoMapper.dll
 /Users/esc/Documents/Projects/com.vreshly/com.vreshly/bin/Debug/net5.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 /Users/esc/Documents/Projects/com.vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Subcategory/Index.cshtml.g.cs
+/Users/esc/Documents/Projects/com.vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Brand/Index.cshtml.g.cs
