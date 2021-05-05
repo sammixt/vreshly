@@ -17,6 +17,12 @@ namespace BLL.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<Brand> Brands { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Variable> Variables { get; set; }
+        public DbSet<VariableDetail> VariableDetails { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserInformation> GetUserInformation { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -45,6 +51,15 @@ namespace BLL.Data
                                                 TrustServerCertificate=True;
                                                 ");
             }
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>()
+                .HasOne<SubCategory>()
+                .WithMany()
+                .HasForeignKey(x => x.SubCategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

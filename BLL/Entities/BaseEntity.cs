@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 namespace BLL.Entities
 {
     public class BaseEntity
@@ -6,7 +7,7 @@ namespace BLL.Entities
         public BaseEntity()
         {
         }
-
+      
         public long Id { get; set; }
         public Nullable<DateTime> CreatedDate { get; set; }
         public Nullable<DateTime> UpdateDate { get; set; }

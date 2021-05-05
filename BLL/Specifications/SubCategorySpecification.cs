@@ -20,5 +20,15 @@ namespace BLL.Specifications
         {
             AddInclude(x => x.Category);
         }
+
+        public SubCategorySpecification(long id): base(x => x.CategoryId == id)
+        {
+            AddInclude(x => x.Category);
+        }
+
+        public SubCategorySpecification GetByCategory(long id)
+        {
+            return new SubCategorySpecification(id);
+        }
     }
 }
