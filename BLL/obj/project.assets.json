@@ -5772,7 +5772,7 @@
       "outputPath": "/Users/esc/Documents/Projects/com.vreshly/BLL/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/esc/.nuget/NuGet/NuGet.Config"
+        "/Users/esc/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"

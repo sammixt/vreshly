@@ -20,7 +20,7 @@ namespace com.vreshly.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return PartialView();
         }
 
         public IActionResult Privacy()
