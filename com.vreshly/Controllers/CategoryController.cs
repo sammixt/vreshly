@@ -28,13 +28,15 @@ namespace com.vreshly.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.PageName = "Category";
+            ViewBag.Breadcrumbs = "<li class=\"breadcrumb-item\"><a href=\"#\">Category</a></li><li class=\"breadcrumb-item active\">Index</li>";
             var categories = await _unitOfWork.Repository<Category>().ListAllAsync();
             var categoryDto = _mapper.Map<IReadOnlyList<Category>, IReadOnlyList<CategoryDto>>(categories);
             return View(categoryDto);
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<Category>>> GetCategories()
+        public async Task<ActionResult<IReadOnlyList<CategoryDto>>> GetCategories()
         {
             var categories = await _unitOfWork.Repository<Category>().ListAllAsync();
             var categoryDto = _mapper.Map<IReadOnlyList<Category>, IReadOnlyList<CategoryDto>>(categories);

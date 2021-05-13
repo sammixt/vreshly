@@ -1,3 +1,347 @@
-﻿@page
-@{
+﻿@model com.vreshly.Dtos.ProductDto
+<div class="content-body">
+    <section id="basic-tabs-components">
+        <div class="col-xl-12 col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">@Model.ProductName  Details</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" aria-controls="home" role="tab" aria-selected="true">General</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" aria-controls="profile" role="tab" aria-selected="false">Data</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#images" id="images-tab" class="nav-link" data-toggle="tab" aria-controls="images" role="tab" aria-selected="false">Images</a>
+                        </li>
+                        @*<li class="nav-item">
+                            <a class="nav-link" id="about-tab" data-toggle="tab" href="#about" aria-controls="about" role="tab" aria-selected="false">Account</a>
+                        </li>*@
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="home" aria-labelledby="home-tab" role="tabpanel">
+                            <section id="basic-vertical-layouts">
+                                <div class="row">
+                                    <div class="col-md-6 col-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title">General Info</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <form class="form form-vertical">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="first-name-vertical">Product Name</label>
+                                                                <input type="text"  class="form-control" asp-for="ProductName" />
+                                                                <input type="hidden" id="general-id" value="@Model.Id" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="ProductCode">Product Code</label>
+                                                                <input type="text" class="form-control" asp-for="ProductCodes" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="contact-info-vertical">Product Summary</label>
+                                                                <textarea data-length="250" asp-for="ProductSummary" class="form-control char-textarea active max-limit"  rows="3" placeholder="Counter" style="color: rgb(234, 84, 85);"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="contact-info-vertical">Product Description</label>
+                                                                <textarea data-length="800" asp-for="ProductDescription" class="form-control char-textarea active max-limit" rows="5" placeholder="Counter" style="color: rgb(234, 84, 85);"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        
+                                                        <div class="col-12">
+                                                            <button type="button" id="update-general" class="btn btn-primary mr-1">Update</button>
+
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="tab-pane" id="profile" aria-labelledby="profile-tab" role="tabpanel">
+                            <section id="basic-vertical-layouts">
+                                <div class="row match-height">
+                                    <div class="col-md-6 col-6">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Product Data</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped">
+                                                        <tr>
+                                                            <th>Selling Price</th>
+                                                            <td>NGN @Model.SellingPrice</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Discount Price</th>
+                                                            <td>NGN @Model.DiscountPrice</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Available Quantity</th>
+                                                            <td>@Model.Quantity</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Category</th>
+                                                            <td>@Model.Category</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Sub Category</th>
+                                                            <td>@Model.SubCategory</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Brand</th>
+                                                            <td>@Model.Brand</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Featured Product</th>
+                                                            <td>@(Model.IsFeaturedProduct ? "Yes" : "NO")</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Best Seller</th>
+                                                            <td>@(Model.IsBestSeller ? "Yes" : "NO")</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="col-md-6 col-6">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Edit Data</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <form class="form form-vertical">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="first-name-vertical">Selling Price</label>
+                                                                <input type="number" step="0.01" class="form-control" asp-for="SellingPrice" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="DiscountPrice">Discount Price</label>
+                                                                <input type="number" step="0.01" class="form-control" asp-for="DiscountPrice" />
+                                                                <input type="hidden" id="data-id" value="@Model.Id" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="Quantity">Available Quantity</label>
+                                                                <input type="number" step="1" class="form-control" asp-for="Quantity" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group category_options">
+                                                                <label class="form-label" for="basic-icon-default-fullname">Category</label>
+                                                                <select class="form-control form-control-lg mb-1" id="category_options">
+                                                                    <option>select category</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label class="form-label" for="basic-icon-default-fullname">Sub Category</label>
+                                                                <select class="form-control form-control-lg mb-1" id="subcategory_options">
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label class="form-label" for="basic-icon-default-fullname">Brand</label>
+                                                                <select class="form-control form-control-lg mb-1" id="brand_options">
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12" style="display:flex;  flex-direction:row">
+                                                            <div class="form-group">
+                                                                <label class="form-label" for="basic-icon-default-fullname">Featured Product</label>
+                                                                <input type="checkbox" class="form-control" asp-for="IsFeaturedProduct" />
+                                                            </div>
+                                                            &nbsp;
+                                                            <div class="form-group">
+                                                                <label class="form-label" for="basic-icon-default-fullname">Best Seller</label>
+                                                                <input type="checkbox" class="form-control" asp-for="IsBestSeller" />
+                                                            </div>
+                                                        </div>
+                                                        
+
+                                                        <div class="col-12">
+                                                            <button type="button" id="update-data" class="btn btn-primary mr-1">Update</button>
+
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="tab-pane" id="images" aria-labelledby="images-tab" role="tabpanel">
+                            <div class="card-deck" style="border-radius:2px">
+                                <div class="card">
+                                    @if (!string.IsNullOrEmpty(Model.MainImage))
+                                    {
+                                        <img class="card-img-top" src="@Model.MainImage" alt="Card image cap" />
+                                    }
+                                    else
+                                    {
+                                        <img class="card-img-top" src="~/assets/images/slider/03.jpg" alt="Card image cap" />
+                                    }
+                                    
+                                    <div class="card-body">
+                                        <h4 class="card-title">Main Image</h4>
+                                        <p class="card-text">
+                                            This is a wider card with supporting text below as a natural lead-in to additional content. This content is a
+                                            little bit longer.
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <input type="file" onchange="uploadImage('mainimage',1)" class="form-control-file" id="mainimage">
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    @if (!string.IsNullOrEmpty(Model.ImageOne))
+                                    {
+                                        <img class="card-img-top" src="@Model.ImageOne" alt="Card image cap" />
+                                    }
+                                    else
+                                    {
+                                        <img class="card-img-top" src="~/assets/images/slider/02.jpg" alt="Card image cap" />
+                                    }
+                                    
+                                    <div class="card-body">
+                                        <h4 class="card-title">First Image</h4>
+                                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <input type="file" onchange="uploadImage('imageone',2)" class="form-control-file" id="imageone">
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    @if (!string.IsNullOrEmpty(Model.ImageTwo))
+                                    {
+                                        <img class="card-img-top" src="@Model.ImageTwo" alt="Card image cap" />
+                                    }
+                                    else
+                                    {
+                                        <img class="card-img-top" src="~/assets/images/slider/01.jpg" alt="Card image cap" />
+                                    }
+                                    
+                                    <div class="card-body">
+                                        <h4 class="card-title">Second Image</h4>
+                                        <p class="card-text">
+                                            This is a wider card with supporting text below as a natural lead-in to additional content. This card has even
+                                            longer content than the first to show that equal height action.
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <input type="file" class="form-control-file" onchange="uploadImage('imagetwo',3)" id="imagetwo">
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    @if (!string.IsNullOrEmpty(Model.ImageThree))
+                                    {
+                                        <img class="card-img-top" src="@Model.ImageThree" alt="Card image cap" />
+                                    }
+                                    else
+                                    {
+                                <img class="card-img-top" src="~/assets/images/slider/01.jpg" alt="Card image cap" />
+                                    }
+                                    
+                                    <div class="card-body">
+                                        <h4 class="card-title">Third Image</h4>
+                                        <p class="card-text">
+                                            This is a wider card with supporting text below as a natural lead-in to additional content. This card has even
+                                            longer content than the first to show that equal height action.
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <input type="file" class="form-control-file" onchange="uploadImage('imagethree',4)" id="imagethree">
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    @if (!string.IsNullOrEmpty(Model.ImageFour))
+                                    {
+                                        <img class="card-img-top" src="@Model.ImageFour" alt="Card image cap" />
+                                    }
+                                    else
+                                    {
+                                <img class="card-img-top" src="~/assets/images/slider/01.jpg" alt="Card image cap" />
+                                    }
+                                    
+                                    <div class="card-body">
+                                        <h4 class="card-title">Fourth Image</h4>
+                                        <p class="card-text">
+                                            This is a wider card with supporting text below as a natural lead-in to additional content. This card has even
+                                            longer content than the first to show that equal height action.
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <input type="file" class="form-control-file" onchange="uploadImage('imagefour',5)" id="imagefour">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="tab-pane" id="about" aria-labelledby="about-tab" role="tabpanel">
+                            <p>
+                                Gingerbread cake cheesecake lollipop topping bonbon chocolate sesame snaps. Dessert macaroon bonbon
+                                carrot cake biscuit. Lollipop lemon drops cake gingerbread liquorice. Sweet gummies dragée. Donut bear
+                                claw pie halvah oat cake cotton candy sweet roll. Cotton candy sweet roll donut ice cream.
+                            </p>
+                            <p>
+                                Halvah bonbon topping halvah ice cream cake candy. Wafer gummi bears chocolate cake topping powder.
+                                Sweet marzipan cheesecake jelly-o powder wafer lemon drops lollipop cotton candy.
+                            </p>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+
+@section HeaderScripts {
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/css/tables/datatable/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/css/tables/datatable/rowGroup.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/css/pickers/flatpickr/flatpickr.min.css">
 }
+
+@section FooterScripts{
+    <script src="~/assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/responsive.bootstrap4.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/jszip.min.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/pdfmake.min.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/vfs_fonts.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
+    <script src="~/assets/js/scripts/tables/table-datatables-basic.js"></script>
+    <script src="~/js/productDetail.js"></script>
+
+} 

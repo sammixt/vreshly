@@ -24,5 +24,11 @@ namespace BLL.Specifications
             AddInclude(x => x.Role);
             AddInclude(x => x.UserInformation);
         }
+
+        public UserSpecification(string email, string password) : base (x => x.Email.ToLower() == email.ToLower() && x.Password == password)
+        {
+            AddInclude(x => x.Role);
+            AddInclude(x => x.UserInformation);
+        }
     }
 }

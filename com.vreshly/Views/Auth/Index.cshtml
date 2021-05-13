@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
-    <meta name="author" content="PIXINVENT">
-    <title>Login Page - Vuexy - Bootstrap HTML admin template</title>
+    <meta name="author" content="Samuel Ezeala">
+    <title>Login Page - Vreshly</title>
     <link rel="apple-touch-icon" href="~/assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="~/assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
@@ -25,6 +25,8 @@
     <link rel="stylesheet" type="text/css" href="~/assets/css/themes/dark-layout.css">
     <link rel="stylesheet" type="text/css" href="~/assets/css/themes/bordered-layout.css">
     <link rel="stylesheet" type="text/css" href="~/assets/css/themes/semi-dark-layout.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/css/extensions/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/plugins/extensions/ext-component-toastr.css">
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="~/assets/css/core/menu/menu-types/vertical-menu.css">
@@ -109,11 +111,6 @@
                                     </div>
                                     <button class="btn btn-primary btn-block" tabindex="4">Sign in</button>
                                 </form>
-                                <p class="text-center mt-2"><span>New on our platform?</span><a href="page-auth-register-v2.html"><span>&nbsp;Create an account</span></a></p>
-                                <div class="divider my-2">
-                                    <div class="divider-text">or</div>
-                                </div>
-                                <div class="auth-footer-btn d-flex justify-content-center"><a class="btn btn-facebook" href="javascript:void(0)"><i data-feather="facebook"></i></a><a class="btn btn-twitter white" href="javascript:void(0)"><i data-feather="twitter"></i></a><a class="btn btn-google" href="javascript:void(0)"><i data-feather="mail"></i></a><a class="btn btn-github" href="javascript:void(0)"><i data-feather="github"></i></a></div>
                             </div>
                         </div>
                         <!-- /Login-->
@@ -124,6 +121,8 @@
     </div>
     <!-- END: Content-->
     <!-- BEGIN: Vendor JS-->
+    <script src="~/js/site.js"></script>
+    <script src="~/js/axios.min.js"></script>
     <script src="~/assets/vendors/js/vendors.min.js"></script>
     <!-- BEGIN Vendor JS-->
     <!-- BEGIN: Page Vendor JS-->
@@ -134,10 +133,12 @@
     <script src="~/assets/js/core/app.js"></script>
     <!-- END: Theme JS-->
     <!-- BEGIN: Page JS-->
-    <script src="~/assets/js/scripts/pages/page-auth-login.js"></script>
+    <script src="~/assets/vendors/js/extensions/toastr.min.js"></script>
+    <script src="~/assets/js/scripts/extensions/ext-component-toastr.js"></script>
+    <script src="~/js/auth.js"></script>
     <!-- END: Page JS-->
 
-    <script>$(window).on('load', function() {
+    <script>$(window).on('load', function () {
             if (feather) {
                 feather.replace({
                     width: 14,

@@ -12,5 +12,10 @@ namespace BLL.Specifications
         public UserInformationSpecification(int id) : base(x => x.Id == id)
         {
         }
+
+        public UserInformationSpecification(long userId) : base(x => x.UserId == userId)
+        {
+
+        }
     }
 }

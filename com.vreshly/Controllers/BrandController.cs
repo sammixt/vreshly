@@ -125,10 +125,19 @@ namespace com.vreshly.Controllers
             {
                 uniqueFileName = Guid.NewGuid().ToString() + "_" + model.UploadImage.FileName;
                 string filePath = Path.Combine(GetPathAndFilename(), uniqueFileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                //filePath = filePath.Replace("\\/", "\\");
+                try
                 {
-                    model.UploadImage.CopyTo(fileStream);
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        model.UploadImage.CopyTo(fileStream);
+                    }
                 }
+                catch (Exception ex)
+                {
+                    
+                }
+                
             }
 
             return uniqueFileName;
@@ -136,7 +145,7 @@ namespace com.vreshly.Controllers
 
         private string GetPathAndFilename()
         {
-            return $"{this.webHostEnvironment.WebRootPath}\\Uploads\\Brands\\";
+            return @$"{this.webHostEnvironment.WebRootPath}/Uploads/Brand/";
         }
 
         [HttpDelete]

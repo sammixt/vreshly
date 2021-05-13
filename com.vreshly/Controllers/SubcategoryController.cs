@@ -29,7 +29,8 @@ namespace com.vreshly.Controllers
         // GET: /<controller>/
         public async Task<IActionResult> Index()
         {
-
+            ViewBag.PageName = "Sub Category";
+            ViewBag.Breadcrumbs = "<li class=\"breadcrumb-item\"><a  href=\"/Category/Index\">Category</a></li><li class=\"breadcrumb-item active\">Sub category</li>";
             var spec = new SubCategorySpecification();
             var categories = await _unitOfWork.Repository<SubCategory>().ListAsync(spec);
             var subcategoryDto = _mapper.Map<IReadOnlyList<SubCategory>, IReadOnlyList<SubCategoryDto>>(categories);
@@ -45,6 +46,15 @@ namespace com.vreshly.Controllers
         }
 
         [HttpGet]
+        public async Task<ActionResult<IReadOnlyList<Category>>> GetSubCategoriesByCategory(int id)
+        {
+            var spec = new SubCategorySpecification().GetByCategory(id);
+            var categories = await _unitOfWork.Repository<SubCategory>().ListAsync(spec);
+            var subcategoryDto = _mapper.Map<IReadOnlyList<SubCategory>, IReadOnlyList<SubCategoryDto>>(categories);
+            return Ok(subcategoryDto);
+        }
+
+        [HttpGet]
         public async Task<ActionResult<CategoryDto>> GetSubCategory(int id)
         {
             var spec = new SubCategorySpecification(id);
@@ -53,6 +63,8 @@ namespace com.vreshly.Controllers
             var categoryDto = _mapper.Map<SubCategory, SubCategoryDto>(categories);
             return Ok(categoryDto);
         }
+
+
 
         [HttpPost]
         public async Task<ActionResult> AddSubCategory([FromBody] SubCategoryDto model)

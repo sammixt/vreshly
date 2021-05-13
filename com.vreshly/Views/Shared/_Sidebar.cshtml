@@ -40,18 +40,14 @@
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span><span class="badge badge-light-warning badge-pill ml-auto mr-1">2</span></a>
                 <ul class="menu-content">
-                    <li>
-                        <a class="d-flex align-items-center" href="dashboard-analytics.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Analytics</span></a>
-                    </li>
+                    
                     <li class="active">
                         <a class="d-flex align-items-center" href="dashboard-ecommerce.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="eCommerce">eCommerce</span></a>
                     </li>
                 </ul>
             </li>
-            <li class=" navigation-header">
-                <span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i>
-            </li>
-            <li class=" nav-item">
+            
+            @*<li class=" nav-item">
                 <a class="d-flex align-items-center" href="app-email.html"><i data-feather="mail"></i><span class="menu-title text-truncate" data-i18n="Email">Email</span></a>
             </li>
             <li class=" nav-item">
@@ -65,28 +61,25 @@
             </li>
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="app-kanban.html"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Kanban</span></a>
-            </li>
+            </li>*@
             <li class=" nav-item">
-                <a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Invoice</span></a>
+                <a class="d-flex align-items-center" href="#"><i data-feather="filter"></i><span class="menu-title text-truncate" data-i18n="Category">Category</span></a>
                 <ul class="menu-content">
                     <li>
-                        <a class="d-flex align-items-center" href="app-invoice-list.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List</span></a>
+                        <a class="d-flex align-items-center" asp-action="Index" asp-controller="Category"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Category">Category</span></a>
                     </li>
                     <li>
-                        <a class="d-flex align-items-center" href="app-invoice-preview.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Preview">Preview</span></a>
+                        <a class="d-flex align-items-center" asp-action="Index" asp-controller="Subcategory"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Sub Category">Sub Category</span></a>
                     </li>
                     <li>
-                        <a class="d-flex align-items-center" href="app-invoice-edit.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Edit</span></a>
-                    </li>
-                    <li>
-                        <a class="d-flex align-items-center" href="app-invoice-add.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">Add</span></a>
+                        <a class="d-flex align-items-center" asp-action="Index" asp-controller="Brand"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Brand">Brand</span></a>
                     </li>
                 </ul>
             </li>
             <li class=" nav-item">
-                <a class="d-flex align-items-center" href="app-file-manager.html"><i data-feather="save"></i><span class="menu-title text-truncate" data-i18n="File Manager">File Manager</span></a>
+                <a class="d-flex align-items-center" asp-action="Index" asp-controller="Product"><i data-feather="shopping-cart"></i><span class="menu-title text-truncate" data-i18n="Products">Products</span></a>
             </li>
-            <li class=" nav-item">
+            @*<li class=" nav-item">
                 <a class="d-flex align-items-center" href="#"><i data-feather="shopping-cart"></i><span class="menu-title text-truncate" data-i18n="eCommerce">eCommerce</span></a>
                 <ul class="menu-content">
                     <li>
@@ -102,19 +95,19 @@
                         <a class="d-flex align-items-center" href="app-ecommerce-checkout.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Checkout">Checkout</span></a>
                     </li>
                 </ul>
-            </li>
+            </li>*@
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="#"><i data-feather="user"></i><span class="menu-title text-truncate" data-i18n="User">User</span></a>
                 <ul class="menu-content">
                     <li>
-                        <a class="d-flex align-items-center" href="app-user-list.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List</span></a>
+                        <a class="d-flex align-items-center" asp-action="Index" asp-controller="Users"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List</span></a>
                     </li>
-                    <li>
+                    @*<li>
                         <a class="d-flex align-items-center" href="app-user-view.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="View">View</span></a>
                     </li>
                     <li>
                         <a class="d-flex align-items-center" href="app-user-edit.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Edit</span></a>
-                    </li>
+                    </li>*@
                 </ul>
             </li>
             <li class=" nav-item">

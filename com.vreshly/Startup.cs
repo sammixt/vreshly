@@ -7,6 +7,7 @@ using BLL.Infrastructure.Data;
 using BLL.Interface;
 using com.vreshly.Helper;
 using com.vreshly.Middleware;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,6 +35,21 @@ namespace com.vreshly
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
             services.AddAutoMapper(typeof(MappingProfiles));
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Administrator",
+                     policy => policy.RequireRole("Administrator"));
+                options.AddPolicy("StoreKeeper",
+                     policy => policy.RequireRole("StoreKeeper"));
+                //options.AddPolicy(Policy.NewUser,
+                //    policy => policy.RequireAssertion(context =>
+                //       context.User.HasClaim(c =>
+                //       (c.Type == "UserStatus" && (c.Value.ToString() == "Unconfirmed" || c.Value.ToString() == "Confirmed"))
+                //       ))
+                //    );
+            });
 
         }
 
@@ -56,6 +72,7 @@ namespace com.vreshly
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -64,18 +64,13 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">DataTables</h2>
+                            <h2 class="content-header-title float-left mb-0">@ViewBag.PageName</h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
                                         <a href="index.html">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item">
-                                        <a href="#">Datatable</a>
-                                    </li>
-                                    <li class="breadcrumb-item active">
-                                        Basic
-                                    </li>
+                                    @Html.Raw(ViewBag.Breadcrumbs)
                                 </ol>
                             </div>
                         </div>
@@ -104,7 +99,8 @@
     </footer>
     <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
     <!-- END: Footer-->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    @*<script src="https://unpkg.com/axios/dist/axios.min.js"></script>*@
+    <script src="~/js/axios.min.js"></script>
     <!-- BEGIN: Vendor JS-->
     <script src="~/js/site.js"></script>
     <script src="~/assets/vendors/js/vendors.min.js"></script>
