@@ -26,6 +26,20 @@ namespace BLL.Specifications
             AddInclude(x => x.Brand);
         }
 
+        public ProductSpecification(bool featured) : base(x => x.IsFeaturedProduct == featured)
+        {
+            AddInclude(x => x.Category);
+            AddInclude(x => x.SubCategory);
+            AddInclude(x => x.Brand);
+        }
+
+        public ProductSpecification(bool featured, bool bestseller) : base(x => x.IsBestSeller == bestseller)
+        {
+            AddInclude(x => x.Category);
+            AddInclude(x => x.SubCategory);
+            AddInclude(x => x.Brand);
+        }
+
         public ProductSpecification(string name) : base(x => x.ProductName.ToLower() == name)
         {
             AddInclude(x => x.Category);

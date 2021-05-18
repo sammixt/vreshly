@@ -86,3 +86,12 @@
 /Users/esc/Documents/Projects/com.vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Users/EditUser.cshtml.g.cs
 /Users/esc/Documents/Projects/com.vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Shared/_LayoutFrontend.cshtml.g.cs
 /Users/esc/Documents/Projects/com.vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Shop/Index.cshtml.g.cs
+/Users/esc/Documents/Projects/com.vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Shop/ProductDetail.cshtml.g.cs
+/Users/esc/Documents/Projects/com.vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Home/About.cshtml.g.cs
+/Users/esc/Documents/Projects/com.vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Home/Contact.cshtml.g.cs
+/Users/esc/Documents/Projects/com.vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Shop/Cart.cshtml.g.cs
+/Users/esc/Documents/Projects/com.vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Shop/Checkout.cshtml.g.cs
+/Users/esc/Documents/Projects/com.vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Shop/WishList.cshtml.g.cs
+/Users/esc/Documents/Projects/com.vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Account/Information.cshtml.g.cs
+/Users/esc/Documents/Projects/com.vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Account/Login.cshtml.g.cs
+/Users/esc/Documents/Projects/com.vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Account/Register.cshtml.g.cs

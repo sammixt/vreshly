@@ -16,5 +16,25 @@ namespace com.vreshly.Controllers
             ViewBag.ClassName = "shop-wrapper";
             return View();
         }
+
+        public async Task<IActionResult> ProductDetail(int productId)
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> WishList()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Cart()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Checkout()
+        {
+            return View();
+        }
     }
 }

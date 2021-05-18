@@ -33,6 +33,14 @@ namespace com.vreshly.Dtos
         public long BrandId { get; set; }
         public List<VariableDto> variables { get; set; }
 
+        public bool SoldOut
+        {
+            get
+            {
+                return Quantity == 0;
+            }
+        }
+
         public ImageTypes ImageType { get; set; }
     }
 

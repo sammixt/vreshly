@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+    Layout = "~/Views/Shared/_LayoutFrontend.cshtml";
+}
+
+<div class="contact-us-area">
+    <div class="container container-default-2 custom-area">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-custom">
+                <div class="contact-info-item">
+                    <div class="con-info-icon">
+                        <i class="ion-ios-location-outline"></i>
+                    </div>
+                    <div class="con-info-txt">
+                        <h4>Our Location</h4>
+                        <p>(800) 123 456 789 / (800) 123 456 789 info@example.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-custom">
+                <div class="contact-info-item">
+                    <div class="con-info-icon">
+                        <i class="ion-iphone"></i>
+                    </div>
+                    <div class="con-info-txt">
+                        <h4>Contact us Anytime</h4>
+                        <p>Mobile: 012 345 678<br>Fax: 123 456 789</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-custom text-align-center">
+                <div class="contact-info-item">
+                    <div class="con-info-icon">
+                        <i class="ion-ios-email-outline"></i>
+                    </div>
+                    <div class="con-info-txt">
+                        <h4>Support Overall</h4>
+                        <p>Support24/7@example.com <br> info@example.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-custom">
+                <form method="post" action="assets/php/mail.php" id="contact-form" accept-charset="UTF-8" class="contact-form">
+                    <div class="comment-box mt-5">
+                        <h5 class="text-uppercase">Get in Touch</h5>
+                        <div class="row mt-3">
+                            <div class="col-md-6 col-custom">
+                                <div class="input-item mb-4">
+                                    <input class="border rounded-0 w-100 input-area name" type="text" name="con_name" id="con_name" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-custom">
+                                <div class="input-item mb-4">
+                                    <input class="border rounded-0 w-100 input-area email" type="email" name="con_email" id="con_email" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="col-12 col-custom">
+                                <div class="input-item mb-4">
+                                    <input class="border rounded-0 w-100 input-area email" type="text" name="con_content" id="con_content" placeholder="Subject">
+                                </div>
+                            </div>
+                            <div class="col-12 col-custom">
+                                <div class="input-item mb-4">
+                                    <textarea cols="30" rows="5" class="border rounded-0 w-100 custom-textarea input-area" name="con_message" id="con_message" placeholder="Message"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-12 col-custom mt-40">
+                                <button type="submit" id="submit" name="submit" class="btn obrien-button primary-btn rounded-0 mb-0">Send A Message</button>
+                            </div>
+                            <p class="col-12 col-custom form-message mb-0"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact Us Area End Here -->
+<!-- Google Maps -->
+<div class="google-map-area">
+    <div id="contacts" class="map-area">
+        <div id="googleMap"></div>
+    </div>
+</div>

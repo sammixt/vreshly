@@ -233,5 +233,27 @@ namespace com.vreshly.Controllers
         {
             return @$"{this.webHostEnvironment.WebRootPath}/Uploads/Product/";
         }
+
+        [HttpGet]
+        public async Task<ActionResult> GetFeaturedProducts()
+        {
+            var spec = new ProductSpecification(true);
+            var products = await _unitOfWork.Repository<Product>().ListAsync(spec);
+            
+            var productsDto = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductDto>>(products);
+            var productOutput = productsDto.Take(4).ToList();
+            return Ok(productOutput);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetBestSellers()
+        {
+            var spec = new ProductSpecification(true,true);
+            var products = await _unitOfWork.Repository<Product>().ListAsync(spec);
+
+            var productsDto = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductDto>>(products);
+            var productOutput = productsDto.Take(5).ToList();
+            return Ok(productOutput);
+        }
     }
 }
