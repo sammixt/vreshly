@@ -44,6 +44,15 @@ namespace com.vreshly.Controllers
         }
 
         [HttpGet]
+        public async Task<ActionResult<IReadOnlyList<CategoryDto>>> GetIndexedCategories(int take)
+        {
+            var categories = await _unitOfWork.Repository<Category>().ListAllAsync();
+            var categoryDto = _mapper.Map<IReadOnlyList<Category>, IReadOnlyList<CategoryDto>>(categories);
+             categoryDto = categoryDto.Take(take).ToList();
+            return Ok(categoryDto);
+        }
+
+        [HttpGet]
         public async Task<ActionResult<CategoryDto>> GetCategory(int id)
         {
             var spec = new CategorySpecification(id);

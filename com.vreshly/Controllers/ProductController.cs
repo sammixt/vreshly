@@ -9,6 +9,7 @@ using BLL.Interface;
 using BLL.Specifications;
 using com.vreshly.Dtos;
 using com.vreshly.Errors;
+using com.vreshly.Helper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
@@ -235,14 +236,17 @@ namespace com.vreshly.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetFeaturedProducts()
+        public async Task<ActionResult<Pagination<ProductDto>>> GetProducts([FromQuery]ProductSpecParams productSpec)
         {
-            var spec = new ProductSpecification(true);
+            var spec = new ProductSpecification(productSpec);
+
+            var countSpec = new ProductWithFilterForCountSpecification(productSpec);
+
+            var totalItem = await _unitOfWork.Repository<Product>().CountAsync(countSpec);
             var products = await _unitOfWork.Repository<Product>().ListAsync(spec);
             
             var productsDto = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductDto>>(products);
-            var productOutput = productsDto.Take(4).ToList();
-            return Ok(productOutput);
+            return Ok(new Pagination<ProductDto>(productSpec.PageIndex, productSpec.PageSize, totalItem,productsDto));
         }
 
         [HttpGet]

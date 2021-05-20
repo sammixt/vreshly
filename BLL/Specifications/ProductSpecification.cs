@@ -12,6 +12,39 @@ namespace BLL.Specifications
             AddInclude(x => x.Brand);
         }
 
+        public ProductSpecification(ProductSpecParams productSpec)
+            : base(x => (!productSpec.CategoryId.HasValue || x.CategoryId == productSpec.CategoryId))
+        {
+            AddInclude(x => x.Category);
+            AddInclude(x => x.SubCategory);
+            AddInclude(x => x.Brand);
+            AddOrderBy(p => p.ProductName);
+            ApplyPaging(productSpec.PageSize * (productSpec.PageIndex - 1), productSpec.PageSize);
+            if (!string.IsNullOrEmpty(productSpec.sort))
+            {
+                switch (productSpec.sort)
+                {
+                    case "priceAsc":
+                        AddOrderBy(p => p.ProductName);
+                        break;
+                    case "priceDesc":
+                        AddOrderByDescending(p => p.ProductName);
+                        break;
+                    case "dateAsc":
+                        AddOrderBy(p => p.CreatedDate);
+                        break;
+                    case "dateDesc":
+                        AddOrderByDescending(p => p.CreatedDate);
+                        break;
+                    default:
+                        AddOrderBy(p => p.ProductName);
+                        break;
+
+                }
+            }
+        }
+
+
         public ProductSpecification(int id) : base(x => x.Id == id)
         {
             AddInclude(x => x.Category);
