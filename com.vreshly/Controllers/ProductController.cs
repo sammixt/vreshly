@@ -250,6 +250,16 @@ namespace com.vreshly.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> GetProduct(int id)
+        {
+            var spec = new ProductSpecification(id);
+            var products = await _unitOfWork.Repository<Product>().GetEntitiesWithSpec(spec);
+            var productsDto = _mapper.Map<Product, ProductDto>(products);
+            return Ok(productsDto);
+
+        }
+
+        [HttpGet]
         public async Task<ActionResult> GetBestSellers()
         {
             var spec = new ProductSpecification(true,true);

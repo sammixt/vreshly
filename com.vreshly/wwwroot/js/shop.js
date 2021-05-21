@@ -48,9 +48,9 @@
                                 <a href='wishlist.html' title='Add To Wishlist'>\
                                     <i class='ion-ios-heart-outline'></i>\
                                 </a>\
-                                <a href='#exampleModalCenter' data-toggle='modal' title='Quick View'>\
-                                    <i class='ion-eye'></i>\
-                                </a>\
+                                 <a  class='detail-view' data-id='"+ value.id +"' title='Quick View'>\
+                                        <i class='ion-eye'></i>\
+                                   </a>\
                             </div>\
                             <div class='product-content-listview'>\
                                 <div class='product-rating'>\
@@ -77,7 +77,7 @@
                                     <a href='wishlist.html' title='Add To Wishlist'>\
                                         <i class='ion-ios-heart-outline'></i>\
                                     </a>\
-                                    <a href='#exampleModalCenter' data-toggle='modal' title='Quick View'>\
+                                    <a  class='detail-view' data-id='"+value.id+"' title='Quick View'>\
                                         <i class='ion-eye'></i>\
                                     </a>\
                                 </div>\
@@ -120,6 +120,66 @@
         loadProducts(_pageIndex, _pageSize);
     })
 
+    featuredProductDiv.on('click', '.detail-view', function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var _id = $this.attr('data-id');
+        $.ajax({
+            type: 'GET',
+            url: `${baseUrl}Product/GetProduct/${_id}`
+        }).done(function (response) {
+            $('.modal-body').html("<div class='container-fluid'>\
+                    <div class='row'>\
+                        <div class='col-lg-6 col-md-6 text-center'>\
+                            <div class='product-image'>\
+                                <img src='"+ response.mainImage +"' alt='Product Image'>\
+                            </div>\
+                        </div>\
+                        <div class='col-lg-6 col-md-6'>\
+                            <div class='modal-product'>\
+                                <div class='product-content'>\
+                                    <div class='product-title'>\
+                                        <h4 class='title'>"+ response.productName +"</h4>\
+                                    </div>\
+                                    <div class='price-box'>\
+                                         <span class='regular-price '>NGN "+ response.discountPrice + "</span>\
+									     <span class='old-price'><del>NGN "+ response.sellingPrice + "</del></span>\
+                                    </div>\
+                                    <div class='product-rating'>\
+                                        <i class='fa fa-star'></i>\
+                                        <i class='fa fa-star'></i>\
+                                        <i class='fa fa-star'></i>\
+                                        <i class='fa fa-star-o'></i>\
+                                        <i class='fa fa-star-o'></i>\
+                                        <span>1 Review</span>\
+                                    </div>\
+                                    <p class='desc-content'>"+ response.productDescription+"</p>\
+                                    <div class='quantity-with_btn'>\
+                                        <div class='quantity'>\
+                                            <div class='cart-plus-minus'>\
+                                                <input class='cart-plus-minus-box' value='0' type='text'>\
+                                                <div class='dec qtybutton'>-</div>\
+                                                <div class='inc qtybutton'>+</div>\
+                                            </div>\
+                                        </div>\
+                                        <div class='add-to_cart'>\
+                                            <a class='btn obrien-button primary-btn' href='cart.html'>Add to cart</a>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                            </div>\
+                        </div>\
+                    </div>\
+                </div>");
+            $('#exampleModalCenter').modal({
+                show: true
+            })
+        }).fail(function (data) {
+            // Make sure that the formMessages div has the 'error' class.
+            console.log(data);
+        });
+        //alert(_id);
+    })
 
     //function loadProduct(_pageIndex, _pageSize) {
     //    alert(_pageIndex);
