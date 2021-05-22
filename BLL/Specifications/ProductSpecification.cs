@@ -13,7 +13,9 @@ namespace BLL.Specifications
         }
 
         public ProductSpecification(ProductSpecParams productSpec)
-            : base(x => (!productSpec.CategoryId.HasValue || x.CategoryId == productSpec.CategoryId))
+            : base(x =>
+            (string.IsNullOrEmpty(productSpec.Search) || x.ProductName.ToLower().Contains(productSpec.Search)) &&
+            (!productSpec.CategoryId.HasValue || x.CategoryId == productSpec.CategoryId))
         {
             AddInclude(x => x.Category);
             AddInclude(x => x.SubCategory);

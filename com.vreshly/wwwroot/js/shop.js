@@ -3,6 +3,7 @@
     var featuredProductDiv = $('#shop_wrapper');
     var categorySidebar = $('#sidebar-categories');
     var productSidebar = $('#sidebar-products');
+    var brandSidebar = $('#sidebar-brands');
 	function loadProducts(_pageIndex, _pageSize) {
 		$.ajax({
 			type: 'GET',
@@ -248,7 +249,29 @@
         });
     }
 
+    function loadBrand(_take) {
+        $.ajax({
+            type: 'GET',
+            url: `${baseUrl}Brand/GetIndexBrands`,
+            data: { take: _take }
+        }).done(function (response) {
+
+            $.each(response, function (key, value) {
+
+                brandSidebar.append("<li><a href='#'>" + value.brandName + "</a></li>");
+            });
+            //setTimeout(, 3000);
+
+            //sliderInit('featured-product-slider')
+
+        }).fail(function (data) {
+            // Make sure that the formMessages div has the 'error' class.
+            console.log(data);
+        });
+    }
+
     loadProducts(1, 4);
     loadCategory(5);
     loadSidebarProduct('dateDesc', 1, 5);
+    loadBrand(5);
 });

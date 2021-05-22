@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using StackExchange.Redis;
 
 namespace com.vreshly
 {
@@ -34,6 +35,7 @@ namespace com.vreshly
             services.AddDbContext<StoreContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
+            services.AddScoped<IBasketRepository, BasketRepository>();
             services.AddAutoMapper(typeof(MappingProfiles));
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie();
@@ -50,6 +52,12 @@ namespace com.vreshly
                 //       ))
                 //    );
             });
+            services.AddSingleton<ConnectionMultiplexer>(c =>
+            {
+                var configuration = ConfigurationOptions.Parse(Configuration.GetConnectionString("redis"), true);
+                return ConnectionMultiplexer.Connect(configuration);
+            });
+            
 
         }
 

@@ -1,80 +1,13 @@
 ﻿<Properties StartupConfiguration="{D13B51E9-337B-42DA-AFE1-244C873D4D7B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="BLL/Infrastructure/Data/GenericRepository.cs">
-    <Files>
-      <File FileName="com.vreshly/Controllers/HomeController.cs" Line="41" Column="30" />
-      <File FileName="com.vreshly/Views/Shared/_LayoutFrontend.cshtml" Line="772" Column="56" />
-      <File FileName="com.vreshly/Views/Home/Index.cshtml" />
-      <File FileName="com.vreshly/Controllers/ShopController.cs" Line="1" Column="1" />
-      <File FileName="com.vreshly/Views/Shop/Index.cshtml" Line="926" Column="37" />
-      <File FileName="com.vreshly/Views/Shared/_Layout.cshtml" Line="112" Column="54" />
-      <File FileName="com.vreshly/Controllers/UsersController.cs" />
-      <File FileName="com.vreshly/Views/Shop/ProductDetail.cshtml" />
-      <File FileName="com.vreshly/Views/Shop/Cart.cshtml" />
-      <File FileName="com.vreshly/Views/Shop/Checkout.cshtml" />
-      <File FileName="com.vreshly/Views/Home/About.cshtml" />
-      <File FileName="com.vreshly/Views/Home/Contact.cshtml" />
-      <File FileName="com.vreshly/Controllers/AccountController.cs" />
-      <File FileName="com.vreshly/Views/Account/Login.cshtml" />
-      <File FileName="com.vreshly/Views/Account/Register.cshtml" />
-      <File FileName="com.vreshly/Views/Account/Information.cshtml" />
-      <File FileName="com.vreshly/wwwroot/frontendassets/js/main.js" />
-      <File FileName="com.vreshly/Controllers/ProductController.cs" Line="241" Column="1" />
-      <File FileName="com.vreshly/Controllers/BrandController.cs" />
-      <File FileName="com.vreshly/Program.cs" />
-      <File FileName="BLL/Specifications/ProductSpecification.cs" Line="25" Column="1" />
-      <File FileName="com.vreshly/Dtos/ProductDto.cs" />
-      <File FileName="com.vreshly/Controllers/SubcategoryController.cs" />
-      <File FileName="com.vreshly/wwwroot/frontendassets/css/style.css" />
-      <File FileName="com.vreshly/wwwroot/js/home.js" Line="211" Column="33" />
-      <File FileName="BLL/Specifications/ISpecification.cs" />
-      <File FileName="BLL/Specifications/BaseSpecification.cs" Line="26" Column="46" />
-      <File FileName="BLL/Infrastructure/Data/SpecificationEvaluator.cs" Line="36" Column="61" />
-      <File FileName="BLL/Specifications/ProductSpecParams.cs" Line="12" Column="29" />
-      <File FileName="BLL/Infrastructure/Data/UnitOfWork.cs" />
-      <File FileName="BLL/Data/StoreContext.cs" />
-      <File FileName="com.vreshly/Helper/Pagination.cs" />
-      <File FileName="BLL/Interface/IGenericRepository.cs" />
-      <File FileName="BLL/Specifications/ProductWithFilterForCountSpecification.cs" />
-      <File FileName="com.vreshly/wwwroot/js/shop.js" Line="89" Column="1" />
-      <File FileName="com.vreshly/wwwroot/js/user.js" Line="1" Column="1" />
-      <File FileName="com.vreshly/Controllers/CategoryController.cs" Line="51" Column="1" />
-      <File FileName="BLL/Specifications/CategorySpecification.cs" Line="1" Column="1" />
-      <File FileName="BLL/Entities/Category.cs" Line="1" Column="1" />
-      <File FileName="BLL/Entities/SubCategory.cs" Line="1" Column="1" />
-      <File FileName="BLL/Infrastructure/Data/GenericRepository.cs" Line="1" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="com.vreshly" expanded="True">
-            <Node name="BLL" expanded="True">
-              <Node name="Dependencies" expanded="True" />
-              <Node name="Data" expanded="True" />
-              <Node name="Entities" expanded="True" />
-              <Node name="Infrastructure" expanded="True">
-                <Node name="Data" expanded="True">
-                  <Node name="GenericRepository.cs" selected="True" />
-                </Node>
-              </Node>
-              <Node name="Interface" expanded="True" />
-              <Node name="Specifications" expanded="True" />
-            </Node>
-            <Node name="com.vreshly" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Helper" expanded="True" />
-              <Node name="Middleware" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="Account" expanded="True" />
-                <Node name="Home" expanded="True" />
-                <Node name="Shared" expanded="True" />
-                <Node name="Shop" expanded="True" />
-              </Node>
-              <Node name="wwwroot" expanded="True">
-                <Node name="js" expanded="True" />
-              </Node>
-            </Node>
-          </Node>
+          <Node name="com.vreshly" expanded="True" />
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
@@ -85,11 +18,9 @@
     <BreakpointStore>
       <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/CategoryController.cs" relfile="com.vreshly/Controllers/CategoryController.cs" line="58" column="1" />
       <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/CategoryController.cs" relfile="com.vreshly/Controllers/CategoryController.cs" line="89" column="1" />
-      <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/BrandController.cs" relfile="com.vreshly/Controllers/BrandController.cs" line="64" column="1" />
-      <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/BrandController.cs" relfile="com.vreshly/Controllers/BrandController.cs" line="74" column="1" />
-      <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/BrandController.cs" relfile="com.vreshly/Controllers/BrandController.cs" line="136" column="1" />
-      <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/BrandController.cs" relfile="com.vreshly/Controllers/BrandController.cs" line="122" column="1" />
-      <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/BrandController.cs" relfile="com.vreshly/Controllers/BrandController.cs" line="89" column="1" />
+      <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/BrandController.cs" relfile="com.vreshly/Controllers/BrandController.cs" line="73" column="1" />
+      <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/BrandController.cs" relfile="com.vreshly/Controllers/BrandController.cs" line="83" column="1" />
+      <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/BrandController.cs" relfile="com.vreshly/Controllers/BrandController.cs" line="145" column="1" />
       <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/UsersController.cs" relfile="com.vreshly/Controllers/UsersController.cs" line="95" column="1" />
       <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/UsersController.cs" relfile="com.vreshly/Controllers/UsersController.cs" line="170" column="1" />
       <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/AuthController.cs" relfile="com.vreshly/Controllers/AuthController.cs" line="49" column="1" />

@@ -49,6 +49,15 @@ namespace com.vreshly.Controllers
         }
 
         [HttpGet]
+        public async Task<ActionResult<IReadOnlyList<Brand>>> GetIndexBrands(int take)
+        {
+            var brands = await _unitOfWork.Repository<Brand>().ListAllAsync();
+            var BrandDto = _mapper.Map<IReadOnlyList<Brand>, IReadOnlyList<BrandDto>>(brands);
+            BrandDto = BrandDto.Take(take).ToList();
+            return Ok(BrandDto);
+        }
+
+        [HttpGet]
         public async Task<ActionResult<BrandDto>> GetBrand(int id)
         {
             var spec = new BrandSpecification(id);
