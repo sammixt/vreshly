@@ -40,7 +40,12 @@
                                 </div>\
                             </div>\
                             <div class='add-action d-flex position-absolute'>\
-                                <a href='cart.html' title='Add To cart'>\
+                                <a class='add-to-cart' data-id='"+ value.id +
+                    "' data-productName='" + value.productName +
+                    "' data-price='" + value.discountPrice +
+                    "' data-quantity='1' data-pictureUrl='" + value.mainImage +
+                    "' data-category='" + value.category +
+                    "' data-brand='" + value.brand + "' title = 'Add To cart' >\
                                     <i class='ion-bag'></i>\
                                 </a>\
                                 <a href='compare.html' title='Compare'>\

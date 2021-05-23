@@ -170,10 +170,10 @@
                                             <li class="minicart-wrap">
                                                 <a href="#" class="minicart-btn toolbar-btn">
                                                     <i class="ion-bag"></i>
-                                                    <span class="cart-item_count">3</span>
+                                                    <span class="cart-item_count">0</span>
                                                 </a>
                                                 <div class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
-                                                    <div class="single-cart-item">
+                                                    @*<div class="single-cart-item">
                                                         <div class="cart-img">
                                                             <a href="cart.html"><img src="~/frontendassets/images/cart/1.jpg" alt=""></a>
                                                         </div>
@@ -217,10 +217,10 @@
                                                                 <button type="button"><i class="ion-trash-b"></i></button>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div>*@
                                                     <div class="cart-price-total d-flex justify-content-between">
                                                         <h5>Total :</h5>
-                                                        <h5>$166.00</h5>
+                                                        <h5 class="total"></h5>
                                                     </div>
                                                     <div class="cart-links d-flex justify-content-center">
                                                         <a class="obrien-button white-btn" href="cart.html">View cart</a>
@@ -373,10 +373,10 @@
                                             <li class="minicart-wrap">
                                                 <a href="#" class="minicart-btn toolbar-btn">
                                                     <i class="ion-bag"></i>
-                                                    <span class="cart-item_count">3</span>
+                                                    <span class="cart-item_count">0</span>
                                                 </a>
                                                 <div class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
-                                                    <div class="single-cart-item">
+                                                    @*<div class="single-cart-item">
                                                         <div class="cart-img">
                                                             <a href="cart.html"><img src="~/frontendassets/images/cart/1.jpg" alt=""></a>
                                                         </div>
@@ -420,10 +420,10 @@
                                                                 <button type="button"><i class="ion-trash-b"></i></button>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div>*@
                                                     <div class="cart-price-total d-flex justify-content-between">
                                                         <h5>Total :</h5>
-                                                        <h5>$166.00</h5>
+                                                        <h5 class="total"></h5>
                                                     </div>
                                                     <div class="cart-links d-flex justify-content-center">
                                                         <a class="obrien-button white-btn" href="cart.html">View cart</a>
@@ -771,6 +771,7 @@
     <!-- Main JS -->
     <script src="~/frontendassets/js/main.js"></script>
     @RenderSection("FooterScripts", required: false);
+    <script src="~/js/cart.js"></script>
 </body>
 
 </html>

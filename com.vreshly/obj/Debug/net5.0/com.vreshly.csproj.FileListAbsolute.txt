@@ -95,3 +95,7 @@
 /Users/esc/Documents/Projects/com.vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Account/Information.cshtml.g.cs
 /Users/esc/Documents/Projects/com.vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Account/Login.cshtml.g.cs
 /Users/esc/Documents/Projects/com.vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Account/Register.cshtml.g.cs
+/Users/esc/Documents/Projects/com.vreshly/com.vreshly/bin/Debug/net5.0/Pipelines.Sockets.Unofficial.dll
+/Users/esc/Documents/Projects/com.vreshly/com.vreshly/bin/Debug/net5.0/StackExchange.Redis.dll
+/Users/esc/Documents/Projects/com.vreshly/com.vreshly/bin/Debug/net5.0/System.Diagnostics.PerformanceCounter.dll
+/Users/esc/Documents/Projects/com.vreshly/com.vreshly/bin/Debug/net5.0/runtimes/win/lib/netcoreapp2.0/System.Diagnostics.PerformanceCounter.dll

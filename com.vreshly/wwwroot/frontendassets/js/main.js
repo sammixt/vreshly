@@ -182,7 +182,7 @@
 	$('.cart-plus-minus').append(
 		'<div class="dec qtybutton"><i class="fa fa-minus"></i></div><div class="inc qtybutton"><i class="fa fa-plus"></i></div>'
 	);
-	$('.qtybutton').on('click', function () {
+	$('#cart-table').on('click','.qtybutton', function () {
 		var $button = $(this);
 		var oldValue = $button.parent().find('input').val();
 		if ($button.hasClass('inc')) {

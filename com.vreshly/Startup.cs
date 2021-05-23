@@ -52,7 +52,7 @@ namespace com.vreshly
                 //       ))
                 //    );
             });
-            services.AddSingleton<ConnectionMultiplexer>(c =>
+            services.AddSingleton<IConnectionMultiplexer>(c =>
             {
                 var configuration = ConfigurationOptions.Parse(Configuration.GetConnectionString("redis"), true);
                 return ConnectionMultiplexer.Connect(configuration);
