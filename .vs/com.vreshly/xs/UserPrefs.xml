@@ -2,16 +2,16 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="com.vreshly/wwwroot/frontendassets/js/main.js">
     <Files>
       <File FileName="com.vreshly/Startup.cs" Line="57" Column="67" />
-      <File FileName="com.vreshly/Views/Shared/_LayoutFrontend.cshtml" Line="228" Column="59" />
-      <File FileName="com.vreshly/Views/Home/Index.cshtml" Line="1" Column="1" />
-      <File FileName="com.vreshly/wwwroot/js/cart.js" Line="173" Column="49" />
-      <File FileName="com.vreshly/Controllers/BasketController.cs" Line="24" Column="45" />
-      <File FileName="BLL/Entities/CustomerBasket.cs" Line="19" Column="28" />
-      <File FileName="BLL/Entities/BasketItem.cs" Line="11" Column="45" />
-      <File FileName="com.vreshly/wwwroot/js/shop.js" Line="46" Column="78" />
-      <File FileName="com.vreshly/Views/Shop/Index.cshtml" Line="1124" Column="4" />
-      <File FileName="com.vreshly/Views/Shop/Cart.cshtml" Line="23" Column="46" />
-      <File FileName="com.vreshly/wwwroot/frontendassets/js/main.js" Line="83" Column="5" />
+      <File FileName="com.vreshly/Views/Shared/_LayoutFrontend.cshtml" />
+      <File FileName="com.vreshly/Views/Home/Index.cshtml" />
+      <File FileName="com.vreshly/wwwroot/js/cart.js" />
+      <File FileName="com.vreshly/Controllers/BasketController.cs" />
+      <File FileName="BLL/Entities/CustomerBasket.cs" />
+      <File FileName="BLL/Entities/BasketItem.cs" />
+      <File FileName="com.vreshly/wwwroot/js/shop.js" />
+      <File FileName="com.vreshly/Views/Shop/Index.cshtml" />
+      <File FileName="com.vreshly/Views/Shop/Cart.cshtml" />
+      <File FileName="com.vreshly/wwwroot/frontendassets/js/main.js" Line="185" Column="43" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -38,9 +38,6 @@
             </Node>
           </Node>
         </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

@@ -157,6 +157,7 @@
     loadCartDropdown();
 
     var loadCartsOnCartPage = function () {
+        cartTable.empty();
         let tr = "";
         let carts = JSON.parse(localStorage.getItem("cart"));
         if (carts != null) {
@@ -168,7 +169,7 @@
                     <td class='pro-quantity'>\
                         <div class='quantity'>\
                             <div class='cart-plus-minus'>\
-                                <input class='cart-plus-minus-box' value='"+ value.quantity +"' type='text'>\
+                                <input class='cart-plus-minus-box' data-id='"+value.id+"' value='"+ value.quantity +"' type='text'>\
                                 <div class='dec qtybutton'>-</div>\
                                 <div class='inc qtybutton'>+</div>\
                                 <div class='dec qtybutton'><i class='fa fa-minus'></i></div>\
@@ -186,4 +187,54 @@
     }
 
     loadCartsOnCartPage();
+
+    /*----------------------------------------*/
+    /*  Cart Plus Minus Button
+    /*----------------------------------------*/
+    $('.cart-plus-minus').append(
+        '<div class="dec qtybutton"><i class="fa fa-minus"></i></div><div class="inc qtybutton"><i class="fa fa-plus"></i></div>'
+    );
+    $('#cart-table').on('click', '.qtybutton', function () {
+        var $button = $(this);
+        var oldValue = $button.parent().find('input').val();
+        if ($button.hasClass('inc')) {
+            var newVal = parseFloat(oldValue) + 1;
+        } else {
+            // Don't allow decrementing below zero
+            if (oldValue > 1) {
+                var newVal = parseFloat(oldValue) - 1;
+            } else {
+                newVal = 1;
+            }
+        }
+        $button.parent().find('input').val(newVal);
+    });
+
+    $('#update-cart').on('click', function (e) {
+        e.preventDefault();
+        var carts = JSON.parse(localStorage.getItem("cart"));
+        
+        $('#cart-table tr').each(function (i, row) {
+            let $row = $(row);
+            let $inputStage = $row.find('input');
+            let qty = $inputStage.val();
+            let _id = $inputStage.attr('data-id');
+
+            for (var i in carts) {
+                if (carts[i].id == _id) {
+                    carts[i].quantity = qty;
+                    break; //Stop this loop, we found it!
+                }
+            }
+            //localStorage.setItem("cart", JSON.stringify(carts));
+            //alert(qty)
+            //alert(_id)
+
+        });
+        localStorage.setItem("cart", JSON.stringify(carts));
+        loadCartsOnCartPage();
+        cartCount();
+        loadCartDropdown();
+    });
+
 })
