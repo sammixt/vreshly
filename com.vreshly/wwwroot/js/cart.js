@@ -178,10 +178,12 @@
                         </div>\
                     </td>\
                     <td class='pro-subtotal'>NGN<span>"+ value.price * value.quantity +"</span></td>\
-                    <td class='pro-remove'><a href='#'><i class='ion-trash-b'></i></a></td>\
+                    <td class='pro-remove'><a href='#' class='remove-item' data-id='"+ value.id +"'><i class='ion-trash-b'></i></a></td>\
                 </tr>"
             });
             cartTable.append(tr);
+            let total = getTotal();
+            $('.sub-total').text(total);
         }
         
     }
@@ -236,5 +238,14 @@
         cartCount();
         loadCartDropdown();
     });
+
+    cartTable.on('click', '.remove-item', function (e) {
+        let $this = $(this);
+        let _id = $this.attr('data-id');
+        deleteItemFromCart(_id);
+        cartCount();
+        loadCartDropdown();
+        loadCartsOnCartPage();
+    })
 
 })

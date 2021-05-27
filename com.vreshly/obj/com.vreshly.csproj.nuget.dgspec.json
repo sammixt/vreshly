@@ -14,7 +14,7 @@
         "outputPath": "/Users/esc/Documents/Projects/com.vreshly/BLL/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/esc/.config/NuGet/NuGet.Config"
+          "/Users/esc/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -38,6 +38,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -47,6 +55,14 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.5, )"
+            },
+            "Microsoft.IdentityModel.JsonWebTokens": {
+              "target": "Package",
+              "version": "[6.11.1, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.11.1, )"
             },
             "StackExchange.Redis": {
               "target": "Package",
@@ -82,7 +98,7 @@
         "outputPath": "/Users/esc/Documents/Projects/com.vreshly/com.vreshly/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/esc/.config/NuGet/NuGet.Config"
+          "/Users/esc/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -113,6 +129,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[8.1.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",

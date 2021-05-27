@@ -1,43 +1,48 @@
 ﻿<Properties StartupConfiguration="{D13B51E9-337B-42DA-AFE1-244C873D4D7B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="com.vreshly/wwwroot/frontendassets/js/main.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="BLL/Infrastructure/Identity/Migrations/AppIdentityDbContextModelSnapshot.cs">
     <Files>
-      <File FileName="com.vreshly/Startup.cs" Line="57" Column="67" />
-      <File FileName="com.vreshly/Views/Shared/_LayoutFrontend.cshtml" />
-      <File FileName="com.vreshly/Views/Home/Index.cshtml" />
-      <File FileName="com.vreshly/wwwroot/js/cart.js" />
-      <File FileName="com.vreshly/Controllers/BasketController.cs" />
-      <File FileName="BLL/Entities/CustomerBasket.cs" />
-      <File FileName="BLL/Entities/BasketItem.cs" />
-      <File FileName="com.vreshly/wwwroot/js/shop.js" />
-      <File FileName="com.vreshly/Views/Shop/Index.cshtml" />
-      <File FileName="com.vreshly/Views/Shop/Cart.cshtml" />
-      <File FileName="com.vreshly/wwwroot/frontendassets/js/main.js" Line="185" Column="43" />
+      <File FileName="com.vreshly/Views/Shop/Cart.cshtml" Line="24" Column="29" />
+      <File FileName="BLL/Entities/Identity/AppUser.cs" Line="17" Column="8" />
+      <File FileName="BLL/Entities/Identity/Address.cs" Line="25" Column="23" />
+      <File FileName="BLL/Entities/Product.cs" Line="1" Column="1" />
+      <File FileName="BLL/Entities/Variable.cs" Line="1" Column="1" />
+      <File FileName="BLL/Infrastructure/Identity/AppIdentityDbContext.cs" Line="36" Column="84" />
+      <File FileName="com.vreshly/Startup.cs" Line="68" Column="1" />
+      <File FileName="com.vreshly/appsettings.Development.json" Line="12" Column="85" />
+      <File FileName="BLL/Data/StoreContext.cs" Line="27" Column="9" />
+      <File FileName="BLL/Infrastructure/Identity/Migrations/20210527222445_IndentityInitial.cs" Line="1" Column="1" />
+      <File FileName="BLL/Infrastructure/Identity/AppIdentityDbContextSeed.cs" Line="35" Column="40" />
+      <File FileName="com.vreshly/Extensions/IdentityServiceExtension.cs" Line="18" Column="42" />
+      <File FileName="com.vreshly/Program.cs" Line="33" Column="79" />
+      <File FileName="BLL/Infrastructure/Identity/Migrations/AppIdentityDbContextModelSnapshot.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="com.vreshly" expanded="True">
             <Node name="BLL" expanded="True">
-              <Node name="Entities" expanded="True" />
-            </Node>
-            <Node name="com.vreshly" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True" />
-                <Node name="Shared" expanded="True" />
-                <Node name="Shop" expanded="True" />
+              <Node name="Data" expanded="True" />
+              <Node name="Entities" expanded="True">
+                <Node name="Identity" expanded="True" />
               </Node>
-              <Node name="wwwroot" expanded="True">
-                <Node name="frontendassets" expanded="True">
-                  <Node name="js" expanded="True">
-                    <Node name="main.js" selected="True" />
+              <Node name="Infrastructure" expanded="True">
+                <Node name="Data" expanded="True" />
+                <Node name="Identity" expanded="True">
+                  <Node name="Migration" expanded="True" />
+                  <Node name="Migrations" expanded="True">
+                    <Node name="AppIdentityDbContextModelSnapshot.cs" selected="True" />
                   </Node>
                 </Node>
-                <Node name="js" expanded="True" />
               </Node>
+            </Node>
+            <Node name="com.vreshly" expanded="True">
+              <Node name="Extensions" expanded="True" />
             </Node>
           </Node>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

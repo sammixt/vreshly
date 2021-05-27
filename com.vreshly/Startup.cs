@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using BLL.Data;
 using BLL.Infrastructure.Data;
+using BLL.Infrastructure.Identity;
 using BLL.Interface;
+using com.vreshly.Extensions;
 using com.vreshly.Helper;
 using com.vreshly.Middleware;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -33,6 +35,10 @@ namespace com.vreshly
         {
             services.AddControllersWithViews();
             services.AddDbContext<StoreContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<AppIdentityDbContext>(x =>
+            {
+                x.UseSqlServer(Configuration.GetConnectionString("IdentityConnection"));
+            });
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
             services.AddScoped<IBasketRepository, BasketRepository>();
@@ -57,6 +63,7 @@ namespace com.vreshly
                 var configuration = ConfigurationOptions.Parse(Configuration.GetConnectionString("redis"), true);
                 return ConnectionMultiplexer.Connect(configuration);
             });
+            services.AddIdentityServices();
             
 
         }
