@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BLL.Data;
 using BLL.Infrastructure.Data;
 using BLL.Infrastructure.Identity;
+using BLL.Infrastructure.Services;
 using BLL.Interface;
 using com.vreshly.Extensions;
 using com.vreshly.Helper;
@@ -41,8 +42,10 @@ namespace com.vreshly
             });
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
+            services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IBasketRepository, BasketRepository>();
             services.AddAutoMapper(typeof(MappingProfiles));
+            //services.Configure<ApiBehaviourOptions>
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie();
             services.AddAuthorization(options =>
@@ -63,7 +66,7 @@ namespace com.vreshly
                 var configuration = ConfigurationOptions.Parse(Configuration.GetConnectionString("redis"), true);
                 return ConnectionMultiplexer.Connect(configuration);
             });
-            services.AddIdentityServices();
+            services.AddIdentityServices(Configuration);
             
 
         }

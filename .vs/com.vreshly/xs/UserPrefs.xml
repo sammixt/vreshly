@@ -1,42 +1,39 @@
 ﻿<Properties StartupConfiguration="{D13B51E9-337B-42DA-AFE1-244C873D4D7B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="BLL/Infrastructure/Identity/Migrations/AppIdentityDbContextModelSnapshot.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="com.vreshly/Startup.cs">
     <Files>
-      <File FileName="com.vreshly/Views/Shop/Cart.cshtml" Line="24" Column="29" />
-      <File FileName="BLL/Entities/Identity/AppUser.cs" Line="17" Column="8" />
-      <File FileName="BLL/Entities/Identity/Address.cs" Line="25" Column="23" />
-      <File FileName="BLL/Entities/Product.cs" Line="1" Column="1" />
-      <File FileName="BLL/Entities/Variable.cs" Line="1" Column="1" />
-      <File FileName="BLL/Infrastructure/Identity/AppIdentityDbContext.cs" Line="36" Column="84" />
-      <File FileName="com.vreshly/Startup.cs" Line="68" Column="1" />
-      <File FileName="com.vreshly/appsettings.Development.json" Line="12" Column="85" />
-      <File FileName="BLL/Data/StoreContext.cs" Line="27" Column="9" />
-      <File FileName="BLL/Infrastructure/Identity/Migrations/20210527222445_IndentityInitial.cs" Line="1" Column="1" />
-      <File FileName="BLL/Infrastructure/Identity/AppIdentityDbContextSeed.cs" Line="35" Column="40" />
-      <File FileName="com.vreshly/Extensions/IdentityServiceExtension.cs" Line="18" Column="42" />
-      <File FileName="com.vreshly/Program.cs" Line="33" Column="79" />
-      <File FileName="BLL/Infrastructure/Identity/Migrations/AppIdentityDbContextModelSnapshot.cs" Line="1" Column="1" />
+      <File FileName="com.vreshly/Extensions/UserManagerExtensions.cs" Line="27" Column="7" />
+      <File FileName="com.vreshly/Controllers/AccountController.cs" Line="43" Column="1" />
+      <File FileName="BLL/Entities/Identity/Address.cs" Line="20" Column="44" />
+      <File FileName="com.vreshly/Dtos/AddressDto.cs" Line="6" Column="28" />
+      <File FileName="com.vreshly/Helper/MappingProfiles.cs" Line="50" Column="58" />
+      <File FileName="com.vreshly/Dtos/RegisterDto.cs" Line="6" Column="18" />
+      <File FileName="com.vreshly/Errors/ApiValidationErrorResponse.cs" Line="1" Column="1" />
+      <File FileName="com.vreshly/Errors/ApiResponse.cs" Line="1" Column="1" />
+      <File FileName="com.vreshly/Errors/ApiException.cs" Line="1" Column="1" />
+      <File FileName="com.vreshly/Startup.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="com.vreshly" expanded="True">
             <Node name="BLL" expanded="True">
-              <Node name="Data" expanded="True" />
               <Node name="Entities" expanded="True">
                 <Node name="Identity" expanded="True" />
               </Node>
               <Node name="Infrastructure" expanded="True">
-                <Node name="Data" expanded="True" />
-                <Node name="Identity" expanded="True">
-                  <Node name="Migration" expanded="True" />
-                  <Node name="Migrations" expanded="True">
-                    <Node name="AppIdentityDbContextModelSnapshot.cs" selected="True" />
-                  </Node>
-                </Node>
+                <Node name="Identity" expanded="True" />
+                <Node name="Services" expanded="True" />
               </Node>
             </Node>
             <Node name="com.vreshly" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Dtos" expanded="True" />
+              <Node name="Errors" expanded="True" />
               <Node name="Extensions" expanded="True" />
+              <Node name="Helper" expanded="True" />
+              <Node name="Middleware" expanded="True" />
+              <Node name="appsettings.json" expanded="True" />
+              <Node name="Startup.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -59,6 +56,8 @@
       <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/UsersController.cs" relfile="com.vreshly/Controllers/UsersController.cs" line="95" column="1" />
       <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/UsersController.cs" relfile="com.vreshly/Controllers/UsersController.cs" line="170" column="1" />
       <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/AuthController.cs" relfile="com.vreshly/Controllers/AuthController.cs" line="49" column="1" />
+      <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/AccountController.cs" relfile="com.vreshly/Controllers/AccountController.cs" line="116" column="1" />
+      <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/AccountController.cs" relfile="com.vreshly/Controllers/AccountController.cs" line="43" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

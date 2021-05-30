@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "sSOyKsSh3SkYU16Mp5H3+vbKigWM1qDcpxRgcLPYn8WmqyKyY/eB/Lt/BoLvoiEKhQ1V9vTT83OvI8ZX81aREQ==",
+  "dgSpecHash": "B+OuC1i1zSMBLqqsp+/Es0wkWlcjBQDslqNVyK0/ihE6CRrwKl9WJSMDns7fRvwfCFpqFJLlqhWwIXMNHvP47g==",
   "success": true,
   "projectFilePath": "/Users/esc/Documents/Projects/com.vreshly/com.vreshly/com.vreshly.csproj",
   "expectedPackageFiles": [
@@ -82,7 +82,7 @@
     "/Users/esc/.nuget/packages/system.drawing.common/5.0.0/system.drawing.common.5.0.0.nupkg.sha512",
     "/Users/esc/.nuget/packages/system.globalization/4.3.0/system.globalization.4.3.0.nupkg.sha512",
     "/Users/esc/.nuget/packages/system.globalization.extensions/4.3.0/system.globalization.extensions.4.3.0.nupkg.sha512",
-    "/Users/esc/.nuget/packages/system.identitymodel.tokens.jwt/6.7.1/system.identitymodel.tokens.jwt.6.7.1.nupkg.sha512",
+    "/Users/esc/.nuget/packages/system.identitymodel.tokens.jwt/6.11.1/system.identitymodel.tokens.jwt.6.11.1.nupkg.sha512",
     "/Users/esc/.nuget/packages/system.io/4.3.0/system.io.4.3.0.nupkg.sha512",
     "/Users/esc/.nuget/packages/system.io.filesystem/4.3.0/system.io.filesystem.4.3.0.nupkg.sha512",
     "/Users/esc/.nuget/packages/system.io.filesystem.primitives/4.3.0/system.io.filesystem.primitives.4.3.0.nupkg.sha512",

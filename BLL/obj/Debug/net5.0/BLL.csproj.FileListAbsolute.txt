@@ -1,8 +1,9 @@
 /Users/esc/Documents/Projects/com.vreshly/BLL/bin/Debug/net5.0/BLL.deps.json
+/Users/esc/Documents/Projects/com.vreshly/BLL/bin/Debug/net5.0/BLL.runtimeconfig.json
+/Users/esc/Documents/Projects/com.vreshly/BLL/bin/Debug/net5.0/BLL.runtimeconfig.dev.json
 /Users/esc/Documents/Projects/com.vreshly/BLL/bin/Debug/net5.0/BLL.dll
 /Users/esc/Documents/Projects/com.vreshly/BLL/bin/Debug/net5.0/ref/BLL.dll
 /Users/esc/Documents/Projects/com.vreshly/BLL/bin/Debug/net5.0/BLL.pdb
-/Users/esc/Documents/Projects/com.vreshly/BLL/obj/Debug/net5.0/BLL.csprojAssemblyReference.cache
 /Users/esc/Documents/Projects/com.vreshly/BLL/obj/Debug/net5.0/BLL.GeneratedMSBuildEditorConfig.editorconfig
 /Users/esc/Documents/Projects/com.vreshly/BLL/obj/Debug/net5.0/BLL.AssemblyInfoInputs.cache
 /Users/esc/Documents/Projects/com.vreshly/BLL/obj/Debug/net5.0/BLL.AssemblyInfo.cs
@@ -10,6 +11,4 @@
 /Users/esc/Documents/Projects/com.vreshly/BLL/obj/Debug/net5.0/BLL.dll
 /Users/esc/Documents/Projects/com.vreshly/BLL/obj/Debug/net5.0/ref/BLL.dll
 /Users/esc/Documents/Projects/com.vreshly/BLL/obj/Debug/net5.0/BLL.pdb
-/Users/esc/Documents/Projects/com.vreshly/BLL/bin/Debug/net5.0/BLL.runtimeconfig.json
-/Users/esc/Documents/Projects/com.vreshly/BLL/bin/Debug/net5.0/BLL.runtimeconfig.dev.json
 /Users/esc/Documents/Projects/com.vreshly/BLL/obj/Debug/net5.0/BLL.genruntimeconfig.cache

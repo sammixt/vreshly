@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8St9Z4yQgmuSmnwTaXqml0cabK7tKfyLlA6QHGeeeQvNN7GA8cLBP2UAZJT6+3ZqhczjkZLj/LOu3ErqneZ3nw==",
+  "dgSpecHash": "aLx77Iiv07T5mbAZITFdPkviiTNRUc6WWCW7tlDwswUKgmk4Vr4zjTe2djUmlmfAm0xExMtX//R28F6iUEuImA==",
   "success": true,
   "projectFilePath": "/Users/esc/Documents/Projects/com.vreshly/BLL/BLL.csproj",
   "expectedPackageFiles": [
@@ -81,7 +81,7 @@
     "/Users/esc/.nuget/packages/system.dynamic.runtime/4.3.0/system.dynamic.runtime.4.3.0.nupkg.sha512",
     "/Users/esc/.nuget/packages/system.globalization/4.3.0/system.globalization.4.3.0.nupkg.sha512",
     "/Users/esc/.nuget/packages/system.globalization.extensions/4.3.0/system.globalization.extensions.4.3.0.nupkg.sha512",
-    "/Users/esc/.nuget/packages/system.identitymodel.tokens.jwt/5.6.0/system.identitymodel.tokens.jwt.5.6.0.nupkg.sha512",
+    "/Users/esc/.nuget/packages/system.identitymodel.tokens.jwt/6.11.1/system.identitymodel.tokens.jwt.6.11.1.nupkg.sha512",
     "/Users/esc/.nuget/packages/system.io/4.3.0/system.io.4.3.0.nupkg.sha512",
     "/Users/esc/.nuget/packages/system.io.filesystem/4.3.0/system.io.filesystem.4.3.0.nupkg.sha512",
     "/Users/esc/.nuget/packages/system.io.filesystem.primitives/4.3.0/system.io.filesystem.primitives.4.3.0.nupkg.sha512",
