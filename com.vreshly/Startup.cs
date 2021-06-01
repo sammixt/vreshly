@@ -41,6 +41,7 @@ namespace com.vreshly
                 x.UseSqlServer(Configuration.GetConnectionString("IdentityConnection"));
             });
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IOrderService, OrderService>();
             services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IBasketRepository, BasketRepository>();

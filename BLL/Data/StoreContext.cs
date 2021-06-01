@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Reflection;
 using BLL.Entities;
+using BLL.Entities.OrderAggregate;
 using Microsoft.EntityFrameworkCore;
 
 namespace BLL.Data
@@ -23,6 +25,9 @@ namespace BLL.Data
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserInformation> GetUserInformation { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -55,11 +60,8 @@ namespace BLL.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>()
-                .HasOne<SubCategory>()
-                .WithMany()
-                .HasForeignKey(x => x.SubCategoryId)
-                .OnDelete(DeleteBehavior.Restrict);
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }

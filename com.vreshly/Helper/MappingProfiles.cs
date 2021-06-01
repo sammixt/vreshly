@@ -2,6 +2,7 @@
 using AutoMapper;
 using BLL.Entities;
 using BLL.Entities.Identity;
+using BLL.Entities.OrderAggregate;
 using com.vreshly.Dtos;
 
 namespace com.vreshly.Helper
@@ -48,6 +49,7 @@ namespace com.vreshly.Helper
             CreateMap<UserInformation, UserInformationDto>().ReverseMap();
             CreateMap<User, UserDetailDto>();
             CreateMap<Address, AddressDto>().ReverseMap();
+            CreateMap<AddressDto, OrderAddress>();
 
         }
     }
