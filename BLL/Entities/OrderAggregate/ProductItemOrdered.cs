@@ -7,17 +7,17 @@ namespace BLL.Entities.OrderAggregate
         {
         }
 
-        public ProductItemOrdered(long productItemId, string productName, string productUrl)
+        public ProductItemOrdered(long productItemId, string productName, string pictureUrl)
         {
             ProductItemId = productItemId;
             ProductName = productName;
-            ProductUrl = productUrl;
+            PictureUrl = pictureUrl;
         }
 
         public long ProductItemId { get; set; }
 
         public string ProductName { get; set; }
 
-        public string ProductUrl { get; set; }
+        public string PictureUrl { get; set; }
     }
 }

@@ -1,19 +1,14 @@
 ﻿<Properties StartupConfiguration="{D13B51E9-337B-42DA-AFE1-244C873D4D7B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="BLL/Specifications/OrdersWithItemsAndOrderingSpecifications.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="com.vreshly/wwwroot/js/cart.js">
     <Files>
-      <File FileName="BLL/Interface/IOrderService.cs" Line="17" Column="71" />
-      <File FileName="BLL/Infrastructure/Services/OrderService.cs" Line="52" Column="58" />
-      <File FileName="com.vreshly/Startup.cs" Line="44" Column="63" />
-      <File FileName="BLL/Interface/IUnitOfWork.cs" Line="7" Column="27" />
-      <File FileName="com.vreshly/Controllers/BrandController.cs" Line="1" Column="1" />
-      <File FileName="BLL/Infrastructure/Data/UnitOfWork.cs" Line="39" Column="97" />
-      <File FileName="BLL/Entities/OrderAggregate/Order.cs" Line="8" Column="16" />
-      <File FileName="com.vreshly/Controllers/OrdersController.cs" Line="25" Column="42" />
-      <File FileName="com.vreshly/Helper/MappingProfiles.cs" Line="49" Column="75" />
-      <File FileName="com.vreshly/Extensions/ClaimsPrincipalExtensions.cs" Line="8" Column="56" />
-      <File FileName="com.vreshly/Controllers/BasketController.cs" Line="33" Column="68" />
-      <File FileName="BLL/Infrastructure/Data/BasketRepository.cs" Line="41" Column="47" />
-      <File FileName="BLL/Specifications/OrdersWithItemsAndOrderingSpecifications.cs" Line="1" Column="1" />
+      <File FileName="com.vreshly/Startup.cs" Line="49" Column="15" />
+      <File FileName="com.vreshly/Program.cs" Line="42" Column="1" />
+      <File FileName="com.vreshly/Controllers/ShopController.cs" Line="16" Column="1" />
+      <File FileName="com.vreshly/wwwroot/js/shop.js" Line="298" Column="4" />
+      <File FileName="BLL/Specifications/ProductSpecification.cs" Line="30" Column="54" />
+      <File FileName="com.vreshly/Views/Shop/Index.cshtml" Line="132" Column="68" />
+      <File FileName="BLL/Specifications/ProductSpecParams.cs" Line="22" Column="31" />
+      <File FileName="com.vreshly/wwwroot/js/cart.js" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -24,27 +19,25 @@
                 <Node name="OrderAggregate" expanded="True" />
               </Node>
               <Node name="Infrastructure" expanded="True">
-                <Node name="Data" expanded="True" />
                 <Node name="Services" expanded="True" />
               </Node>
-              <Node name="Interface" expanded="True" />
-              <Node name="Specifications" expanded="True">
-                <Node name="OrdersWithItemsAndOrderingSpecifications.cs" selected="True" />
-              </Node>
+              <Node name="Specifications" expanded="True" />
             </Node>
             <Node name="com.vreshly" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Dtos" expanded="True" />
               <Node name="Extensions" expanded="True" />
-              <Node name="Helper" expanded="True" />
-              <Node name="wwwroot" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Shop" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="js" expanded="True">
+                  <Node name="cart.js" selected="True" />
+                </Node>
+              </Node>
               <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
         </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

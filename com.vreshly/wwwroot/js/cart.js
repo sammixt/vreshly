@@ -89,7 +89,27 @@
         var _brand = $this.attr('data-brand');
         var _category = $this.attr('data-category');
         addToCart(_id, _productName, _price, _quantity, _pictureUrl, _brand, _category)
-    })
+    });
+
+    $('.modal-body').on('click', '.add-to-cart-modal', function () {
+        var $button = $(this);
+        var qty = $button.parent().parent().find('input').val();
+        if (parseInt(qty) > 0) {
+            var _id = $button.attr('data-id');
+            var _productName = $button.attr('data-productName');
+            var _price = parseInt($button.attr('data-price')) ;
+            var _quantity = qty;
+            var _pictureUrl = $button.attr('data-pictureUrl');
+            var _brand = $button.attr('data-brand');
+            var _category = $button.attr('data-category');
+            addToCart(_id, _productName, _price, _quantity, _pictureUrl, _brand, _category)
+        } else {
+            alert(`Quantity must be greater than Zero (0)`);
+        }
+       
+        
+        
+    });
 
     var loadCartDropdown = function () {
         cartItemWrapper.empty();

@@ -4,11 +4,20 @@
     var categorySidebar = $('#sidebar-categories');
     var productSidebar = $('#sidebar-products');
     var brandSidebar = $('#sidebar-brands');
-	function loadProducts(_pageIndex, _pageSize) {
+    var click = 'click';
+    function loadProducts(_pageIndex, _pageSize, cart,sort, search) {
+        var $data = {};
+         $data = { pageIndex: _pageIndex, pageSize: _pageSize }
+        
+
+        if (cart > 0) { $data.categoryId = cart;}
+        if (sort !== 'nil') { $data.sort = sort; }
+        if (search !== 'nil') { $data.search = search; }
+
 		$.ajax({
 			type: 'GET',
 			url: `${baseUrl}Product/GetProducts`,
-			data: { pageIndex: _pageIndex, pageSize: _pageSize}
+            data: $data
 		}).done(function (response) {
             featuredProductDiv.empty();
             $('#pagination').empty();
@@ -74,9 +83,14 @@
 									<span class='old-price'><del>NGN "+ value.sellingPrice + "</del></span>\
                                 </div>\
                                 <div class='add-action-listview d-flex'>\
-                                    <a href='cart.html' title='Add To cart'>\
-                                        <i class='ion-bag'></i>\
-                                    </a>\
+                                     <a class='add-to-cart' data-id='"+ value.id +
+                                        "' data-productName='" + value.productName +
+                                        "' data-price='" + value.discountPrice +
+                                        "' data-quantity='1' data-pictureUrl='" + value.mainImage +
+                                        "' data-category='" + value.category +
+                                        "' data-brand='" + value.brand + "' title = 'Add To cart' >\
+                                            <i class='ion-bag'></i>\
+                                        </a>\
                                     <a href='compare.html' title='Compare'>\
                                         <i class='ion-ios-loop-strong'></i>\
                                     </a>\
@@ -100,7 +114,8 @@
             var li = "";
             li += "<li class='disabled prev'><i class='ion-ios-arrow-thin-left' ></i></li>"
             for (i = 1; i <= totalpages; i++) {
-                li += `<li class='`+ (_pageIndex === i ? 'active':'') +`'><a data-index='${i}' data-size='${_pageSize}'>${i}</a></li>`
+                li += `<li class='` + (_pageIndex === i ? 'active' : '') + `'><a data-index='${i}' data-cart='${cart}'
+                        data-size='${_pageSize}' data-sort='${sort}' data-search='${search}'>${i}</a></li>`
             }
             li += "<li class='next'><a href='#' title='Next >>'><i class='ion-ios-arrow-thin-right'></i></a ></li >";
             $('#pagination').append(li);
@@ -120,10 +135,11 @@
         var $this = $(this);
        var _pageIndex = $this.attr('data-index');
         var _pageSize = $this.attr('data-size');
+        var cart = parseInt($this.attr('data-cart'));
 
         //alert(_pageIndex);
         //alert(_pageSize);
-        loadProducts(_pageIndex, _pageSize);
+        loadProducts(_pageIndex, _pageSize, cart);
     })
 
     featuredProductDiv.on('click', '.detail-view', function (e) {
@@ -169,7 +185,13 @@
                                             </div>\
                                         </div>\
                                         <div class='add-to_cart'>\
-                                            <a class='btn obrien-button primary-btn' href='cart.html'>Add to cart</a>\
+                                             <a class='add-to-cart-modal btn obrien-button primary-btn' data-id='"+ response.id +
+                                                "' data-productName='" + response.productName +
+                                                "' data-price='" + response.discountPrice +
+                                                "' data-quantity='1' data-pictureUrl='" + response.mainImage +
+                                                "' data-category='" + response.category +
+                                                "' data-brand='" + response.brand + "' title = 'Add To cart' >\
+                                                            </a>\
                                         </div>\
                                     </div>\
                                 </div>\
@@ -242,7 +264,7 @@
 
             $.each(response, function (key, value) {
 
-                categorySidebar.append("<li><a href='#'>" + value.categoryName+"</a></li>");
+                categorySidebar.append("<li><a class='loadcart' href='#' data-cart='"+value.id+"'>" + value.categoryName+"</a></li>");
             });
             //setTimeout(, 3000);
 
@@ -275,7 +297,41 @@
         });
     }
 
-    loadProducts(1, 4);
+    categorySidebar.on(click, '.loadcart', function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        let category = parseInt($this.attr('data-cart'));
+        let sort = $this.attr('data-sort');
+        let search = $this.attr('data-search');
+        loadProducts(1, 8, category, sort, search);
+    });
+    $('#search-btn').on(click, function (e) {
+        e.preventDefault();
+        var searchParam = $(this).parent().parent().find('input').val();
+        if (searchParam.length > 1) {
+
+        }
+
+    })
+
+
+    $('.modal-body').on('click', '.qtybutton', function () {
+        var $button = $(this);
+        var oldValue = $button.parent().find('input').val();
+        if ($button.hasClass('inc')) {
+            var newVal = parseFloat(oldValue) + 1;
+        } else {
+            // Don't allow decrementing below zero
+            if (oldValue > 1) {
+                var newVal = parseFloat(oldValue) - 1;
+            } else {
+                newVal = 1;
+            }
+        }
+        $button.parent().find('input').val(newVal);
+    });
+
+    loadProducts(1, 8,0,'nil','nil');
     loadCategory(5);
     loadSidebarProduct('dateDesc', 1, 5);
     loadBrand(5);
