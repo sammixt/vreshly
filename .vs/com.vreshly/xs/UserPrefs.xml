@@ -1,14 +1,17 @@
 ﻿<Properties StartupConfiguration="{D13B51E9-337B-42DA-AFE1-244C873D4D7B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="com.vreshly/wwwroot/js/cart.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="BLL/Entities/CustomerBasket.cs">
     <Files>
       <File FileName="com.vreshly/Startup.cs" Line="49" Column="15" />
       <File FileName="com.vreshly/Program.cs" Line="42" Column="1" />
-      <File FileName="com.vreshly/Controllers/ShopController.cs" Line="16" Column="1" />
-      <File FileName="com.vreshly/wwwroot/js/shop.js" Line="298" Column="4" />
-      <File FileName="BLL/Specifications/ProductSpecification.cs" Line="30" Column="54" />
-      <File FileName="com.vreshly/Views/Shop/Index.cshtml" Line="132" Column="68" />
-      <File FileName="BLL/Specifications/ProductSpecParams.cs" Line="22" Column="31" />
-      <File FileName="com.vreshly/wwwroot/js/cart.js" Line="1" Column="1" />
+      <File FileName="com.vreshly/Controllers/ShopController.cs" Line="20" Column="55" />
+      <File FileName="com.vreshly/wwwroot/js/shop.js" Line="194" Column="72" />
+      <File FileName="BLL/Specifications/ProductSpecification.cs" Line="47" Column="1" />
+      <File FileName="com.vreshly/Views/Shop/Index.cshtml" Line="20" Column="72" />
+      <File FileName="BLL/Specifications/ProductSpecParams.cs" Line="16" Column="28" />
+      <File FileName="com.vreshly/wwwroot/js/cart.js" Line="75" Column="54" />
+      <File FileName="com.vreshly/Controllers/ProductController.cs" Line="227" Column="1" />
+      <File FileName="com.vreshly/Controllers/BasketController.cs" Line="31" Column="77" />
+      <File FileName="BLL/Entities/CustomerBasket.cs" Line="6" Column="18" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,6 +20,7 @@
             <Node name="BLL" expanded="True">
               <Node name="Entities" expanded="True">
                 <Node name="OrderAggregate" expanded="True" />
+                <Node name="CustomerBasket.cs" selected="True" />
               </Node>
               <Node name="Infrastructure" expanded="True">
                 <Node name="Services" expanded="True" />
@@ -30,9 +34,7 @@
                 <Node name="Shop" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
-                <Node name="js" expanded="True">
-                  <Node name="cart.js" selected="True" />
-                </Node>
+                <Node name="js" expanded="True" />
               </Node>
               <Node name="appsettings.json" expanded="True" />
             </Node>
@@ -56,6 +58,7 @@
       <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/AuthController.cs" relfile="com.vreshly/Controllers/AuthController.cs" line="49" column="1" />
       <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/AccountController.cs" relfile="com.vreshly/Controllers/AccountController.cs" line="116" column="1" />
       <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/com.vreshly/Controllers/AccountController.cs" relfile="com.vreshly/Controllers/AccountController.cs" line="43" column="1" />
+      <Breakpoint file="/Users/esc/Documents/Projects/com.vreshly/BLL/Specifications/ProductSpecification.cs" relfile="BLL/Specifications/ProductSpecification.cs" line="20" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

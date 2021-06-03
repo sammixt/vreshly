@@ -191,7 +191,7 @@
                                                 "' data-quantity='1' data-pictureUrl='" + response.mainImage +
                                                 "' data-category='" + response.category +
                                                 "' data-brand='" + response.brand + "' title = 'Add To cart' >\
-                                                            </a>\
+                                                            Add To cart</a>\
                                         </div>\
                                     </div>\
                                 </div>\
@@ -301,18 +301,25 @@
         e.preventDefault();
         var $this = $(this);
         let category = parseInt($this.attr('data-cart'));
-        let sort = $this.attr('data-sort');
-        let search = $this.attr('data-search');
-        loadProducts(1, 8, category, sort, search);
+        
+        loadProducts(1, 8, category, 'nil', 'nil');
     });
     $('#search-btn').on(click, function (e) {
         e.preventDefault();
         var searchParam = $(this).parent().parent().find('input').val();
         if (searchParam.length > 1) {
-
+            loadProducts(1, 8, 0, 'nil', searchParam);
+        } else {
+            alert("Enter Product Name");
         }
 
     })
+
+    $(".nice-select").on('change', function (e) {
+        e.preventDefault();
+        var sort = $(this).val();
+        loadProducts(1, 8, 0, sort, 'nil');
+    });
 
 
     $('.modal-body').on('click', '.qtybutton', function () {

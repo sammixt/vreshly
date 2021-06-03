@@ -3,6 +3,7 @@
     var cartItemCount = $('.cart-item_count');
     var cartItemWrapper = $('.cart-item-wrapper');
     var cartTable = $('#cart-table');
+    var basket = {};
     const basketItems = [];
     const basketItem = {
         id: 0,
@@ -16,6 +17,7 @@
 
     var addToCart = function (_id, _productName, _price, _quantity, _prictureUrl, _brand, _category) {
         if (localStorage.getItem("cart") == null) {
+            let basketId = getUUID();
             basketItem.id = _id;
             basketItem.productName = _productName;
             basketItem.price = _price;
@@ -25,10 +27,12 @@
             basketItem.brand = _brand;
 
             basketItems.push(basketItem);
-            localStorage.setItem("cart", JSON.stringify(basketItems));
+            basket.id = basketId
+            basket.items = basketItems
+            localStorage.setItem("cart", JSON.stringify(basket));
         } else {
             var carts = JSON.parse(localStorage.getItem("cart"));
-            var product = carts.find(function (cart) {
+            var product = carts.items.find(function (cart) {
                 return cart.id === _id;
             });
             if (product == null ) {
@@ -39,12 +43,12 @@
                 basketItem.pictureUrl = _prictureUrl;
                 basketItem.category = _category;
                 basketItem.brand = _brand;
-                carts.push(basketItem);
+                carts.items.push(basketItem);
                 localStorage.setItem("cart", JSON.stringify(carts));
             } else {
-                for (var i in carts) {
-                    if (carts[i].id == _id) {
-                        carts[i].quantity += _quantity;
+                for (var i in carts.items) {
+                    if (carts.items[i].id == _id) {
+                        carts.items[i].quantity += _quantity;
                         break; //Stop this loop, we found it!
                     }
                 }
@@ -72,7 +76,7 @@
 
     var cartCount = function () {
         var tempCart = JSON.parse(localStorage.getItem("cart"));
-        var cartCount = tempCart.length;
+        var cartCount = tempCart ? tempCart.items.length : 0;
         cartItemCount.text(cartCount);
     }
 
@@ -115,7 +119,7 @@
         cartItemWrapper.empty();
         var tempCart = JSON.parse(localStorage.getItem("cart"));
 
-        $.each(tempCart, function (key, value) {
+        $.each(tempCart.items, function (key, value) {
             cartItemWrapper.prepend(
                 "<div class='single-cart-item'>\
             <div class='cart-img'>\
@@ -151,8 +155,8 @@
     var getTotal = function () {
         var tempCart = JSON.parse(localStorage.getItem("cart"));
         var totalCost = 0;
-        for (var i in tempCart) {
-            totalCost = totalCost + (tempCart[i].price * tempCart[i].quantity)
+        for (var i in tempCart.items) {
+            totalCost = totalCost + (tempCart.items[i].price * tempCart.items[i].quantity)
         }
 
         return totalCost;
@@ -160,8 +164,8 @@
 
     var deleteItemFromCart = function (_id) {
         var tempCart = JSON.parse(localStorage.getItem("cart"));
-        var product = tempCart.filter(cart => cart.id !== _id);
-        localStorage.setItem("cart", JSON.stringify(product));
+        tempCart.items = tempCart.items.filter(cart => cart.id !== _id);
+        localStorage.setItem("cart", JSON.stringify(tempCart));
     }
 
     cartItemWrapper.on('click', '.trash-cart', function (e) {
@@ -181,7 +185,7 @@
         let tr = "";
         let carts = JSON.parse(localStorage.getItem("cart"));
         if (carts != null) {
-            $.each(carts, function (key, value) {
+            $.each(carts.items, function (key, value) {
                 tr += "<tr>\
                     <td class='pro-thumbnail'><a href='#'><img class='img-fluid' src='"+ value.pictureUrl + "' alt='Product' /></a></td>\
                     <td class='pro-title'><a href='#'>"+ value.productName + "</a></td>\
@@ -242,9 +246,9 @@
             let qty = $inputStage.val();
             let _id = $inputStage.attr('data-id');
 
-            for (var i in carts) {
-                if (carts[i].id == _id) {
-                    carts[i].quantity = qty;
+            for (var i in carts.items) {
+                if (carts.items[i].id == _id) {
+                    carts.items[i].quantity = qty;
                     break; //Stop this loop, we found it!
                 }
             }

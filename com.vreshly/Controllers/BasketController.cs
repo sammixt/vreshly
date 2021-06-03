@@ -28,7 +28,7 @@ namespace com.vreshly.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<CustomerBasket>> UdateBasket(CustomerBasket basket)
+        public async Task<ActionResult<CustomerBasket>> UpdateBasket(CustomerBasket basket)
         {
             var updatedBasket = await _basketRepository.UpdateBasketAsync(basket);
             return Ok(updatedBasket);

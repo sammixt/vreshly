@@ -27,13 +27,13 @@ namespace BLL.Specifications
                 switch (productSpec.sort)
                 {
                     case "priceAsc":
-                        AddOrderBy(p => p.ProductName);
+                        AddOrderBy(p => p.DiscountPrice);
                         break;
                     case "priceDesc":
-                        AddOrderByDescending(p => p.ProductName);
+                        AddOrderByDescending(p => p.DiscountPrice);
                         break;
-                    case "dateAsc":
-                        AddOrderBy(p => p.CreatedDate);
+                    case "prodName":
+                        AddOrderBy(p => p.ProductName);
                         break;
                     case "dateDesc":
                         AddOrderByDescending(p => p.CreatedDate);
