@@ -1,4 +1,5 @@
 ﻿$(function () {
+    var baseUrl = "https://localhost:5201/";
     var featuredProductDiv = $('#shop_wrapper');
     var cartItemCount = $('.cart-item_count');
     var cartItemWrapper = $('.cart-item-wrapper');
@@ -30,6 +31,7 @@
             basket.id = basketId
             basket.items = basketItems
             localStorage.setItem("cart", JSON.stringify(basket));
+            callApi('UpdateBasket', basket);
         } else {
             var carts = JSON.parse(localStorage.getItem("cart"));
             var product = carts.items.find(function (cart) {
@@ -45,6 +47,7 @@
                 basketItem.brand = _brand;
                 carts.items.push(basketItem);
                 localStorage.setItem("cart", JSON.stringify(carts));
+                callApi('UpdateBasket', carts);
             } else {
                 for (var i in carts.items) {
                     if (carts.items[i].id == _id) {
@@ -53,6 +56,7 @@
                     }
                 }
                 localStorage.setItem("cart", JSON.stringify(carts));
+                callApi('UpdateBasket', carts);
             }
             
             console.log(carts);
@@ -72,7 +76,20 @@
         });
         return uuid;
     }
-
+    var callApi = function (endpoint, _data) {
+        $.ajax({
+            type: 'POST',
+            url: `${baseUrl}Basket/${endpoint}`,
+            data: JSON.stringify(_data),
+            contentType: "application/json;charset=utf-8",
+            traditional: true,
+        }).done(function (response) {
+            console.log(response);
+            })
+            .fail(function (data) {
+                console.log(data);
+            });
+    }
 
     var cartCount = function () {
         var tempCart = JSON.parse(localStorage.getItem("cart"));
@@ -147,7 +164,7 @@
     </div>\
     <div class='cart-links d-flex justify-content-center'>\
         <a class='obrien-button white-btn' href='/Shop/Cart'>View</a>\
-        <a class='obrien-button white-btn' href='checkout.html'>Checkout</a>\
+        <a class='obrien-button white-btn' href='/Shop/Checkout'>Checkout</a>\
     </div>")
         
     }
@@ -166,6 +183,7 @@
         var tempCart = JSON.parse(localStorage.getItem("cart"));
         tempCart.items = tempCart.items.filter(cart => cart.id !== _id);
         localStorage.setItem("cart", JSON.stringify(tempCart));
+        callApi('UpdateBasket', tempCart);
     }
 
     cartItemWrapper.on('click', '.trash-cart', function (e) {
@@ -270,6 +288,8 @@
         cartCount();
         loadCartDropdown();
         loadCartsOnCartPage();
-    })
+    });
+
+   
 
 })

@@ -11,7 +11,7 @@ namespace com.vreshly.Controllers
     public class ShopController : Controller
     {
         // GET: /<controller>/
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             ViewBag.ClassName = "shop-wrapper";
             return View();

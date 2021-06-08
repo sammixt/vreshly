@@ -821,6 +821,28 @@ button,
   width: 100%;
 }
 
+.myniceselect2 {
+    padding: 0;
+    margin: 0;
+    height: auto;
+    line-height: auto;
+}
+
+    .myniceselect2 span {
+        height: 40px;
+        line-height: 40px;
+        display: inline-block;
+        padding: 0 20px;
+    }
+
+    .myniceselect2 .list {
+        width: 100%;
+    }
+
+    .myniceselect2.wide span {
+        width: 100%;
+    }
+
 /*--- Slick Dots Style ---*/
 .slick-dots {
   position: absolute;

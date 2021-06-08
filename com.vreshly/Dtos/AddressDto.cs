@@ -22,6 +22,10 @@ namespace com.vreshly.Dtos
 
         [Required]
         public string ZipCode { get; set; }
+
+        [Required]
+        public string PhoneNumber { get; set; }
+
         public int Id { get;  set; }
     }
 }

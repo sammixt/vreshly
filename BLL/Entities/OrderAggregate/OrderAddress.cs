@@ -7,7 +7,7 @@ namespace BLL.Entities.OrderAggregate
         {
         }
 
-        public OrderAddress(string firstName, string lastName, string street, string city, string state, string zipCode)
+        public OrderAddress(string firstName, string lastName, string street, string city, string state, string zipCode, string phoneNumber)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -15,6 +15,7 @@ namespace BLL.Entities.OrderAggregate
             City = city;
             State = state;
             ZipCode = zipCode;
+            PhoneNumber = phoneNumber;
         }
 
         public string FirstName { get; set; }
@@ -28,5 +29,7 @@ namespace BLL.Entities.OrderAggregate
         public string State { get; set; }
 
         public string ZipCode { get; set; }
+
+        public string PhoneNumber { get; set; }
     }
 }
