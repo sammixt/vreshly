@@ -43,7 +43,7 @@ namespace BLL.Infrastructure.Services
             var subtotal = items.Sum(item => item.Price * item.Quantity);
 
             //create order
-            var order = new Order(buyerEmail, shippingAddress, deliveryMethod, items, subtotal);
+            var order = new Order(buyerEmail, shippingAddress, deliveryMethod, items, subtotal,basket.PaymentIntent);
             //save to db
             _unitOfWork.Repository<Order>().Add(order);
             var result = await _unitOfWork.Complete();

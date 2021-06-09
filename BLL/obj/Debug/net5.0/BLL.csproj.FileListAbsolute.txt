@@ -12,4 +12,3 @@
 /Users/esc/Documents/Projects/com.vreshly/BLL/obj/Debug/net5.0/ref/BLL.dll
 /Users/esc/Documents/Projects/com.vreshly/BLL/obj/Debug/net5.0/BLL.pdb
 /Users/esc/Documents/Projects/com.vreshly/BLL/obj/Debug/net5.0/BLL.genruntimeconfig.cache
-/Users/esc/Documents/Projects/com.vreshly/BLL/obj/Debug/net5.0/BLL.csprojAssemblyReference.cache

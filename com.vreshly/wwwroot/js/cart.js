@@ -28,8 +28,11 @@
             basketItem.brand = _brand;
 
             basketItems.push(basketItem);
-            basket.id = basketId
-            basket.items = basketItems
+            basket.id = basketId;
+            basket.items = basketItems;
+            basket.deliveryMethod = 0;
+            basket.shippingPrice = 0;
+            basket.paymentIntent = null;
             localStorage.setItem("cart", JSON.stringify(basket));
             callApi('UpdateBasket', basket);
         } else {

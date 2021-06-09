@@ -17,5 +17,11 @@ namespace BLL.Entities
         public string Id { get; set; }
 
         public List<BasketItem> Items { get; set; } = new List<BasketItem>();
+
+        public int? DeliveryMethod { get; set; }
+
+        public string PaymentIntent { get; set; }
+
+        public decimal ShippingPrice { get; set; }
     }
 }

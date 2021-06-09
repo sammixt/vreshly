@@ -35,7 +35,7 @@ namespace BLL.Infrastructure.Data
 
         public async Task<T> GetByIdAsync(int id)
         {
-            return await context.Set<T>().FindAsync(id);
+            return await context.Set<T>().FindAsync((long)id);
         }
 
         public async Task<T> GetEntitiesWithSpec(ISpecification<T> spec)

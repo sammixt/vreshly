@@ -9,13 +9,14 @@ namespace BLL.Entities.OrderAggregate
         {
         }
 
-        public Order(string buyerEmail, OrderAddress shipToAddress, DeliveryMethod deliveryMethod, IReadOnlyList<OrderItem> orderItems, decimal subtotal)
+        public Order(string buyerEmail, OrderAddress shipToAddress, DeliveryMethod deliveryMethod, IReadOnlyList<OrderItem> orderItems, decimal subtotal,string paymentIntent)
         {
             BuyerEmail = buyerEmail;
             ShipToAddress = shipToAddress;
             DeliveryMethod = deliveryMethod;
             OrderItems = orderItems;
             Subtotal = subtotal;
+            PaymentIntentId = paymentIntent;
         }
 
         public string BuyerEmail { get; set; }

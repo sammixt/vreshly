@@ -137,6 +137,10 @@
 	$('#showcoupon').on('click', function () {
 		$('#checkout_coupon').slideToggle(900);
 	});
+
+	$('#showBilling').on('click', function () {
+		$('#billing-details').slideToggle(900);
+	});
 	// showlogin toggle
 	$('#cbox').on('click', function () {
 		$('#cbox-info').slideToggle(900);

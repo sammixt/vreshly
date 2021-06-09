@@ -32,7 +32,7 @@ namespace com.vreshly.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Order>> CreateOrder(OrderDto orderDto)
+        public async Task<ActionResult<Order>> CreateOrder([FromBody]OrderDto orderDto)
         {
             var email = HttpContext.User.RetrieveEmailFromPrincipal();
 
