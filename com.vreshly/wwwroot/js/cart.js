@@ -1,5 +1,4 @@
 ﻿$(function () {
-    var baseUrl = "https://localhost:5201/";
     var featuredProductDiv = $('#shop_wrapper');
     var cartItemCount = $('.cart-item_count');
     var cartItemWrapper = $('.cart-item-wrapper');

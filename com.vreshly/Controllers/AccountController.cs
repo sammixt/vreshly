@@ -79,12 +79,12 @@ namespace com.vreshly.Controllers
             var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
             if (!result.Succeeded) return Unauthorized(new ApiResponse(401));
 
-            return new CustomerDto
+            return Ok(new CustomerDto
             {
                 Email = user.Email,
                 Token = _tokenService.CreateToken(user),
                 DisplayName = user.DisplayName
-            };
+            });
         }
 
         [HttpGet]

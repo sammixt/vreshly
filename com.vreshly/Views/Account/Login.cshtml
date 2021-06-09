@@ -12,12 +12,12 @@
                         <h2 class="title-4 mb-2">Login</h2>
                         <p class="desc-content">Please login using account detail bellow.</p>
                     </div>
-                    <form action="#" method="post">
+                    <form>
                         <div class="single-input-item mb-3">
-                            <input type="email" placeholder="Email or Username">
+                            <input type="email" name="login_email" id="login_email" placeholder="Email or Username">
                         </div>
                         <div class="single-input-item mb-3">
-                            <input type="password" placeholder="Enter your Password">
+                            <input type="password" name="login_password" id="login_password" placeholder="Enter your Password">
                         </div>
                         <div class="single-input-item mb-3">
                             <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
@@ -31,7 +31,7 @@
                             </div>
                         </div>
                         <div class="single-input-item mb-3">
-                            <button class="btn obrien-button-2 primary-color">Login</button>
+                            <button class="btn obrien-button-2 primary-color" type="button" id="login_btn">Login</button>
                         </div>
                         <div class="single-input-item">
                             <a asp-action="Register" asp-controller="Account">Creat Account</a>
@@ -42,3 +42,8 @@
         </div>
     </div>
 </div>
+
+@section FooterScripts
+{
+    <script src="~/js/jwtok.js"></script>
+}

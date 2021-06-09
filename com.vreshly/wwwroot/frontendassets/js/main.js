@@ -1,8 +1,10 @@
 (function ($) {
 	"use strict";
+
 	/*----------------------------------------
 		 Hide Header
 	----------------------------------------*/
+
 	$( ".top-close-button" ).click(function( event ) {
 	event.preventDefault();
 		$( ".header-top-area" ).toggle();

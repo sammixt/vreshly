@@ -1,5 +1,4 @@
 ﻿$(function () {
-    var baseUrl = "https://localhost:5201/";
     let checkoutItemTable = $('#checkoutitems');
     let deliveryMethods = $('#deliveryMethod');
     let placeOrder = $('#place_order');
