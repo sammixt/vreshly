@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/esc/Documents/Projects/com.vreshly/com.vreshly/com.vreshly.csproj": {}
+    "/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/com.vreshly.csproj": {}
   },
   "projects": {
-    "/Users/esc/Documents/Projects/com.vreshly/BLL/BLL.csproj": {
+    "/Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/esc/Documents/Projects/com.vreshly/BLL/BLL.csproj",
+        "projectUniqueName": "/Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/BLL.csproj",
         "projectName": "BLL",
-        "projectPath": "/Users/esc/Documents/Projects/com.vreshly/BLL/BLL.csproj",
-        "packagesPath": "/Users/esc/.nuget/packages/",
-        "outputPath": "/Users/esc/Documents/Projects/com.vreshly/BLL/obj/",
+        "projectPath": "/Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/BLL.csproj",
+        "packagesPath": "/Users/sasmuelezeala/.nuget/packages/",
+        "outputPath": "/Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/esc/.config/NuGet/NuGet.Config"
+          "/Users/sasmuelezeala/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -88,21 +88,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.203/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.300/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/esc/Documents/Projects/com.vreshly/com.vreshly/com.vreshly.csproj": {
+    "/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/com.vreshly.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/esc/Documents/Projects/com.vreshly/com.vreshly/com.vreshly.csproj",
+        "projectUniqueName": "/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/com.vreshly.csproj",
         "projectName": "com.vreshly",
-        "projectPath": "/Users/esc/Documents/Projects/com.vreshly/com.vreshly/com.vreshly.csproj",
-        "packagesPath": "/Users/esc/.nuget/packages/",
-        "outputPath": "/Users/esc/Documents/Projects/com.vreshly/com.vreshly/obj/",
+        "projectPath": "/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/com.vreshly.csproj",
+        "packagesPath": "/Users/sasmuelezeala/.nuget/packages/",
+        "outputPath": "/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/esc/.config/NuGet/NuGet.Config"
+          "/Users/sasmuelezeala/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -114,8 +114,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "/Users/esc/Documents/Projects/com.vreshly/BLL/BLL.csproj": {
-                "projectPath": "/Users/esc/Documents/Projects/com.vreshly/BLL/BLL.csproj"
+              "/Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/BLL.csproj": {
+                "projectPath": "/Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/BLL.csproj"
               }
             }
           }
@@ -167,7 +167,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.203/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.300/RuntimeIdentifierGraph.json"
         }
       }
     }

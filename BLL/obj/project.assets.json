@@ -6738,19 +6738,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/esc/.nuget/packages/": {}
+    "/Users/sasmuelezeala/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/esc/Documents/Projects/com.vreshly/BLL/BLL.csproj",
+      "projectUniqueName": "/Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/BLL.csproj",
       "projectName": "BLL",
-      "projectPath": "/Users/esc/Documents/Projects/com.vreshly/BLL/BLL.csproj",
-      "packagesPath": "/Users/esc/.nuget/packages/",
-      "outputPath": "/Users/esc/Documents/Projects/com.vreshly/BLL/obj/",
+      "projectPath": "/Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/BLL.csproj",
+      "packagesPath": "/Users/sasmuelezeala/.nuget/packages/",
+      "outputPath": "/Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/esc/.nuget/NuGet/NuGet.Config"
+        "/Users/sasmuelezeala/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -6824,7 +6824,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.203/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.300/RuntimeIdentifierGraph.json"
       }
     }
   }

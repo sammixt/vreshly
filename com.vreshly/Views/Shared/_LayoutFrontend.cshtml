@@ -151,8 +151,9 @@
                                     <div class="header-right-area main-nav">
                                         <ul class="nav">
                                             <li class="login-register-wrap d-none d-xl-flex">
-                                                <span><a asp-action="Login" asp-controller="Account">Login</a></span>
-                                                <span><a asp-action="Register" asp-controller="Account">Register</a></span>
+                                                <span class="welcome_msg"></span>
+                                                <span class="login_register"><a asp-action="Login" asp-controller="Account">Login</a></span>
+                                                <span class="login_register"><a asp-action="Register" asp-controller="Account">Register</a></span>
                                             </li>
                                             @*<li class="sidemenu-wrap d-none d-lg-flex">
                                                     <a href="#">USD <i class="fa fa-caret-down"></i> </a>
@@ -354,8 +355,9 @@
                                     <div class="header-right-area main-nav">
                                         <ul class="nav">
                                             <li class="login-register-wrap d-none d-xl-flex">
-                                                <span><a asp-action="Login" asp-controller="Account">Login</a></span>
-                                                <span><a asp-action="Register" asp-controller="Account">Register</a></span>
+                                                <span class="welcome_msg"></span>
+                                                <span class="login_register"><a asp-action="Login" asp-controller="Account">Login</a></span>
+                                                <span class="login_register"><a asp-action="Register" asp-controller="Account">Register</a></span>
                                             </li>
                                             @*<li class="sidemenu-wrap d-none d-lg-flex">
                                                     <a href="#">USD <i class="fa fa-caret-down"></i> </a>
@@ -775,6 +777,7 @@
     <script src="~/frontendassets/js/main.js"></script>
     @RenderSection("FooterScripts", required: false);
     <script src="~/js/cart.js"></script>
+    <script src="~/js/jwtok.js"></script>
 </body>
 
 </html>
