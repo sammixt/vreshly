@@ -1,5 +1,6 @@
 ﻿$(function () {
     var featuredProductDiv = $('#shop_wrapper');
+    var productWrapperDiv = $('.product-wrapper');
     var cartItemCount = $('.cart-item_count');
     var cartItemWrapper = $('.cart-item-wrapper');
     var cartTable = $('#cart-table');
@@ -102,6 +103,19 @@
 
 
     featuredProductDiv.on('click', '.add-to-cart', function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var _id = $this.attr('data-id');
+        var _productName = $this.attr('data-productName');
+        var _price = parseInt($this.attr('data-price'));
+        var _quantity = parseInt($this.attr('data-quantity'));
+        var _pictureUrl = $this.attr('data-pictureUrl');
+        var _brand = $this.attr('data-brand');
+        var _category = $this.attr('data-category');
+        addToCart(_id, _productName, _price, _quantity, _pictureUrl, _brand, _category)
+    });
+
+    productWrapperDiv.on('click', '.add-to-cart', function (e) {
         e.preventDefault();
         var $this = $(this);
         var _id = $this.attr('data-id');

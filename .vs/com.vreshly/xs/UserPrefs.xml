@@ -1,11 +1,13 @@
 ﻿<Properties StartupConfiguration="{D13B51E9-337B-42DA-AFE1-244C873D4D7B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="com.vreshly/Views/Account/Login.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="com.vreshly/wwwroot/js/shop.js">
     <Files>
-      <File FileName="com.vreshly/Views/Shared/_LayoutFrontend.cshtml" Line="532" Column="1" />
-      <File FileName="com.vreshly/Views/Shop/Checkout.cshtml" Line="10" Column="69" />
-      <File FileName="com.vreshly/wwwroot/js/jwtok.js" Line="74" Column="59" />
-      <File FileName="com.vreshly/Controllers/AccountController.cs" Line="77" Column="1" />
-      <File FileName="com.vreshly/Views/Account/Login.cshtml" Line="1" Column="1" />
+      <File FileName="com.vreshly/Views/Home/Index.cshtml" Line="1270" Column="27" />
+      <File FileName="com.vreshly/Views/Shop/Index.cshtml" Line="1" Column="1" />
+      <File FileName="com.vreshly/Views/Shared/_LayoutFrontend.cshtml" Line="754" Column="14" />
+      <File FileName="com.vreshly/wwwroot/js/cart.js" Line="118" Column="22" />
+      <File FileName="com.vreshly/wwwroot/js/home.js" Line="70" Column="3" />
+      <File FileName="com.vreshly/Views/Shop/Cart.cshtml" Line="1" Column="1" />
+      <File FileName="com.vreshly/wwwroot/js/shop.js" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,18 +24,15 @@
               <Node name="Interface" expanded="True" />
             </Node>
             <Node name="com.vreshly" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Dtos" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Account" expanded="True">
-                  <Node name="Login.cshtml" selected="True" />
-                </Node>
                 <Node name="Home" expanded="True" />
                 <Node name="Shared" expanded="True" />
                 <Node name="Shop" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
-                <Node name="js" expanded="True" />
+                <Node name="js" expanded="True">
+                  <Node name="shop.js" selected="True" />
+                </Node>
               </Node>
               <Node name="appsettings.json" expanded="True" />
             </Node>
