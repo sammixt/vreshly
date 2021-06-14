@@ -2,7 +2,7 @@
     ViewData["Title"] = "Product Detail";
     Layout = "~/Views/Shared/_LayoutFrontend.cshtml";
 }
-
+@model com.vreshly.Dtos.ProductDetailDto
 <!-- Single Product Main Area Start -->
 <div class="single-product-main-area">
     <div class="container container-default custom-area">
@@ -18,38 +18,38 @@
                         "asNavFor": ".pd-slider-nav"
                         }'>
                         <div class="single-image border">
-                            <a href="~/frontendassets/images/product/large-size/1.jpg">
-                                <img src="~/frontendassets/images/product/large-size/1.jpg" alt="Product">
+                            <a href="@Model.ProductDetails.MainImage">
+                                <img src="@Model.ProductDetails.MainImage" alt="Product">
                             </a>
                         </div>
                         <div class="single-image border">
-                            <a href="~/frontendassets/images/product/large-size/2.jpg">
-                                <img src="~/frontendassets/images/product/large-size/2.jpg" alt="Product">
+                            <a href="@Model.ProductDetails.ImageOne">
+                                <img src="@Model.ProductDetails.ImageOne" alt="Product">
                             </a>
                         </div>
                         <div class="single-image border">
-                            <a href="~/frontendassets/images/product/large-size/3.jpg">
-                                <img src="~/frontendassets/images/product/large-size/3.jpg" alt="Product">
+                            <a href="@Model.ProductDetails.ImageTwo">
+                                <img src="@Model.ProductDetails.ImageTwo" alt="Product">
                             </a>
                         </div>
                         <div class="single-image border">
-                            <a href="~/frontendassets/images/product/large-size/4.jpg">
-                                <img src="~/frontendassets/images/product/large-size/4.jpg" alt="Product">
+                            <a href="@Model.ProductDetails.ImageThree">
+                                <img src="@Model.ProductDetails.ImageThree" alt="Product">
                             </a>
                         </div>
                         <div class="single-image border">
-                            <a href="~/frontendassets/images/product/large-size/5.jpg">
-                                <img src="~/frontendassets/images/product/large-size/5.jpg" alt="Product">
+                            <a href="@Model.ProductDetails.ImageFour">
+                                <img src="@Model.ProductDetails.ImageFour" alt="Product">
                             </a>
                         </div>
                         <div class="single-image border">
-                            <a href="~/frontendassets/images/product/large-size/6.jpg">
-                                <img src="~/frontendassets/images/product/large-size/6.jpg" alt="Product">
+                            <a href="@Model.ProductDetails.MainImage">
+                                <img src="@Model.ProductDetails.MainImage" alt="Product">
                             </a>
                         </div>
                         <div class="single-image border">
-                            <a href="~/frontendassets/images/product/large-size/7.jpg">
-                                <img src="~/frontendassets/images/product/large-size/7.jpg" alt="Product">
+                            <a href="@Model.ProductDetails.ImageTwo">
+                                <img src="@Model.ProductDetails.ImageTwo" alt="Product">
                             </a>
                         </div>
                     </div>
@@ -67,25 +67,25 @@
                             {"breakpoint":575, "settings": {"slidesToShow": 3}}
                         ]'>
                         <div class="single-thumb border">
-                            <img src="~/frontendassets/images/product/small-size/1.jpg" alt="Product Thumnail">
+                            <img src="@Model.ProductDetails.MainImage" alt="Product Thumnail">
                         </div>
                         <div class="single-thumb border">
-                            <img src="~/frontendassets/images/product/small-size/2.jpg" alt="Product Thumnail">
+                            <img src="@Model.ProductDetails.ImageOne" alt="Product Thumnail">
                         </div>
                         <div class="single-thumb border">
-                            <img src="~/frontendassets/images/product/small-size/3.jpg" alt="Product Thumnail">
+                            <img src="@Model.ProductDetails.ImageTwo" alt="Product Thumnail">
                         </div>
                         <div class="single-thumb border">
-                            <img src="~/frontendassets/images/product/small-size/4.jpg" alt="Product Thumnail">
+                            <img src="@Model.ProductDetails.ImageThree" alt="Product Thumnail">
                         </div>
                         <div class="single-thumb border">
-                            <img src="~/frontendassets/images/product/small-size/5.jpg" alt="Product Thumnail">
+                            <img src="@Model.ProductDetails.ImageFour" alt="Product Thumnail">
                         </div>
                         <div class="single-thumb border">
-                            <img src="~/frontendassets/images/product/small-size/6.jpg" alt="Product Thumnail">
+                            <img src="@Model.ProductDetails.ImageOne" alt="Product Thumnail">
                         </div>
                         <div class="single-thumb border">
-                            <img src="~/frontendassets/images/product/small-size/7.jpg" alt="Product Thumnail">
+                            <img src="@Model.ProductDetails.ImageTwo" alt="Product Thumnail">
                         </div>
                     </div>
                 </div>
@@ -93,11 +93,11 @@
             <div class="col-lg-7 col-custom">
                 <div class="product-summery position-relative">
                     <div class="product-head mb-3">
-                        <h2 class="product-title">Sample product Countdown</h2>
+                        <h2 class="product-title">@Model.ProductDetails.ProductName</h2>
                     </div>
                     <div class="price-box mb-2">
-                        <span class="regular-price">$80.00</span>
-                        <span class="old-price"><del>$90.00</del></span>
+                        <span class="regular-price">NGN @Model.ProductDetails.DiscountPrice</span>
+                        <span class="old-price"><del>NGN @Model.ProductDetails.SellingPrice</del></span>
                     </div>
                     <div class="product-rating mb-3">
                         <i class="fa fa-star"></i>
@@ -107,9 +107,9 @@
                         <i class="fa fa-star-o"></i>
                     </div>
                     <div class="sku mb-3">
-                        <span>SKU: 12345</span>
+                        <span>SKU: @Model.ProductDetails.ProductCodes</span>
                     </div>
-                    <p class="desc-content mb-5">I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.</p>
+                    <p class="desc-content mb-5">@Model.ProductDetails.ProductSummary</p>
                     <div class="quantity-with_btn mb-4">
                         <div class="quantity">
                             <div class="cart-plus-minus">
@@ -118,9 +118,15 @@
                                 <div class="inc qtybutton">+</div>
                             </div>
                         </div>
-                        <div class="add-to_cart">
-                            <a class="btn obrien-button primary-btn" href="cart.html">Add to cart</a>
-                            <a class="btn obrien-button-2 treansparent-color pt-0 pb-0" href="wishlist.html">Add to wishlist</a>
+                        <div class="add-to_cart" id="add-to_cart">
+                            <a class="add-to-cart btn obrien-button primary-btn" data-id="@Model.ProductDetails.Id" data-productName="@Model.ProductDetails.ProductName"
+                               data-price="@Model.ProductDetails.DiscountPrice"
+                               data-quantity="1" data-pictureUrl="@Model.ProductDetails.MainImage"
+                               data-category="@Model.ProductDetails.Category" data-brand="@Model.ProductDetails.Brand">
+                                Add to cart
+                            </a>
+                            
+                            <a class="add-to-wishlist btn obrien-button-2 treansparent-color pt-0 pb-0" data-id="@Model.ProductDetails.Id" href="javascript:void()">Add to wishlist</a>
                         </div>
                     </div>
                     <div class="buy-button mb-5">
@@ -145,94 +151,93 @@
                     <li class="nav-item">
                         <a class="nav-link active text-uppercase" id="home-tab" data-toggle="tab" href="#connect-1" role="tab" aria-selected="true">Description</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-uppercase" id="profile-tab" data-toggle="tab" href="#connect-2" role="tab" aria-selected="false">Reviews</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab" href="#connect-3" role="tab" aria-selected="false">Shipping Policy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-uppercase" id="review-tab" data-toggle="tab" href="#connect-4" role="tab" aria-selected="false">Size Chart</a>
-                    </li>
+                    @*<li class="nav-item">
+                            <a class="nav-link text-uppercase" id="profile-tab" data-toggle="tab" href="#connect-2" role="tab" aria-selected="false">Reviews</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab" href="#connect-3" role="tab" aria-selected="false">Shipping Policy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-uppercase" id="review-tab" data-toggle="tab" href="#connect-4" role="tab" aria-selected="false">Size Chart</a>
+                        </li>*@
                 </ul>
                 <div class="tab-content mb-text" id="myTabContent">
                     <div class="tab-pane fade show active" id="connect-1" role="tabpanel" aria-labelledby="home-tab">
                         <div class="desc-content">
-                            <p class="mb-3">On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>
-                            <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+                            <p class="mb-3">@Model.ProductDetails.ProductDescription</p>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="connect-2" role="tabpanel" aria-labelledby="profile-tab">
-                        <!-- Start Single Content -->
-                        <div class="product_tab_content  border p-3">
-                            <div class="review_address_inner">
-                                <!-- Start Single Review -->
-                                <div class="pro_review mb-5">
-                                    <div class="review_thumb">
-                                        <img alt="review images" src="~/frontendassets/images/review/1.jpg">
-                                    </div>
-                                    <div class="review_details">
-                                        <div class="review_info mb-2">
-                                            <div class="product-rating mb-2">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div>
-                                            <h5>Admin - <span> December 19, 2020</span></h5>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in viverra ex, vitae vestibulum arcu. Duis sollicitudin metus sed lorem commodo, eu dapibus libero interdum. Morbi convallis viverra erat, et aliquet orci congue vel. Integer in odio enim. Pellentesque in dignissim leo. Vivamus varius ex sit amet quam tincidunt iaculis.</p>
-                                    </div>
+                    <!--<div class="tab-pane fade" id="connect-2" role="tabpanel" aria-labelledby="profile-tab">-->
+                    <!-- Start Single Content -->
+                    <!--<div class="product_tab_content  border p-3">
+                        <div class="review_address_inner">-->
+                    <!-- Start Single Review -->
+                    <!--<div class="pro_review mb-5">
+                        <div class="review_thumb">
+                            <img alt="review images" src="~/frontendassets/images/review/1.jpg">
+                        </div>
+                        <div class="review_details">
+                            <div class="review_info mb-2">
+                                <div class="product-rating mb-2">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
                                 </div>
-                                <!-- End Single Review -->
+                                <h5>Admin - <span> December 19, 2020</span></h5>
                             </div>
-                            <!-- Start RAting Area -->
-                            <div class="rating_wrap">
-                                <h5 class="rating-title-1 mb-2">Add a review </h5>
-                                <p class="mb-2">Your email address will not be published. Required fields are marked *</p>
-                                <h6 class="rating-title-2 mb-2">Your Rating</h6>
-                                <div class="rating_list mb-4">
-                                    <div class="review_info">
-                                        <div class="product-rating mb-3">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End RAting Area -->
-                            <div class="comments-area comments-reply-area">
-                                <div class="row">
-                                    <div class="col-lg-12 col-custom">
-                                        <form action="#" class="comment-form-area">
-                                            <div class="row comment-input">
-                                                <div class="col-md-6 col-custom comment-form-author mb-3">
-                                                    <label>Name <span class="required">*</span></label>
-                                                    <input type="text" required="required" name="Name">
-                                                </div>
-                                                <div class="col-md-6 col-custom comment-form-emai mb-3">
-                                                    <label>Email <span class="required">*</span></label>
-                                                    <input type="text" required="required" name="email">
-                                                </div>
-                                            </div>
-                                            <div class="comment-form-comment mb-3">
-                                                <label>Comment</label>
-                                                <textarea class="comment-notes" required="required"></textarea>
-                                            </div>
-                                            <div class="comment-form-submit">
-                                                <input type="submit" value="Submit" class="comment-submit btn obrien-button primary-btn">
-                                            </div>
-                                        </form>
-                                    </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in viverra ex, vitae vestibulum arcu. Duis sollicitudin metus sed lorem commodo, eu dapibus libero interdum. Morbi convallis viverra erat, et aliquet orci congue vel. Integer in odio enim. Pellentesque in dignissim leo. Vivamus varius ex sit amet quam tincidunt iaculis.</p>
+                        </div>
+                    </div>-->
+                    <!-- End Single Review -->
+                    <!--</div>-->
+                    <!-- Start RAting Area -->
+                    <!--<div class="rating_wrap">
+                        <h5 class="rating-title-1 mb-2">Add a review </h5>
+                        <p class="mb-2">Your email address will not be published. Required fields are marked *</p>
+                        <h6 class="rating-title-2 mb-2">Your Rating</h6>
+                        <div class="rating_list mb-4">
+                            <div class="review_info">
+                                <div class="product-rating mb-3">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Content -->
-                    </div>
+                    </div>-->
+                    <!-- End RAting Area -->
+                    <!--<div class="comments-area comments-reply-area">
+                            <div class="row">
+                                <div class="col-lg-12 col-custom">
+                                    <form action="#" class="comment-form-area">
+                                        <div class="row comment-input">
+                                            <div class="col-md-6 col-custom comment-form-author mb-3">
+                                                <label>Name <span class="required">*</span></label>
+                                                <input type="text" required="required" name="Name">
+                                            </div>
+                                            <div class="col-md-6 col-custom comment-form-emai mb-3">
+                                                <label>Email <span class="required">*</span></label>
+                                                <input type="text" required="required" name="email">
+                                            </div>
+                                        </div>
+                                        <div class="comment-form-comment mb-3">
+                                            <label>Comment</label>
+                                            <textarea class="comment-notes" required="required"></textarea>
+                                        </div>
+                                        <div class="comment-form-submit">
+                                            <input type="submit" value="Submit" class="comment-submit btn obrien-button primary-btn">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                    <!-- End Single Content -->
+                    <!--</div>
                     <div class="tab-pane fade" id="connect-3" role="tabpanel" aria-labelledby="contact-tab">
                         <div class="shipping-policy">
                             <h4 class="title-3 mb-4">Shipping policy for our store</h4>
@@ -298,7 +303,7 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>
@@ -337,209 +342,58 @@
                         "slidesToShow": 1
                         }}
                         ]'>
-                    <div class="single-item">
-                        <div class="single-product position-relative">
-                            <div class="product-image">
-                                <a class="d-block" href="product-details.html">
-                                    <img src="~/frontendassets/images/product/1.jpg" alt="" class="product-image-1 w-100">
-                                    <img src="~/frontendassets/images/product/2.jpg" alt="" class="product-image-2 position-absolute w-100">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
+                    @if (Model.RelatedProducts.Any())
+                    {
+                        foreach (var product in Model.RelatedProducts)
+                        {
+                            <div class="single-item">
+                                <div class="single-product position-relative mb-30">
+                                    <div class="product-image">
+                                        <a class="d-block" asp-action="ProductDetail" asp-controller="Shop" asp-route-productId="@product.Id">
+                                            <img src="@product.MainImage" alt="" class="product-image-1 w-100">
+                                            <img src="@product.ImageOne" alt="" class="product-image-2 position-absolute w-100">
+                                        </a>
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="product-rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        </div>
+                                        <div class="product-title">
+                                            <h4 class="title-2"> <a asp-action="ProductDetail" asp-controller="Shop" asp-route-productId="@product.Id">@product.ProductName</a></h4>
+                                        </div>
+                                        <div class="price-box">
+                                            <span class="regular-price ">NGN @product.DiscountPrice</span>
+                                            <span class="old-price"><del>NGN @product.SellingPrice</del></span>
+                                        </div>
+                                    </div>
+                                    <div class="add-action d-flex position-absolute">
+                                        <a class="add-to-cart" data-id="@product.Id" data-productName="@product.ProductName"
+                                           data-price="@product.DiscountPrice"
+                                           data-quantity="1" data-pictureUrl="@product.MainImage"
+                                           data-category="@product.Category" data-brand="@product.Brand" title="Add To cart">
+                                            <i class="ion-bag"></i>
+                                        </a>
+                                        <a href="javascript:void()" title="Compare">
+                                            <i class="ion-ios-loop-strong"></i>
+                                        </a>
+                                        <a href="javascript:void()" class="add-to-wishlist" data-id="@product.Id" title="Add To Wishlist">
+                                            <i class="ion-ios-heart-outline"></i>
+                                        </a>
+                                        <a href="javascript:void()" data-id="@product.Id" class="detail-view" title="Quick View">
+                                            <i class="ion-eye"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="product-title">
-                                    <h4 class="title-2"> <a href="product-details.html">Product dummy name</a></h4>
-                                </div>
-                                <div class="price-box">
-                                    <span class="regular-price ">$80.00</span>
-                                    <span class="old-price"><del>$90.00</del></span>
-                                </div>
+
                             </div>
-                            <div class="add-action d-flex position-absolute">
-                                <a href="cart.html" title="Add To cart">
-                                    <i class="ion-bag"></i>
-                                </a>
-                                <a href="compare.html" title="Compare">
-                                    <i class="ion-ios-loop-strong"></i>
-                                </a>
-                                <a href="wishlist.html" title="Add To Wishlist">
-                                    <i class="ion-ios-heart-outline"></i>
-                                </a>
-                                <a href="#exampleModalCenter" data-toggle="modal" title="Quick View">
-                                    <i class="ion-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-item">
-                        <div class="single-product position-relative">
-                            <div class="product-image">
-                                <a class="d-block" href="product-details.html">
-                                    <img src="~/frontendassets/images/product/3.jpg" alt="" class="product-image-1 w-100">
-                                    <img src="~/frontendassets/images/product/4.jpg" alt="" class="product-image-2 position-absolute w-100">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <div class="product-title">
-                                    <h4 class="title-2"> <a href="product-details.html">Product dummy title</a></h4>
-                                </div>
-                                <div class="price-box">
-                                    <span class="regular-price ">$80.00</span>
-                                    <span class="old-price"><del>$90.00</del></span>
-                                </div>
-                            </div>
-                            <div class="add-action d-flex position-absolute">
-                                <a href="cart.html" title="Add To cart">
-                                    <i class="ion-bag"></i>
-                                </a>
-                                <a href="compare.html" title="Compare">
-                                    <i class="ion-ios-loop-strong"></i>
-                                </a>
-                                <a href="wishlist.html" title="Add To Wishlist">
-                                    <i class="ion-ios-heart-outline"></i>
-                                </a>
-                                <a href="#exampleModalCenter" data-toggle="modal" title="Quick View">
-                                    <i class="ion-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-item">
-                        <div class="single-product position-relative">
-                            <div class="product-image">
-                                <a class="d-block" href="product-details.html">
-                                    <img src="~/frontendassets/images/product/5.jpg" alt="" class="product-image-1 w-100">
-                                    <img src="~/frontendassets/images/product/6.jpg" alt="" class="product-image-2 position-absolute w-100">
-                                </a>
-                            </div>
-                            <div class="label-product">
-                                <span class="label-sale position-absolute text-uppercase text-white text-center d-block">Soldout</span>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <div class="product-title">
-                                    <h4 class="title-2"> <a href="product-details.html">Product dummy title</a></h4>
-                                </div>
-                                <div class="price-box">
-                                    <span class="regular-price ">$80.00</span>
-                                    <span class="old-price"><del>$90.00</del></span>
-                                </div>
-                            </div>
-                            <div class="add-action d-flex position-absolute">
-                                <a href="cart.html" title="Add To cart">
-                                    <i class="ion-bag"></i>
-                                </a>
-                                <a href="compare.html" title="Compare">
-                                    <i class="ion-ios-loop-strong"></i>
-                                </a>
-                                <a href="wishlist.html" title="Add To Wishlist">
-                                    <i class="ion-ios-heart-outline"></i>
-                                </a>
-                                <a href="#exampleModalCenter" data-toggle="modal" title="Quick View">
-                                    <i class="ion-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-item">
-                        <div class="single-product position-relative">
-                            <div class="product-image">
-                                <a class="d-block" href="product-details.html">
-                                    <img src="~/frontendassets/images/product/7.jpg" alt="" class="product-image-1 w-100">
-                                    <img src="~/frontendassets/images/product/8.jpg" alt="" class="product-image-2 position-absolute w-100">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <div class="product-title">
-                                    <h4 class="title-2"> <a href="product-details.html">Product dummy name</a></h4>
-                                </div>
-                                <div class="price-box">
-                                    <span class="regular-price ">$80.00</span>
-                                    <span class="old-price"><del>$90.00</del></span>
-                                </div>
-                            </div>
-                            <div class="add-action d-flex position-absolute">
-                                <a href="cart.html" title="Add To cart">
-                                    <i class="ion-bag"></i>
-                                </a>
-                                <a href="compare.html" title="Compare">
-                                    <i class="ion-ios-loop-strong"></i>
-                                </a>
-                                <a href="wishlist.html" title="Add To Wishlist">
-                                    <i class="ion-ios-heart-outline"></i>
-                                </a>
-                                <a href="#exampleModalCenter" data-toggle="modal" title="Quick View">
-                                    <i class="ion-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-item">
-                        <div class="single-product position-relative">
-                            <div class="product-image">
-                                <a class="d-block" href="product-details.html">
-                                    <img src="~/frontendassets/images/product/9.jpg" alt="" class="product-image-1">
-                                    <img src="~/frontendassets/images/product/10.jpg" alt="" class="product-image-2 position-absolute top-0 left-0">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <div class="product-title">
-                                    <h4 class="title-2"> <a href="product-details.html">Product dummy title</a></h4>
-                                </div>
-                                <div class="price-box">
-                                    <span class="regular-price ">$80.00</span>
-                                    <span class="old-price"><del>$90.00</del></span>
-                                </div>
-                            </div>
-                            <div class="add-action d-flex position-absolute">
-                                <a href="cart.html" title="Add To cart">
-                                    <i class="ion-bag"></i>
-                                </a>
-                                <a href="compare.html" title="Compare">
-                                    <i class="ion-ios-loop-strong"></i>
-                                </a>
-                                <a href="wishlist.html" title="Add To Wishlist">
-                                    <i class="ion-ios-heart-outline"></i>
-                                </a>
-                                <a href="#exampleModalCenter" data-toggle="modal" title="Quick View">
-                                    <i class="ion-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                        }
+                    }
+
+
                 </div>
             </div>
         </div>
@@ -578,212 +432,80 @@
                         "slidesToShow": 1
                         }}
                         ]'>
-                    <div class="single-item">
-                        <div class="single-product position-relative">
-                            <div class="product-image">
-                                <a class="d-block" href="product-details.html">
-                                    <img src="~/frontendassets/images/product/1.jpg" alt="" class="product-image-1 w-100">
-                                    <img src="~/frontendassets/images/product/2.jpg" alt="" class="product-image-2 position-absolute w-100">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
+                    @if (Model.Suggestions.Any())
+                    {
+                        foreach (var product in Model.Suggestions)
+                        {
+                            <div class="single-item">
+                                <div class="single-product position-relative mb-30">
+                                    <div class="product-image">
+                                        <a class="d-block" asp-action="ProductDetail" asp-controller="Shop" asp-route-productId="@product.Id">
+                                            <img src="@product.MainImage" alt="" class="product-image-1 w-100">
+                                            <img src="@product.ImageOne" alt="" class="product-image-2 position-absolute w-100">
+                                        </a>
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="product-rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        </div>
+                                        <div class="product-title">
+                                            <h4 class="title-2"> <a asp-action="ProductDetail" asp-controller="Shop" asp-route-productId="@product.Id">@product.ProductName</a></h4>
+                                        </div>
+                                        <div class="price-box">
+                                            <span class="regular-price ">NGN @product.DiscountPrice</span>
+                                            <span class="old-price"><del>NGN @product.SellingPrice</del></span>
+                                        </div>
+                                    </div>
+                                    <div class="add-action d-flex position-absolute">
+                                        <a class="add-to-cart" data-id="@product.Id" data-productName="@product.ProductName"
+                                           data-price="@product.DiscountPrice"
+                                           data-quantity="1" data-pictureUrl="@product.MainImage"
+                                           data-category="@product.Category" data-brand="@product.Brand" title="Add To cart">
+                                            <i class="ion-bag"></i>
+                                        </a>
+                                        <a href="javascript:void()" title="Compare">
+                                            <i class="ion-ios-loop-strong"></i>
+                                        </a>
+                                        <a href="javascript:void()" class="add-to-wishlist" data-id="@product.Id" title="Add To Wishlist">
+                                            <i class="ion-ios-heart-outline"></i>
+                                        </a>
+                                        <a href="javascript:void()" data-id="@product.Id" class="detail-view" title="Quick View">
+                                            <i class="ion-eye"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="product-title">
-                                    <h4 class="title-2"> <a href="product-details.html">Product dummy name</a></h4>
-                                </div>
-                                <div class="price-box">
-                                    <span class="regular-price ">$80.00</span>
-                                    <span class="old-price"><del>$90.00</del></span>
-                                </div>
+
                             </div>
-                            <div class="add-action d-flex position-absolute">
-                                <a href="cart.html" title="Add To cart">
-                                    <i class="ion-bag"></i>
-                                </a>
-                                <a href="compare.html" title="Compare">
-                                    <i class="ion-ios-loop-strong"></i>
-                                </a>
-                                <a href="wishlist.html" title="Add To Wishlist">
-                                    <i class="ion-ios-heart-outline"></i>
-                                </a>
-                                <a href="#exampleModalCenter" data-toggle="modal" title="Quick View">
-                                    <i class="ion-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-item">
-                        <div class="single-product position-relative">
-                            <div class="product-image">
-                                <a class="d-block" href="product-details.html">
-                                    <img src="~/frontendassets/images/product/3.jpg" alt="" class="product-image-1 w-100">
-                                    <img src="~/frontendassets/images/product/4.jpg" alt="" class="product-image-2 position-absolute w-100">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <div class="product-title">
-                                    <h4 class="title-2"> <a href="product-details.html">Product dummy title</a></h4>
-                                </div>
-                                <div class="price-box">
-                                    <span class="regular-price ">$80.00</span>
-                                    <span class="old-price"><del>$90.00</del></span>
-                                </div>
-                            </div>
-                            <div class="add-action d-flex position-absolute">
-                                <a href="cart.html" title="Add To cart">
-                                    <i class="ion-bag"></i>
-                                </a>
-                                <a href="compare.html" title="Compare">
-                                    <i class="ion-ios-loop-strong"></i>
-                                </a>
-                                <a href="wishlist.html" title="Add To Wishlist">
-                                    <i class="ion-ios-heart-outline"></i>
-                                </a>
-                                <a href="#exampleModalCenter" data-toggle="modal" title="Quick View">
-                                    <i class="ion-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-item">
-                        <div class="single-product position-relative">
-                            <div class="product-image">
-                                <a class="d-block" href="product-details.html">
-                                    <img src="~/frontendassets/images/product/5.jpg" alt="" class="product-image-1 w-100">
-                                    <img src="~/frontendassets/images/product/6.jpg" alt="" class="product-image-2 position-absolute w-100">
-                                </a>
-                            </div>
-                            <div class="label-product">
-                                <span class="label-sale position-absolute text-uppercase text-white text-center d-block">Soldout</span>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <div class="product-title">
-                                    <h4 class="title-2"> <a href="product-details.html">Product dummy title</a></h4>
-                                </div>
-                                <div class="price-box">
-                                    <span class="regular-price ">$80.00</span>
-                                    <span class="old-price"><del>$90.00</del></span>
-                                </div>
-                            </div>
-                            <div class="add-action d-flex position-absolute">
-                                <a href="cart.html" title="Add To cart">
-                                    <i class="ion-bag"></i>
-                                </a>
-                                <a href="compare.html" title="Compare">
-                                    <i class="ion-ios-loop-strong"></i>
-                                </a>
-                                <a href="wishlist.html" title="Add To Wishlist">
-                                    <i class="ion-ios-heart-outline"></i>
-                                </a>
-                                <a href="#exampleModalCenter" data-toggle="modal" title="Quick View">
-                                    <i class="ion-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-item">
-                        <div class="single-product position-relative">
-                            <div class="product-image">
-                                <a class="d-block" href="product-details.html">
-                                    <img src="~/frontendassets/images/product/7.jpg" alt="" class="product-image-1 w-100">
-                                    <img src="~/frontendassets/images/product/8.jpg" alt="" class="product-image-2 position-absolute w-100">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <div class="product-title">
-                                    <h4 class="title-2"> <a href="product-details.html">Product dummy name</a></h4>
-                                </div>
-                                <div class="price-box">
-                                    <span class="regular-price ">$80.00</span>
-                                    <span class="old-price"><del>$90.00</del></span>
-                                </div>
-                            </div>
-                            <div class="add-action d-flex position-absolute">
-                                <a href="cart.html" title="Add To cart">
-                                    <i class="ion-bag"></i>
-                                </a>
-                                <a href="compare.html" title="Compare">
-                                    <i class="ion-ios-loop-strong"></i>
-                                </a>
-                                <a href="wishlist.html" title="Add To Wishlist">
-                                    <i class="ion-ios-heart-outline"></i>
-                                </a>
-                                <a href="#exampleModalCenter" data-toggle="modal" title="Quick View">
-                                    <i class="ion-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-item">
-                        <div class="single-product position-relative">
-                            <div class="product-image">
-                                <a class="d-block" href="product-details.html">
-                                    <img src="~/frontendassets/images/product/9.jpg" alt="" class="product-image-1">
-                                    <img src="~/frontendassets/images/product/10.jpg" alt="" class="product-image-2 position-absolute top-0 left-0">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <div class="product-title">
-                                    <h4 class="title-2"> <a href="product-details.html">Product dummy title</a></h4>
-                                </div>
-                                <div class="price-box">
-                                    <span class="regular-price ">$80.00</span>
-                                    <span class="old-price"><del>$90.00</del></span>
-                                </div>
-                            </div>
-                            <div class="add-action d-flex position-absolute">
-                                <a href="cart.html" title="Add To cart">
-                                    <i class="ion-bag"></i>
-                                </a>
-                                <a href="compare.html" title="Compare">
-                                    <i class="ion-ios-loop-strong"></i>
-                                </a>
-                                <a href="wishlist.html" title="Add To Wishlist">
-                                    <i class="ion-ios-heart-outline"></i>
-                                </a>
-                                <a href="#exampleModalCenter" data-toggle="modal" title="Quick View">
-                                    <i class="ion-eye"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                        }
+                    }
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- Modal Area Start Here -->
+<div class="modal fade obrien-modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="close close-button" data-dismiss="modal" aria-label="Close">
+                <span class="close-icon" aria-hidden="true">x</span>
+            </button>
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Area End Here -->
 <!-- Product Area End Here -->
+
+@section FooterScripts
+{
+    <script src="~/js/details.js"></script>
+
+}

@@ -3,6 +3,7 @@
     Layout = "~/Views/Shared/_LayoutFrontend.cshtml";
 }
 
+
 <div class="wishlist-main-wrapper mt-no-text mb-no-text">
     <div class="container container-default-2 custom-area">
         <div class="row">
@@ -20,39 +21,23 @@
                                 <th class="pro-remove">Remove</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="~/frontendassets/images/product/small-size/1.jpg" alt="Product" /></a></td>
-                                <td class="pro-title"><a href="#">Product dummy title <br> s / green</a></td>
-                                <td class="pro-price"><span>$295.00</span></td>
-                                <td class="pro-stock"><span><strong>In Stock</strong></span></td>
-                                <td class="pro-cart"><a href="checkout.html" class="btn obrien-button primary-btn text-uppercase">Add to Cart</a></td>
-                                <td class="pro-remove"><a href="#"><i class="ion-trash-b"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="~/frontendassets/images/product/small-size/2.jpg" alt="Product" /></a></td>
-                                <td class="pro-title"><a href="#">Product title here <br> red</a></td>
-                                <td class="pro-price"><span>$275.00</span></td>
-                                <td class="pro-stock"><span><strong>In Stock</strong></span></td>
-                                <td class="pro-cart"><a href="checkout.html" class="btn obrien-button primary-btn text-uppercase">Add to Cart</a></td>
-                                <td class="pro-remove"><a href="#"><i class="ion-trash-b"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="~/frontendassets/images/product/small-size/3.jpg" alt="Product" /></a></td>
-                                <td class="pro-title"><a href="#">Product dummy title <br> s</a></td>
-                                <td class="pro-price"><span>$295.00</span></td>
-                                <td class="pro-stock"><span><strong>In Stock</strong></span></td>
-                                <td class="pro-cart"><a href="checkout.html" class="btn obrien-button primary-btn text-uppercase">Add to Cart</a></td>
-                                <td class="pro-remove"><a href="#"><i class="ion-trash-b"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="~/frontendassets/images/product/small-size/4.jpg" alt="Product" /></a></td>
-                                <td class="pro-title"><a href="#">Dummy Title</a></td>
-                                <td class="pro-price"><span>$110.00</span></td>
-                                <td class="pro-stock"><span><strong>In Stock</strong></span></td>
-                                <td class="pro-cart"><a href="checkout.html" class="btn obrien-button primary-btn text-uppercase">Add to Cart</a></td>
-                                <td class="pro-remove"><a href="#"><i class="ion-trash-b"></i></a></td>
-                            </tr>
+                        <tbody id="wishlist_rows">
+                            @*@if (Model.Any())
+                            {
+                                foreach (var wish in Model)
+                                {
+                                    <tr>
+                                        <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="@wish.Product.MainImage" alt="Product" /></a></td>
+                                        <td class="pro-title"><a href="#">@wish.Product.ProductName <br> s / green</a></td>
+                                        <td class="pro-price"><span>NGN @wish.Product.DiscountPrice</span></td>
+                                        <td class="pro-stock"><span><strong>@(wish.Product.SoldOut ? "Out of Stock" : "In Stock")</strong></span></td>
+                                        <td class="pro-cart"><a href="checkout.html" class="btn obrien-button primary-btn text-uppercase">Add to Cart</a></td>
+                                        <td class="pro-remove"><a href="#"><i class="ion-trash-b"></i></a></td>
+                                    </tr>
+                                }
+                            }*@
+
+
                         </tbody>
                     </table>
                 </div>
@@ -60,3 +45,9 @@
         </div>
     </div>
 </div>
+
+@section FooterScripts
+{
+    <script src="~/js/loadwishlist.js"></script>
+
+}

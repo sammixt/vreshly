@@ -4,14 +4,16 @@ using BLL.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace BLL.Data.Migarations
+namespace BLL.Data.Migatations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20210614181057_WishList")]
+    partial class WishList
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -430,32 +432,6 @@ namespace BLL.Data.Migarations
                     b.ToTable("VariableDetails");
                 });
 
-            modelBuilder.Entity("BLL.Entities.WishList", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<long>("ProductId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("user")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("WishLists");
-                });
-
             modelBuilder.Entity("BLL.Entities.OrderAggregate.Order", b =>
                 {
                     b.HasOne("BLL.Entities.OrderAggregate.DeliveryMethod", "DeliveryMethod")
@@ -621,17 +597,6 @@ namespace BLL.Data.Migarations
                         .IsRequired();
 
                     b.Navigation("Variable");
-                });
-
-            modelBuilder.Entity("BLL.Entities.WishList", b =>
-                {
-                    b.HasOne("BLL.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("BLL.Entities.OrderAggregate.Order", b =>

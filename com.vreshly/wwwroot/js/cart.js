@@ -4,6 +4,7 @@
     var cartItemCount = $('.cart-item_count');
     var cartItemWrapper = $('.cart-item-wrapper');
     var cartTable = $('#cart-table');
+    var addProductToCart = $('#add-to_cart');
     var basket = {};
     const basketItems = [];
     const basketItem = {
@@ -128,6 +129,24 @@
         addToCart(_id, _productName, _price, _quantity, _pictureUrl, _brand, _category)
     });
 
+    addProductToCart.on('click', '.add-to-cart', function (e) {
+        e.preventDefault();
+        var $button = $(this);
+        var qty = $button.parent().parent().find('input').val();
+        if (parseInt(qty) > 0) {
+            var _id = $button.attr('data-id');
+            var _productName = $button.attr('data-productName');
+            var _price = parseInt($button.attr('data-price'));
+            var _quantity = qty;
+            var _pictureUrl = $button.attr('data-pictureUrl');
+            var _brand = $button.attr('data-brand');
+            var _category = $button.attr('data-category');
+            addToCart(_id, _productName, _price, _quantity, _pictureUrl, _brand, _category)
+        } else {
+            alert(`Quantity must be greater than Zero (0)`);
+        }
+    });
+
     $('.modal-body').on('click', '.add-to-cart-modal', function () {
         var $button = $(this);
         var qty = $button.parent().parent().find('input').val();
@@ -151,10 +170,10 @@
     var loadCartDropdown = function () {
         cartItemWrapper.empty();
         var tempCart = JSON.parse(localStorage.getItem("cart"));
-
-        $.each(tempCart.items, function (key, value) {
-            cartItemWrapper.prepend(
-                "<div class='single-cart-item'>\
+        if (tempCart != null) {
+            $.each(tempCart.items, function (key, value) {
+                cartItemWrapper.prepend(
+                    "<div class='single-cart-item'>\
             <div class='cart-img'>\
                 <a href='cart.html'><img src='"+ value.pictureUrl + "' alt=''></a>\
             </div>\
@@ -165,23 +184,25 @@
                         <span>"+ value.quantity + "×</span>\
                         <span class='cart-price'>NGN "+ value.price + "</span>\
                     </div>\
-                    <button type='button'class='trash-cart' data-id='"+ value.id+"'><i class='ion-trash-b'></i></button>\
+                    <button type='button'class='trash-cart' data-id='"+ value.id + "'><i class='ion-trash-b'></i></button>\
                 </div>\
             </div>\
         </div>"
-            );
-        });
+                );
+            });
 
-        var total = getTotal();
+            var total = getTotal();
 
-        cartItemWrapper.append("<div class='cart-price-total d-flex justify-content-between'>\
+            cartItemWrapper.append("<div class='cart-price-total d-flex justify-content-between'>\
         <h5>Total :</h5>\
-        <h5 class='total'>NGN "+ total+"</h5>\
+        <h5 class='total'>NGN "+ total + "</h5>\
     </div>\
     <div class='cart-links d-flex justify-content-center'>\
         <a class='obrien-button white-btn' href='/Shop/Cart'>View</a>\
         <a class='obrien-button white-btn' href='/Shop/Checkout'>Checkout</a>\
     </div>")
+        }
+        
         
     }
 

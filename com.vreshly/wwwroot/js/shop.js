@@ -27,7 +27,7 @@
                 featuredProductDiv.append("<div class='col-md-6 col-sm-6 col-lg-4 col-custom product-area'>\
                     <div class= 'single-product position-relative'>\
                     <div class='product-image'>\
-                        <a class='d-block' href='product-details.html'>\
+                        <a class='d-block' href='/Shop/ProductDetail?productId="+ value.id +"'>\
                             <img src='"+ value.mainImage + "' alt=''  class='product-image-1 w-100'>\
 							<img src='"+ value.imageOne + "' alt=''  class='product-image-2 position-absolute w-100'>\
                                 </a>\
@@ -41,7 +41,7 @@
                                     <i class='fa fa-star-o'></i>\
                                 </div>\
                                 <div class='product-title'>\
-                                    <h4 class='title-2'> <a href='product-details.html'>"+ value.productName + "</a></h4>\
+                                    <h4 class='title-2'> <a href='/Shop/ProductDetail?productId="+ value.id +"'>"+ value.productName + "</a></h4>\
                                 </div>\
                                 <div class='price-box'>\
                                     <span class='regular-price '>NGN "+ value.discountPrice + "</span>\
@@ -57,10 +57,10 @@
                     "' data-brand='" + value.brand + "' title = 'Add To cart' >\
                                     <i class='ion-bag'></i>\
                                 </a>\
-                                <a href='compare.html' title='Compare'>\
+                                <a href='compare.html'  title='Compare'>\
                                     <i class='ion-ios-loop-strong'></i>\
                                 </a>\
-                                <a href='wishlist.html' title='Add To Wishlist'>\
+                                <a class='add-to-wishlist' data-id='"+ value.id +"' title='Add To Wishlist'>\
                                     <i class='ion-ios-heart-outline'></i>\
                                 </a>\
                                  <a  class='detail-view' data-id='"+ value.id +"' title='Quick View'>\
@@ -76,7 +76,7 @@
                                     <i class='fa fa-star-o'></i>\
                                 </div>\
                                 <div class='product-title'>\
-                                    <h4 class='title-2'> <a href='product-details.html'>"+ value.productName + "</a></h4>\
+                                    <h4 class='title-2'> <a href='/Shop/ProductDetail?productId="+ value.id +"'>"+ value.productName + "</a></h4>\
                                 </div>\
                                 <div class='price-box'>\
                                     <span class='regular-price '>NGN "+ value.discountPrice + "</span>\
@@ -94,7 +94,7 @@
                                     <a href='compare.html' title='Compare'>\
                                         <i class='ion-ios-loop-strong'></i>\
                                     </a>\
-                                    <a href='wishlist.html' title='Add To Wishlist'>\
+                                    <a class='add-to-wishlist' data-id='"+ value.id +"' title='Add To Wishlist'>\
                                         <i class='ion-ios-heart-outline'></i>\
                                     </a>\
                                     <a  class='detail-view' data-id='"+value.id+"' title='Quick View'>\
@@ -224,12 +224,12 @@
             $.each(response.data, function (key, value) {
 
                 productSidebar.append("<div class='sidebar-product align-items-center'>\
-                                    <a href='product-details.html' class='image'>\
+                                    <a href='/Shop/ProductDetail?productId="+ value.id +"' class='image'>\
                                         <img src='"+ value.mainImage + "' alt='product'>\
                                     </a>\
                                     <div class='product-content'>\
                                         <div class='product-title'>\
-                                            <h4 class='title-2'> <a href='product-details.html'>"+ value.productName + "</a></h4>\
+                                            <h4 class='title-2'> <a href='/Shop/ProductDetail?productId="+ value.id +"'>"+ value.productName + "</a></h4>\
                                         </div>\
                                         <div class='price-box'>\
                                             <span class='regular-price '>NGN "+ value.discountPrice + "</span>\
