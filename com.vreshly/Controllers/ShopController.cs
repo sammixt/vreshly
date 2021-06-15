@@ -95,6 +95,22 @@ namespace com.vreshly.Controllers
 
             return BadRequest(new ApiResponse(500, "An error occurred when adding Product to wishlist"));
         }
+
+        [HttpDelete]
+        public async Task<ActionResult> DeleteWishlist([FromBody] WishListDto wishList)
+        {
+            WishListSpecification spec = new WishListSpecification(wishList.Id);
+            var currentWishList = await _unitOfWork.Repository<WishList>().GetEntitiesWithSpec(spec);
+            if (currentWishList == null) return NotFound(new ApiResponse(404));
+            _unitOfWork.Repository<WishList>().Delete(currentWishList);
+            int result = await _unitOfWork.Complete();
+            if (result == 1)
+            {
+                return Ok(new ApiResponse(200, $"{currentWishList.Product.ProductName} Successfully Deleted"));
+            }
+
+            return BadRequest(new ApiResponse(500, "An error occurred when Deleting wishlist"));
+        }
     
 
     public async Task<IActionResult> Cart()

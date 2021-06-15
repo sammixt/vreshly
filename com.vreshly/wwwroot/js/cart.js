@@ -5,6 +5,7 @@
     var cartItemWrapper = $('.cart-item-wrapper');
     var cartTable = $('#cart-table');
     var addProductToCart = $('#add-to_cart');
+    var wishlistProduct = $("#wishlist_rows");
     var basket = {};
     const basketItems = [];
     const basketItem = {
@@ -144,6 +145,24 @@
             addToCart(_id, _productName, _price, _quantity, _pictureUrl, _brand, _category)
         } else {
             alert(`Quantity must be greater than Zero (0)`);
+        }
+    });
+
+    wishlistProduct.on('click', '.add-to-cart', function (e) {
+        e.preventDefault();
+        var $button = $(this);
+        var _id = $button.attr('data-id');
+        var _productName = $button.attr('data-productName');
+        var _price = parseInt($button.attr('data-price'));
+        var _quantity = parseInt($button.attr('data-quantity'));
+        var _pictureUrl = $button.attr('data-pictureUrl');
+        var _brand = $button.attr('data-brand');
+        var _category = $button.attr('data-category');
+        if (_quantity > 0) {
+            
+            addToCart(_id, _productName, _price, _quantity, _pictureUrl, _brand, _category)
+        } else {
+            alert(`${_productName} is out of stock`);
         }
     });
 

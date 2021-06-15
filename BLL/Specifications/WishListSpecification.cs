@@ -15,5 +15,11 @@ namespace BLL.Specifications
         {
             AddInclude(x => x.Product);
         }
+
+        public WishListSpecification(long id)
+            :base(x => x.Id == id)
+        {
+            AddInclude(x => x.Product);
+        }
     }
 }

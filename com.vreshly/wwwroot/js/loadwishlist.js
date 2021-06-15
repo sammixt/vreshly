@@ -29,8 +29,16 @@
                                         <td class='pro-title'><a href='#'>${value.product.productName}</td>\
                                         <td class='pro-price'><span>NGN ${value.product.discountPrice}</span></td>\
                                         <td class='pro-stock'><span><strong>${value.product.soldOut ? 'Out of Stock' : 'In Stock'}</strong></span></td>\
-                                        <td class='pro-cart'><a href='checkout.html' class='btn obrien-button primary-btn text-uppercase'>Add to Cart</a></td>\
-                                        <td class='pro-remove'><a href='#'><i class='ion-trash-b'></i></a></td>\
+                                        <td class='pro-cart'>\
+                                                <a class='add-to-cart btn obrien-button primary-btn text-uppercase' data-id='${value.productId}'
+                                                    data-productName='${value.product.productName}'
+                                                    data-price='${value.product.discountPrice}'
+                                                    data-quantity='${value.product.soldOut ? '0' : '1'}' data-pictureUrl='${value.product.mainImage}'
+                                                    data-category='${value.product.category}' data-brand='${value.product.brand }' title = 'Add To cart' >\
+                                                    Add To cart
+                                                </a>\
+                                            </td>\
+                                        <td class='pro-remove'><a href='javascript:void()' class='delete' data-id='${value.id}'><i class='ion-trash-b'></i></a></td>\
                                     </tr>`);
                 });
                 //setTimeout(, 3000);
@@ -43,6 +51,31 @@
             });
         }   
     }
+
+    productTable.on('click', '.delete', function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var _id = $this.attr('data-id');
+        var wishList = {
+            id: _id
+        };
+        $.ajax({
+            type: 'DELETE',
+            url: `${baseUrl}Shop/DeleteWishlist`,
+            //headers: {
+            //    Authorization: 'Bearer ' + authItem.token
+            //},
+
+            data: JSON.stringify(wishList),
+            contentType: "application/json;charset=utf-8",
+            traditional: true,
+        }).done(function (response) {
+            window.location.reload();
+        })
+        .fail(function (data) {
+            alert(data.message);
+        });
+    })
 
     loadWishList();
 })

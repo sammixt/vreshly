@@ -6750,7 +6750,7 @@
       "outputPath": "/Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/sasmuelezeala/.nuget/NuGet/NuGet.Config"
+        "/Users/sasmuelezeala/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
