@@ -68,7 +68,8 @@
     var checkoutLoginToggle = function (_authItem) {
         if (_authItem != null) {
             $('#billing-address-div').css('display', 'block');
-            $('#checkout-login-div').css('display','none')
+            $('#checkout-login-div').css('display', 'none');
+            $('#completed-transaction').css('display', 'none');
         } else {
             $('#billing-address-div').css('display', 'none');
             $('#checkout-login-div').css('display', 'block')

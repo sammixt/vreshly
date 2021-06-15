@@ -11,6 +11,8 @@ namespace com.vreshly.Dtos
 
         public int deliveryMethod { get; set; }
 
+        public int paymentMethod { get; set; }
+
         public AddressDto ShipToAddress { get; set; }
     }
 }

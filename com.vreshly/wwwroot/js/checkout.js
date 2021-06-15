@@ -40,6 +40,7 @@
             $.each(response, function (key, value) {
                 deliveryMethods.append(`<option value='${value.id}' data-price='${value.price}'>${value.shortName} -- ${value.deliveryTime}</option>`)
             })
+            $('.myniceselectTest').niceSelect();
         })
     }
 
@@ -55,6 +56,7 @@
         }
         
     });
+
 
     placeOrder.on('click', function (e) {
         e.preventDefault();
@@ -79,45 +81,120 @@
         }
 
         isAllFieldValid = validatePhone(phoneNumber, 'Phone Number');
+        var authItem = JSON.parse(localStorage.getItem("auth"));
         if (isAllFieldValid) {
-            basket.deliveryMethod = parseInt(deliveryMethods.val());
-            basket.paymentIntent = basket.id;
-            basket.shippingPrice = $('#deliveryMethod option:selected').attr('data-price');
-            localStorage.setItem("cart", JSON.stringify(basket));
-            callApi('UpdateBasket', basket);
-            var _shipToAddress =
+            if (authItem != null)
             {
-                firstName: firstName,
-                lastName: lastName,
-                street: address,
-                city: city,
-                state: state,
-                zipCode: zipcode,
-                phoneNumber: phoneNumber
-            }
+                basket.deliveryMethod = parseInt(deliveryMethods.val());
+                basket.paymentIntent = basket.id;
+                basket.shippingPrice = $('#deliveryMethod option:selected').attr('data-price');
+                localStorage.setItem("cart", JSON.stringify(basket));
+                callApi('UpdateBasket', basket);
+                var _shipToAddress =
+                {
+                    firstName: firstName,
+                    lastName: lastName,
+                    street: address,
+                    city: city,
+                    state: state,
+                    zipCode: zipcode,
+                    phoneNumber: phoneNumber
+                }
 
-            var orderDto =
-            {
-                basketId: basket.id,
-                deliveryMethod: basket.deliveryMethod,
-                shipToAddress: _shipToAddress
-            }
+                var orderDto =
+                {
+                    basketId: basket.id,
+                    deliveryMethod: basket.deliveryMethod,
+                    paymentMethod: parseInt($('#paymentMethod option:selected').val()),
+                    shipToAddress: _shipToAddress
+                }
 
-            $.ajax({
-                type: 'POST',
-                url: `${baseUrl}Orders/CreateOrder`,
-                data: JSON.stringify(orderDto),
-                contentType: "application/json;charset=utf-8",
-                traditional: true,
-            }).done(function (response) {
-                console.log(response);
-            })
+                $.ajax({
+                    type: 'POST',
+                    url: `${baseUrl}Orders/CreateOrder`,
+                    headers: {
+                        Authorization: 'Bearer ' + authItem.token
+                    },
+                    data: JSON.stringify(orderDto),
+                    contentType: "application/json;charset=utf-8",
+                    traditional: true,
+                }).done(function (response) {
+                    console.log(response);
+                    payWithPaystack(response.info, response.pubKey, response.total);
+                })
                 .fail(function (data) {
                     console.log(data);
                 });
+            }
+            
         }
 
     });
+
+    var payWithPaystack = function(order,pubKey,total) {
+        var handler = PaystackPop.setup({
+            key: `${pubKey}`, 
+            email: order.buyerEmail,
+            amount: total * 100, 
+            currency: 'NGN', 
+            ref: order.paymentIntentId,
+            callback: function (response) {
+                //this happens after the payment is completed successfully
+                var reference = response.reference;
+                verifyTransaction(reference);
+                //alert('Payment complete! Reference: ' + reference);
+                // Make an AJAX call to your server with the reference to verify the transaction
+            },
+            onClose: function () {
+                deleteOrder(order.paymentIntentId);
+                alert('Transaction was not completed, window closed.');
+            },
+        });
+        handler.openIframe();
+    }
+
+
+    var verifyTransaction = function (ref) {
+        $.ajax({
+            type: 'GET',
+            url: `${baseUrl}Orders/VerifyTransaction?reference=${ref}`,
+            headers: {
+                Authorization: 'Bearer ' + authItem.token
+            } 
+        }).done(function (response) {
+            $('#billing-address-div').css('display', 'none');
+            if (response.status == "success") {
+                $('#msg').css('color', 'green');
+                $('#msg').text(`Transaction was successful. Reference : ${ref}`);
+                $('#completed-transaction').css('display', 'block');
+            } else {
+                $('#msg').css('color', 'red');
+                $('#msg').text(`Transaction was unsuccessful. Reference : ${ref}`);
+                $('#completed-transaction').css('display', 'block');
+            }
+        }).fail(function (data) {
+            $('#billing-address-div').css('display', 'none');
+            $('#msg').css('color', 'yellow');
+            $('#msg').text(`${data.message}`);
+            $('#completed-transaction').css('display', 'block');
+        });
+    }
+
+    var deleteOrder = function (ref) {
+        $.ajax({
+            type: 'DELETE',
+            url: `${baseUrl}Orders/DeleteOrder?reference=${ref}`,
+            //headers: {
+            //    Authorization: 'Bearer ' + authItem.token
+            //},
+
+        }).done(function (response) {
+            
+        })
+        .fail(function (data) {
+            alert(data.message);
+        });
+    }
 
     var validatePhone = function (txtPhone,field) {
         var filter = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;

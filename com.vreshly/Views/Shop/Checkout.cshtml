@@ -103,8 +103,19 @@
                                         <div class="col-md-6">
                                             <div class="country-select">
                                                 <label>Delivery Method<span class="required">*</span></label>
-                                                <select class="myniceselect2  wide rounded-0" id="deliveryMethod" name="deliveryMethod">
+                                                <select class="myniceselectTest  wide rounded-0" id="deliveryMethod" name="deliveryMethod">
                                                     <option value="0" data-price="0">Select Delivery method</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="country-select clearfix">
+                                                <label>Payment method <span class="required">*</span></label>
+                                                <select name="paymentMethod" id="paymentMethod" class="myniceselect nice-select wide rounded-0">
+                                                    <option data-display="Payment on Delivery" value="0">Payment on Delivery</option>
+                                                    <option value="1">Online Payment</option>
+                                                    <option value="2">Bank Transfer</option>
+
                                                 </select>
                                             </div>
                                         </div>
@@ -118,17 +129,11 @@
                         </div>
                     </div>
 
-                    @*<h3>Payment <span id="showpayment"></span></h3>
-                    <div id="paymentButton" class="coupon-checkout-content">
+                    <div id="completed-transaction" class="coupon-checkout-content">
                         <div class="coupon-info">
-                            <form action="#">
-                                <p class="checkout-coupon">
-                                    <input placeholder="Coupon code" type="text">
-                                    <input class="coupon-inner_btn" value="Apply Coupon" type="submit">
-                                </p>
-                            </form>
+                           <h3 id='msg'></h3>
                         </div>
-                    </div>*@
+                    </div>
                 </div>
 
             </div>
@@ -224,34 +229,16 @@
 
 @section FooterScripts
 {
-    <script src="~/js/checkout.js"></script>
     <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script src="~/js/checkout.js"></script>
     <script type="text/javascript">
-        $('#pay').on('click', function (e) {
+        @*$('#pay').on('click', function (e) {
             e.preventDefault();
             payWithPaystack();
-        });
+        });*@
         //paymentForm.addEventListener('submit', payWithPaystack, false);
 
-        function payWithPaystack() {
-            var handler = PaystackPop.setup({
-                key: 'pk_test_7cf58a8bf6b47da1e14fe2840a30936ac0dcea11', // Replace with your public key
-                email: document.getElementById('email-address').value,
-                amount: document.getElementById('amount').value * 100, // the amount value is multiplied by 100 to convert to the lowest currency unit
-                currency: 'NGN', // Use GHS for Ghana Cedis or USD for US Dollars
-                ref: 'YOUR_REFERENCE', // Replace with a reference you generated
-                callback: function (response) {
-                    //this happens after the payment is completed successfully
-                    var reference = response.reference;
-                    alert('Payment complete! Reference: ' + reference);
-                    // Make an AJAX call to your server with the reference to verify the transaction
-                },
-                onClose: function () {
-                    alert('Transaction was not completed, window closed.');
-                },
-            });
-            handler.openIframe();
-        }
+       
     </script>
 
 }

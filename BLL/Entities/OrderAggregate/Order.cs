@@ -9,7 +9,7 @@ namespace BLL.Entities.OrderAggregate
         {
         }
 
-        public Order(string buyerEmail, OrderAddress shipToAddress, DeliveryMethod deliveryMethod, IReadOnlyList<OrderItem> orderItems, decimal subtotal,string paymentIntent)
+        public Order(string buyerEmail, OrderAddress shipToAddress, DeliveryMethod deliveryMethod, IReadOnlyList<OrderItem> orderItems, decimal subtotal,string paymentIntent, PaymentMethod paymentMethod)
         {
             BuyerEmail = buyerEmail;
             ShipToAddress = shipToAddress;
@@ -17,6 +17,7 @@ namespace BLL.Entities.OrderAggregate
             OrderItems = orderItems;
             Subtotal = subtotal;
             PaymentIntentId = paymentIntent;
+            PaymentMethod = paymentMethod;
         }
 
         public string BuyerEmail { get; set; }
@@ -32,6 +33,8 @@ namespace BLL.Entities.OrderAggregate
         public decimal Subtotal { get; set; }
 
         public OrderStatus Status { get; set; } = OrderStatus.Pending;
+
+        public PaymentMethod PaymentMethod { get; set; } 
 
         public string PaymentIntentId { get; set; }
 

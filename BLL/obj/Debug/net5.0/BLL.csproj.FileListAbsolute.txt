@@ -26,4 +26,3 @@
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/obj/Debug/net5.0/ref/BLL.dll
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/obj/Debug/net5.0/BLL.pdb
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/obj/Debug/net5.0/BLL.genruntimeconfig.cache
-/Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/obj/Debug/net5.0/BLL.csproj.AssemblyReference.cache

@@ -20,7 +20,7 @@ namespace BLL.Infrastructure.Services
             this.basketRepo = basketRepo;
         }
 
-        public async Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, string basketId, OrderAddress shippingAddress)
+        public async Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, string basketId, OrderAddress shippingAddress, int paymentMethod)
         {
             //get basket from basket repo
             var basket = await basketRepo.GetBasketAsync(basketId);
@@ -43,8 +43,9 @@ namespace BLL.Infrastructure.Services
             var subtotal = items.Sum(item => item.Price * item.Quantity);
 
             //create order
-            var order = new Order(buyerEmail, shippingAddress, deliveryMethod, items, subtotal,basket.PaymentIntent);
+            var order = new Order(buyerEmail, shippingAddress, deliveryMethod, items, subtotal,basket.PaymentIntent,(PaymentMethod)paymentMethod);
             //save to db
+            order.CreatedDate = DateTime.Now;
             _unitOfWork.Repository<Order>().Add(order);
             var result = await _unitOfWork.Complete();
             if (result <= 0) return null;
@@ -66,11 +67,30 @@ namespace BLL.Infrastructure.Services
             return await _unitOfWork.Repository<Order>().GetEntitiesWithSpec(spec);
         }
 
+        public async Task<Order> GetOrdersByPaymentIntent(string paymentIntentId)
+        {
+            var spec = new OrdersSpecification(paymentIntentId);
+            return await _unitOfWork.Repository<Order>().GetEntitiesWithSpec(spec);
+        }
+
         public async Task<IReadOnlyList<Order>> GetOrdersForUser(string buyerEmail)
         {
             var spec = new OrdersWithItemsAndOrderingSpecifications(buyerEmail);
 
             return await _unitOfWork.Repository<Order>().ListAsync(spec);
         }
+
+        public async Task UpdateOrderStatus(Order order)
+        {
+            _unitOfWork.Repository<Order>().Update(order);
+            await _unitOfWork.Complete();
+        }
+
+        public async Task DeleteOrder(Order order)
+        {
+            _unitOfWork.Repository<Order>().Delete(order);
+            await _unitOfWork.Complete();
+        }
+
     }
 }

@@ -24,6 +24,11 @@ namespace BLL.Data.Config
                     o => (OrderStatus)Enum.Parse(typeof(OrderStatus), o)
                     );
 
+            builder.Property(s => s.PaymentMethod)
+                .HasConversion(
+                    o => o.ToString(),
+                    o => (PaymentMethod)Enum.Parse(typeof(PaymentMethod), o)
+                    );
             builder.HasMany(o => o.OrderItems).WithOne().OnDelete(DeleteBehavior.Cascade);
         }
     }
