@@ -86,8 +86,8 @@ namespace com.vreshly.Controllers
             return Ok(new ApiResponse(200, $"Order Deleted"));
         }
 
-        //[HttpGet]
-        public async Task<ActionResult<IReadOnlyList<OrderDto>>> GetOrdersForUser()
+        [HttpGet]
+        public async Task<ActionResult<IReadOnlyList<OrderToReturnDto>>> GetOrdersForUser()
         {
             var email = HttpContext.User.RetrieveEmailFromPrincipal();
 
@@ -96,7 +96,7 @@ namespace com.vreshly.Controllers
             return Ok(_mapper.Map<IReadOnlyList<Order>,IReadOnlyList<OrderToReturnDto>>(orders));
         }
 
-        //[HttpGet("{id}")]
+        //[HttpGet]
         public async Task<ActionResult<OrderDto>> GetOrderByIdForUser(int id)
         {
             var email = HttpContext.User.RetrieveEmailFromPrincipal();

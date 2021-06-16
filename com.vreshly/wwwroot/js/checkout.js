@@ -119,8 +119,7 @@
                     contentType: "application/json;charset=utf-8",
                     traditional: true,
                 }).done(function (response) {
-                    console.log(response);
-                    payWithPaystack(response.info, response.pubKey, response.total);
+                    payWithPaystack(response.info, response.pubKey, response.total, authItem);
                 })
                 .fail(function (data) {
                     console.log(data);
@@ -131,7 +130,7 @@
 
     });
 
-    var payWithPaystack = function(order,pubKey,total) {
+    var payWithPaystack = function(order,pubKey,total, _authItem) {
         var handler = PaystackPop.setup({
             key: `${pubKey}`, 
             email: order.buyerEmail,
@@ -140,29 +139,31 @@
             ref: order.paymentIntentId,
             callback: function (response) {
                 //this happens after the payment is completed successfully
+
                 var reference = response.reference;
-                verifyTransaction(reference);
+                verifyTransaction(reference, _authItem);
+                localStorage.removeItem('cart');
                 //alert('Payment complete! Reference: ' + reference);
                 // Make an AJAX call to your server with the reference to verify the transaction
+
             },
             onClose: function () {
                 deleteOrder(order.paymentIntentId);
-                alert('Transaction was not completed, window closed.');
             },
         });
         handler.openIframe();
     }
 
 
-    var verifyTransaction = function (ref) {
+    var verifyTransaction = function (ref,auth) {
         $.ajax({
             type: 'GET',
             url: `${baseUrl}Orders/VerifyTransaction?reference=${ref}`,
             headers: {
-                Authorization: 'Bearer ' + authItem.token
+                Authorization: 'Bearer ' + auth.token
             } 
         }).done(function (response) {
-            $('#billing-address-div').css('display', 'none');
+            $('#billing-details').css('display', 'none');
             if (response.status == "success") {
                 $('#msg').css('color', 'green');
                 $('#msg').text(`Transaction was successful. Reference : ${ref}`);

@@ -31,5 +31,23 @@ namespace com.vreshly.Dtos
 
         public decimal Total { get; set; }
 
+        public string PaymentIntentId { get; set; }
+
+        public string OrderDateFormated 
+        {
+            get
+            {
+                return OrderDate.ToString("dd MMM yyyy");
+            }
+        }
+
+        public int TotalItems 
+        {
+            get
+            {
+                return OrderItems.Count;
+            }
+        }
+
     }
 }

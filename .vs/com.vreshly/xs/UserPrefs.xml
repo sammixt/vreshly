@@ -1,23 +1,15 @@
 ﻿<Properties StartupConfiguration="{D13B51E9-337B-42DA-AFE1-244C873D4D7B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="com.vreshly/wwwroot/js/checkout.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="com.vreshly/Views/Shop/Checkout.cshtml">
     <Files>
-      <File FileName="BLL/Infrastructure/Services/OrderService.cs" Line="89" Column="51" IsPinned="True" />
-      <File FileName="com.vreshly/Views/Shop/Checkout.cshtml" Line="135" Column="31" />
-      <File FileName="BLL/Entities/OrderAggregate/PaymentMethod.cs" Line="15" Column="43" />
-      <File FileName="com.vreshly/Controllers/ShopController.cs" Line="112" Column="97" />
-      <File FileName="com.vreshly/Controllers/OrdersController.cs" Line="85" Column="52" />
-      <File FileName="com.vreshly/wwwroot/js/checkout.js" Line="149" Column="52" />
-      <File FileName="com.vreshly/wwwroot/js/cart.js" Line="37" Column="41" />
-      <File FileName="com.vreshly/Controllers/HomeController.cs" Line="25" Column="64" />
-      <File FileName="com.vreshly/appsettings.Development.json" Line="19" Column="15" />
-      <File FileName="BLL/Infrastructure/Paystack/BaseConstants.cs" Line="6" Column="9" />
-      <File FileName="BLL/Infrastructure/Paystack/HttpConnection.cs" Line="16" Column="14" />
-      <File FileName="BLL/Infrastructure/Paystack/TransactionResponseModel.cs" Line="38" Column="17" />
-      <File FileName="BLL/Specifications/OrdersWithItemsAndOrderingSpecifications.cs" Line="21" Column="47" />
-      <File FileName="BLL/Specifications/OrdersSpecification.cs" Line="16" Column="1" />
-      <File FileName="BLL/Interface/IOrderService.cs" Line="20" Column="39" />
-      <File FileName="com.vreshly/wwwroot/js/jwtok.js" Line="73" Column="17" />
-      <File FileName="com.vreshly/wwwroot/js/category.js" Line="1" Column="1" />
+      <File FileName="com.vreshly/Views/Account/Information.cshtml" Line="226" Column="1" />
+      <File FileName="com.vreshly/wwwroot/js/account.js" Line="32" Column="6" />
+      <File FileName="com.vreshly/wwwroot/js/jwtok.js" Line="58" Column="66" />
+      <File FileName="com.vreshly/Controllers/OrdersController.cs" Line="96" Column="79" />
+      <File FileName="com.vreshly/Dtos/OrderToReturnDto.cs" Line="28" Column="29" />
+      <File FileName="com.vreshly/wwwroot/js/checkout.js" Line="165" Column="12" />
+      <File FileName="com.vreshly/Dtos/OrderDto.cs" Line="4" Column="18" />
+      <File FileName="BLL/Entities/OrderAggregate/Order.cs" Line="1" Column="1" />
+      <File FileName="com.vreshly/Views/Shop/Checkout.cshtml" Line="233" Column="45" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -44,12 +36,12 @@
                 <Node name="Account" expanded="True" />
                 <Node name="Home" expanded="True" />
                 <Node name="Shared" expanded="True" />
-                <Node name="Shop" expanded="True" />
+                <Node name="Shop" expanded="True">
+                  <Node name="Checkout.cshtml" selected="True" />
+                </Node>
               </Node>
               <Node name="wwwroot" expanded="True">
-                <Node name="js" expanded="True">
-                  <Node name="checkout.js" selected="True" />
-                </Node>
+                <Node name="js" expanded="True" />
               </Node>
               <Node name="appsettings.json" expanded="True" />
             </Node>
