@@ -109,31 +109,32 @@ namespace com.vreshly.Controllers
         }
 
 
-        [Authorize]
-        [HttpPut]
-        public async Task<ActionResult<AddressDto>> UpdateUserAddress([FromBody]AddressDto address)
-        {
-            var user = await _userManager.FindUserByClaimsPrincipleWithAddressAsync(HttpContext.User);
+        // [Authorize]
+        // [HttpPut]
+        // public async Task<ActionResult<AddressDto>> UpdateUserAddress([FromBody]AddressDto address)
+        // {
+        //     var user = await _userManager.FindUserByClaimsPrincipleWithAddressAsync(HttpContext.User);
 
-            foreach(var userAddress in user.Address)
-            {
-                if(userAddress.Id == address.Id)
-                {
-                    userAddress.FirstName = address.FirstName;
-                    userAddress.City = address.City;
-                    userAddress.LastName = address.LastName;
-                    userAddress.State = address.State;
-                    userAddress.Street = address.Street;
-                    userAddress.ZipCode = address.ZipCode;
-                }
-            }
+        //     foreach(var userAddress in user.Address)
+        //     {
+        //         if(userAddress.Id == address.Id)
+        //         {
+                    // user.Address.FirstName = address.FirstName;
+                    // user.Address.City = address.City;
+                    // user.Address.LastName = address.LastName;
+                    // user.Address.State = address.State;
+                    // user.Address.Street = address.Street;
+                    // user.Address.ZipCode = address.ZipCode;
+                    // user.Address.PhoneNumber = address.PhoneNumber;
+        //         }
+        //     }
 
-            var result = await _userManager.UpdateAsync(user);
+        //     var result = await _userManager.UpdateAsync(user);
 
-            if (result.Succeeded) return Ok(address);
+        //     if (result.Succeeded) return Ok(address);
 
-            return BadRequest("Problem Updating the User");
-        }
+        //     return BadRequest("Problem Updating the User");
+        // }
 
         [Authorize]
         [HttpPost]
@@ -141,7 +142,19 @@ namespace com.vreshly.Controllers
         {
             var user = await _userManager.FindUserByClaimsPrincipleWithAddressAsync(HttpContext.User);
             Address userAddress = _mapper.Map<AddressDto, Address>(address);
-            user.Address.Add(userAddress);
+            if(user.Address == null){
+                user.Address = userAddress;
+                user.Address.AppUserId = user.Id;
+            }else{
+                user.Address.FirstName = address.FirstName;
+                user.Address.City = address.City;
+                user.Address.LastName = address.LastName;
+                user.Address.State = address.State;
+                user.Address.Street = address.Street;
+                user.Address.ZipCode = address.ZipCode;
+                user.Address.PhoneNumber = address.PhoneNumber;
+            }
+            
 
             var result = await _userManager.UpdateAsync(user);
 
@@ -156,17 +169,17 @@ namespace com.vreshly.Controllers
         {
             
             var user = await _userManager.FindUserByClaimsPrincipleWithAddressAsync(HttpContext.User);
-            return _mapper.Map<Address,AddressDto>(user.Address?.FirstOrDefault());
+            return _mapper.Map<Address,AddressDto>(user.Address);
         }
 
-        [Authorize]
-        [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<AddressDto>>> GetUserAddresses()
-        {
+        // [Authorize]
+        // [HttpGet]
+        // public async Task<ActionResult<IReadOnlyList<AddressDto>>> GetUserAddresses()
+        // {
 
-            var user = await _userManager.FindUserByClaimsPrincipleWithAddressAsync(HttpContext.User);
-            return Ok(_mapper.Map<IReadOnlyList<Address>, IReadOnlyList<AddressDto>>(user.Address));
-        }
+        //     var user = await _userManager.FindUserByClaimsPrincipleWithAddressAsync(HttpContext.User);
+        //     return Ok(_mapper.Map<IReadOnlyList<Address>, IReadOnlyList<AddressDto>>(user.Address));
+        // }
 
         public async Task<IActionResult> Information()
         {

@@ -31,7 +31,34 @@
         })
     };
 
+    var getAddressForUser = function(){
+        $.ajax({
+            type: 'GET',
+            url: `${baseUrl}Account/GetUserAddress`,
+            headers: {
+                Authorization: 'Bearer ' + authItem.token
+            }
+        }).done(function (response) {
+            $('.fullname').text(`${response.firstName} ${response.lastName}`);
+            $('.street').text(response.street);
+            $('.city').text(response.city);
+            $('.state').text(response.state);
+            $('.zip-code').text(response.zipCode);
+            $('.phone').text(response.phoneNumber);
+            $('.modal-body #first-name').val(response.firstName);
+            $('.modal-body #last-name').val(response.lastName);
+            $('.modal-body #street').val(response.street);
+            $('.modal-body #city').val(response.city);
+            $('.modal-body #state').val(response.state);
+            $('.modal-body #zip-code').val(response.zipCode);
+            $('.modal-body #phone-number').val(response.phoneNumber);
+        }).fail(function (err) {
+            console.log(err);
+        })
+    }
+
     getOrdersForUser();
+    getAddressForUser();
 
     orderHistoryTable.on('click', '.details', function(){
         var _this = $(this);
@@ -63,7 +90,7 @@
                     `
                     <article style='margin-bottom:3px'>\
                         <div class='card'>\
-                            <div>\
+                            <div style='padding-left:10px'>\
                                 <header style='text-align: left; padding: 8px 4px  3px;'>\
                                     <badge class='tag' style='background-color: #6dbd28;color:#fff;' >${response.status}</badge>\
                                     <p class='-m -mtxs'>On <span class=''>${response.orderDateFormated}</span></p>\
@@ -84,6 +111,50 @@
             $('#order-details').css('display','block');
         }).fail(function (data) {
            
+        });
+    })
+
+    $('.close').on('click',function(e){
+        e.preventDefault();
+        $('#order-list').css('display','block');
+        $('#order-details').css('display','none');
+    });
+
+    $('#add-address').on('click',function(e){
+        e.preventDefault();
+         let _firstname = $('#first-name').val();
+         let _lastname = $('#last-name').val();
+         let _street = $('#street').val();
+         let _city = $('#city').val();
+         let _state = $('#state').val();
+         let _zipCode = $('#zip-code').val();
+         let _phoneNumber = $('#phone-number').val();
+
+         address = {
+            "firstName": _firstname,
+            "lastName": _lastname,
+            "street": _street,
+            "city": _city,
+            "state": _state,
+            "zipCode": _zipCode,
+            "phoneNumber": _phoneNumber,
+          }
+          $.ajax({
+            type: 'POST',
+            url: `${baseUrl}Account/AddUserAddress`,
+            headers: {
+                Authorization: 'Bearer ' + authItem.token
+            },
+            data: JSON.stringify(address),
+            contentType: "application/json;charset=utf-8",
+            traditional: true,
+        }).done(function (response) {
+            alert('address updated successfully');
+            getAddressForUser();
+            $('#editAddressModal').modal('hide')
+        })
+        .fail(function (data) {
+            console.log(data);
         });
     })
 

@@ -17,8 +17,7 @@ namespace BLL.Infrastructure.Identity
         {
             if (!userManager.Users.Any())
             {
-                List<Address> addresses = new List<Address>();
-                addresses.Add(new Address
+              var addresses =  new Address
                 {
                     FirstName = "Sammy",
                     LastName = "SamT",
@@ -26,7 +25,7 @@ namespace BLL.Infrastructure.Identity
                     City = "New York",
                     State = "NY",
                     ZipCode = "10218"
-                });
+                };
                 var user = new AppUser
                 {
                     DisplayName = "Sammy",

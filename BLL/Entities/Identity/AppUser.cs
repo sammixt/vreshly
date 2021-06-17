@@ -12,7 +12,7 @@ namespace BLL.Entities.Identity
 
         public string DisplayName { get; set; }
 
-        public List<Address> Address { get; set; }
+        public Address Address { get; set; }
 
        
     }

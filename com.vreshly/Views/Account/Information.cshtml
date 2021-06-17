@@ -209,17 +209,17 @@
                                 <!-- Single Tab Content End -->
                                 <!-- Single Tab Content Start -->
                                 <div class="tab-pane fade" id="address-edit" role="tabpanel">
-                                    <div class="myaccount-content">
+                                    <div class="myaccount-content" id="billing-info">
                                         <h3>Billing Address</h3>
                                         <address>
-                                            <p><strong>Alex Aya</strong></p>
+                                            <p><strong class="fullname"></strong></p>
                                             <p>
-                                                1355 Market St, Suite 900 <br>
-                                                San Francisco, CA 94103
+                                                <span class="street"></span>, <span class="city"></span> <br>
+                                                <span class="state"></span>, <span class="zip-code"></span>
                                             </p>
-                                            <p>Mobile: (123) 456-7890</p>
+                                            <p>Mobile: <span class="phone"></span></p>
                                         </address>
-                                        <a href="#" class="btn obrien-button-2 primary-color rounded-0"><i class="fa fa-edit mr-2"></i>Edit Address</a>
+                                        <a href="#editAddressModal" class="btn obrien-button-2 primary-color rounded-0" data-toggle="modal"><i class="fa fa-edit mr-2"></i>Edit Address</a>
                                     </div>
                                 </div>
                                 <!-- Single Tab Content End -->
@@ -229,20 +229,6 @@
                                         <h3>Account Details</h3>
                                         <div class="account-details-form">
                                             <form action="#">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-custom">
-                                                        <div class="single-input-item mb-3">
-                                                            <label for="first-name" class="required mb-1">First Name</label>
-                                                            <input type="text" id="first-name" placeholder="First Name" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6 col-custom">
-                                                        <div class="single-input-item mb-3">
-                                                            <label for="last-name" class="required mb-1">Last Name</label>
-                                                            <input type="text" id="last-name" placeholder="Last Name" />
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 <div class="single-input-item mb-3">
                                                     <label for="display-name" class="required mb-1">Display Name</label>
                                                     <input type="text" id="display-name" placeholder="Display Name" />
@@ -287,6 +273,77 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade obrien-modal" id="editAddressModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="close close-button" data-dismiss="modal" aria-label="Close">
+                    <span class="close-icon" aria-hidden="true">x</span>
+                </button>
+                <div class="modal-body">
+                    <div class="myaccount-content">
+                        <h3>Edit Address</h3>
+                        <div class="account-details-form">
+                            <form action="#">
+                                <div class="row">
+                                    <div class="col-lg-6 col-custom">
+                                        <div class="single-input-item mb-3">
+                                            <label for="first-name" class="required mb-1">First Name</label>
+                                            <input type="text" id="first-name" placeholder="First Name" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-custom">
+                                        <div class="single-input-item mb-3">
+                                            <label for="last-name" class="required mb-1">Last Name</label>
+                                            <input type="text" id="last-name" placeholder="Last Name" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-custom">
+                                        <div class="single-input-item mb-3">
+                                        <label for="street" class="required mb-1">Street</label>
+                                        <input type="text" id="street" placeholder="Street" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-custom">
+                                    <div class="single-input-item mb-3">
+                                            <label for="city" class="required mb-1">City</label>
+                                            <input type="text" id="city" placeholder="City" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-custom">
+                                        <div class="single-input-item mb-3">
+                                            <label for="state" class="required mb-1">State</label>
+                                            <input type="text" id="state" placeholder="State" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-custom">
+                                            <div class="single-input-item mb-3">
+                                            <label for="zip-code" class="required mb-1">Zip Code</label>
+                                            <input type="text" id="zip-code" placeholder="Zip Code" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-custom">
+                                        <div class="single-input-item mb-3">
+                                            <label for="phone-number" class="required mb-1">Phone Number</label>
+                                            <input type="text" id="phone-number" placeholder="Phone Number" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="single-input-item single-item-button">
+                                    <button class="btn obrien-button primary-btn" id="add-address">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 <!-- my account wrapper end -->
 @section FooterScripts {
     <script src="~/js/account.js"></script>
