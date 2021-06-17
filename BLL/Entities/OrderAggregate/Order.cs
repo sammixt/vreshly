@@ -33,6 +33,7 @@ namespace BLL.Entities.OrderAggregate
         public decimal Subtotal { get; set; }
 
         public OrderStatus Status { get; set; } = OrderStatus.Pending;
+        public OrderActualStatus ActualOrderStatus { get; set; } = OrderActualStatus.Pending;
 
         public PaymentMethod PaymentMethod { get; set; } 
 

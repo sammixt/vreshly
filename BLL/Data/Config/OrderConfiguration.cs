@@ -23,6 +23,11 @@ namespace BLL.Data.Config
                     o => o.ToString(),
                     o => (OrderStatus)Enum.Parse(typeof(OrderStatus), o)
                     );
+            builder.Property(s => s.ActualOrderStatus)
+                .HasConversion(
+                    o => o.ToString(),
+                    o => (OrderActualStatus)Enum.Parse(typeof(OrderActualStatus), o)
+                    );
 
             builder.Property(s => s.PaymentMethod)
                 .HasConversion(

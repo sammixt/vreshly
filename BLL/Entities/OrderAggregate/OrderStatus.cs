@@ -24,4 +24,26 @@ namespace BLL.Entities.OrderAggregate
         Completed
 
     }
+
+    public enum OrderActualStatus
+    {
+        [EnumMember(Value = "Pending")]
+        Pending,
+
+        [EnumMember(Value = "Payment Received")]
+        PaymentReceived,
+
+        [EnumMember(Value = "Payment Failed")]
+        PaymentFailed,
+
+        [EnumMember(Value = "Shipped")]
+        Shipped,
+
+        [EnumMember(Value = "Returned")]
+        Returned,
+
+        [EnumMember(Value = "Completed")]
+        Completed
+
+    }
 }

@@ -42,7 +42,7 @@
                 <ul class="menu-content">
                     
                     <li class="active">
-                        <a class="d-flex align-items-center" href="dashboard-ecommerce.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="eCommerce">eCommerce</span></a>
+                        <a class="d-flex align-items-center" href="/Auth/Dashboard"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="eCommerce">eCommerce</span></a>
                     </li>
                 </ul>
             </li>
@@ -96,6 +96,20 @@
                     </li>
                 </ul>
             </li>*@
+            <li class=" nav-item">
+                <a class="d-flex align-items-center" href="#"><i data-feather='shopping-cart'></i><span class="menu-title text-truncate" data-i18n="Orders">Orders</span></a>
+                <ul class="menu-content">
+                    <li>
+                        <a class="d-flex align-items-center" asp-action="Index" asp-controller="Category"><i data-feather='trending-up'></i><span class="menu-item text-truncate" data-i18n="Category">New Orders</span></a>
+                    </li>
+                    <li>
+                        <a class="d-flex align-items-center" asp-action="Index" asp-controller="Subcategory"><i data-feather='credit-card'></i><span class="menu-item text-truncate" data-i18n="Sub Category">Payment Accepted</span></a>
+                    </li>
+                    <li>
+                        <a class="d-flex align-items-center" asp-action="Index" asp-controller="Brand"><i data-feather='fast-forward'></i><span class="menu-item text-truncate" data-i18n="Brand">Process Delivery</span></a>
+                    </li>
+                </ul>
+            </li>
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="#"><i data-feather="user"></i><span class="menu-title text-truncate" data-i18n="User">User</span></a>
                 <ul class="menu-content">

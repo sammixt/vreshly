@@ -27,6 +27,8 @@ namespace com.vreshly.Dtos
 
         public string Status { get; set; }
 
+        public string ActualOrderStatus {get; set;}
+
         public string PaymentMethod { get; set; }
 
         public decimal Total { get; set; }

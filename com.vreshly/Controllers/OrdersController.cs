@@ -96,7 +96,7 @@ namespace com.vreshly.Controllers
             return Ok(_mapper.Map<IReadOnlyList<Order>,IReadOnlyList<OrderToReturnDto>>(orders));
         }
 
-        //[HttpGet]
+        [HttpGet]
         public async Task<ActionResult<OrderDto>> GetOrderByIdForUser(int id)
         {
             var email = HttpContext.User.RetrieveEmailFromPrincipal();
