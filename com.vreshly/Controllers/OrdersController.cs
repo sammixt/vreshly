@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Security.Claims;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -104,6 +105,24 @@ namespace com.vreshly.Controllers
             var orders = await _orderService.GetOrderByIdAsync(id,email);
             if (orders == null) return NotFound(new ApiResponse(404));
             return Ok(_mapper.Map<Order,OrderToReturnDto>(orders));
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> UpdateOrderStatus([FromQuery]int id, int status)
+        {
+            var orders = await _orderService.GetOrderByIdAsync(id);
+            if (orders == null) return NotFound(new ApiResponse(404));
+            orders.ActualOrderStatus = (OrderActualStatus)status;
+            if((OrderActualStatus)status == OrderActualStatus.PaymentReceived)
+            {
+                if(orders.PaymentMethod == PaymentMethod.BankPayment ||
+                    orders.PaymentMethod == PaymentMethod.PaymentOnDelivery)
+                {
+                    orders.Status = OrderStatus.PaymentReceived;
+                }
+            }
+            await _orderService.UpdateOrderStatus(orders);
+            return Ok(new ApiResponse(200, orders.ActualOrderStatus.GetAttributeOfType<EnumMemberAttribute>().Value));
         }
 
         //[HttpGet("deliveryMethod")]

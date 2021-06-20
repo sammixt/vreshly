@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 <!-- BEGIN: Head-->
 
@@ -7,10 +6,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
-    <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-    <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
-    <meta name="author" content="PIXINVENT">
-    <title>Dashboard ecommerce - Vuexy - Bootstrap HTML admin template</title>
+    <meta name="author" content="Samuel">
+    <title>Vreshly Admin</title>
     <link rel="apple-touch-icon" href="~/assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="~/assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
@@ -33,6 +30,7 @@
     <link rel="stylesheet" type="text/css" href="~/assets/css/themes/dark-layout.css">
     <link rel="stylesheet" type="text/css" href="~/assets/css/themes/bordered-layout.css">
     <link rel="stylesheet" type="text/css" href="~/assets/css/themes/semi-dark-layout.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/core/menu/menu-types/vertical-menu.css">
 
     <!-- BEGIN: Page CSS-->
 
@@ -80,7 +78,7 @@
                     <div class="form-group breadcrumb-right">
                         <div class="dropdown">
                             <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="grid"></i></button>
-                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="app-todo.html"><i class="mr-1" data-feather="check-square"></i><span class="align-middle">Todo</span></a><a class="dropdown-item" href="app-chat.html"><i class="mr-1" data-feather="message-square"></i><span class="align-middle">Chat</span></a><a class="dropdown-item" href="app-email.html"><i class="mr-1" data-feather="mail"></i><span class="align-middle">Email</span></a><a class="dropdown-item" href="app-calendar.html"><i class="mr-1" data-feather="calendar"></i><span class="align-middle">Calendar</span></a></div>
+                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="mr-1" data-feather="message-square"></i><span class="align-middle">Chat</span></a><a class="dropdown-item" href="#"><i class="mr-1" data-feather="mail"></i><span class="align-middle">Email</span></a></div>
                         </div>
                     </div>
                 </div>
@@ -95,7 +93,7 @@
 
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
-        <p class="clearfix mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a class="ml-25" href="https://1.envato.market/pixinvent_portfolio" target="_blank">Pixinvent</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span><span class="float-md-right d-none d-md-block">Hand-crafted & Made with<i data-feather="heart"></i></span></p>
+        <p class="clearfix mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a class="ml-25" href="#" target="_blank">Vreshly</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span><span class="float-md-right d-none d-md-block">Hand-crafted & Made with<i data-feather="heart"></i></span></p>
     </footer>
     <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
     <!-- END: Footer-->
@@ -131,6 +129,40 @@
                     height: 14
                 });
             }
+    axios.get(`${url}Dashboard/GetDashboardData`)
+        .then(response => {
+            const details = response.data;
+            
+            $('.new-orders-count').text(details.neworders);
+        })
+        .catch(function (error) {
+            if (error.response) {
+                toastr['error'](error.response.data.message, 'Error!', {
+                    closeButton: true,
+                    tapToDismiss: false,
+                    rtl: false
+                });
+            }
+
+        });
+
+    axios.get(`${url}Auth/GetSessionDetails`)
+        .then(response => {
+            const details = response.data;
+
+            $('#user_session_name').text(details.username);
+        })
+        .catch(function (error) {
+            if (error.response) {
+                toastr['error'](error.response.data.message, 'Error!', {
+                    closeButton: true,
+                    tapToDismiss: false,
+                    rtl: false
+                });
+            }
+
+        });
+
         })</script>
 </body>
 <!-- END: Body-->

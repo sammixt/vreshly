@@ -22,22 +22,7 @@
                             </tr>
                         </thead>
                         <tbody id="wishlist_rows">
-                            @*@if (Model.Any())
-                            {
-                                foreach (var wish in Model)
-                                {
-                                    <tr>
-                                        <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="@wish.Product.MainImage" alt="Product" /></a></td>
-                                        <td class="pro-title"><a href="#">@wish.Product.ProductName <br> s / green</a></td>
-                                        <td class="pro-price"><span>NGN @wish.Product.DiscountPrice</span></td>
-                                        <td class="pro-stock"><span><strong>@(wish.Product.SoldOut ? "Out of Stock" : "In Stock")</strong></span></td>
-                                        <td class="pro-cart"><a href="checkout.html" class="btn obrien-button primary-btn text-uppercase">Add to Cart</a></td>
-                                        <td class="pro-remove"><a href="#"><i class="ion-trash-b"></i></a></td>
-                                    </tr>
-                                }
-                            }*@
-
-
+                       
                         </tbody>
                     </table>
                 </div>

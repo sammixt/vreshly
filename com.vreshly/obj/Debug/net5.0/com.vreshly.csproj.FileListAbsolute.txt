@@ -176,6 +176,8 @@
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Account/Information.cshtml.g.cs
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Account/Login.cshtml.g.cs
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Account/Register.cshtml.g.cs
+/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/AdminOrder/OrderDetails.cshtml.g.cs
+/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/AdminOrder/Orders.cshtml.g.cs
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Auth/Dashboard.cshtml.g.cs
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Auth/Index.cshtml.g.cs
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Brand/Index.cshtml.g.cs
@@ -184,6 +186,7 @@
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Home/Contact.cshtml.g.cs
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Home/Index.cshtml.g.cs
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Home/Privacy.cshtml.g.cs
+/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Newsletter/Index.cshtml.g.cs
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Product/Index.cshtml.g.cs
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Product/ProductDetail.cshtml.g.cs
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Debug/net5.0/Razor/Views/Shared/Error.cshtml.g.cs

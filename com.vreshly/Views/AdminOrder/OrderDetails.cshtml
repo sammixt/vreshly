@@ -1,0 +1,164 @@
+@model com.vreshly.Dtos.OrderToReturnDto
+<div class="content-body">
+    <div class="row match-height">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="badge badge-primary">OrderId: @Model.PaymentIntentId</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Order Detail</h4>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical font-medium-3 cursor-pointer">
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <circle cx="12" cy="5" r="1"></circle>
+                        <circle cx="12" cy="19" r="1"></circle>
+                    </svg>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tr>
+                            <th>Name</th>
+                            <td>@Model.ShipToAddress.FirstName @Model.ShipToAddress.LastName</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>@Model.BuyerEmail</td>
+                        </tr>
+                        <tr>
+                            <th>Payment Type</th>
+                            <td>@Model.PaymentMethod</td>
+                        </tr>
+                        <tr>
+                            <th>Delivery Type</th>
+                            <td>@Model.DeliveryMethod</td>
+                        </tr>
+                        <tr>
+                            <th>Total</th>
+                            <td>@Model.Total</td>
+                        </tr>
+                        <tr>
+                            <th>Date</th>
+                            <td>@Model.OrderDateFormated</td>
+                        </tr>
+                        <tr>
+                            <th>Payment Status</th>
+                            <td>@Model.Status</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Shipping Address</h4>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical font-medium-3 cursor-pointer">
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <circle cx="12" cy="5" r="1"></circle>
+                        <circle cx="12" cy="19" r="1"></circle>
+                    </svg>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tr>
+                            <th>Name</th>
+                            <td>@Model.ShipToAddress.FirstName @Model.ShipToAddress.LastName</td>
+                        </tr>
+                        <tr>
+                            <th>Phone</th>
+                            <td>@Model.ShipToAddress.PhoneNumber</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>@Model.BuyerEmail</td>
+                        </tr>
+                        <tr>
+                            <th>Address</th>
+                            <td>@Model.ShipToAddress.Street @Model.ShipToAddress.City</td>
+                        </tr>
+                        <tr>
+                            <th>State</th>
+                            <td>@Model.ShipToAddress.State</td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>@Model.ActualOrderStatus</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row match-height">
+        <div class="col-lg-12 col-md-12 col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Product Detail</h4>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical font-medium-3 cursor-pointer">
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <circle cx="12" cy="5" r="1"></circle>
+                        <circle cx="12" cy="19" r="1"></circle>
+                    </svg>
+                </div>
+                <div class="card-body">
+                    <table class="table table-stripped">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Image</th>
+                                <th>Quantity</th>
+                                <th>Unit Price</th>
+                                <th>Total Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.OrderItems.Any())
+                            {
+                                foreach (var item in Model.OrderItems)
+                                {
+                                    <tr>
+                                        <td>@item.ProductName</td>
+                                        <td>
+                                            <div class="avatar  mr-1"><img src="@item.PictureUrl" alt="Avatar" width="50" height="50"></div>
+                                        </td>
+                                        <td>@item.Quantity</td>
+                                        <td>@item.Price</td>
+                                        <td>@(item.Quantity * item.Price)</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <div class="demo-inline-spacing">
+                        @if (@Model.ActualOrderStatus == "Pending")
+                        {
+                            <button type="button" class="btn btn-success waves-effect waves-float waves-light" id="confirm-payment" data-id="@Model.Id">Confirm payment</button>
+                            <button type="button" class="btn btn-danger waves-effect waves-float waves-light" id="decline-payment" data-id="@Model.Id">Decline payment</button>
+                        }
+                        else if (@Model.ActualOrderStatus == "Payment Received")
+                        {
+                            <button type="button" class="btn btn-warning waves-effect waves-float waves-light" id="process-delivery" data-id="@Model.Id">Process Delivery</button>
+                        }
+                        else if (@Model.ActualOrderStatus == "Processing Delivery")
+                        {
+                            <button type="button" class="btn btn-info waves-effect waves-float waves-light" id="complete" data-id="@Model.Id">Complete</button>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section FooterScripts{    
+    <script src="~/js/admin-orderdetails.js"></script>
+} 

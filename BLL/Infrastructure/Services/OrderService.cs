@@ -67,6 +67,12 @@ namespace BLL.Infrastructure.Services
             return await _unitOfWork.Repository<Order>().GetEntitiesWithSpec(spec);
         }
 
+        public async Task<Order> GetOrderByIdAsync(int id)
+        {
+            var spec = new OrdersWithItemsAndOrderingSpecifications((long)id);
+            return await _unitOfWork.Repository<Order>().GetEntitiesWithSpec(spec);
+        }
+
         public async Task<Order> GetOrdersByPaymentIntent(string paymentIntentId)
         {
             var spec = new OrdersSpecification(paymentIntentId);
@@ -79,6 +85,22 @@ namespace BLL.Infrastructure.Services
 
             return await _unitOfWork.Repository<Order>().ListAsync(spec);
         }
+
+        public async Task<IReadOnlyList<Order>> GetNewOrders()
+        {
+            var spec = new OrdersSpecification(OrderStatus.PaymentReceived,PaymentMethod.OnlinePayment, 
+            OrderStatus.Pending, PaymentMethod.BankPayment,PaymentMethod.PaymentOnDelivery,OrderActualStatus.Pending);
+
+            return await _unitOfWork.Repository<Order>().ListAsync(spec);
+        }
+
+        public async Task<IReadOnlyList<Order>> GetOrdersByActualSatus(OrderActualStatus orderActualStatus)
+        {
+            var spec = new OrdersSpecification(orderActualStatus);
+
+            return await _unitOfWork.Repository<Order>().ListAsync(spec);
+        }
+
 
         public async Task UpdateOrderStatus(Order order)
         {

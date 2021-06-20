@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Obrien - Organic Food HTML5 Template</title>
+    <title>Vreshly - Food store</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="~/frontendassets/css/plugins/nice-select.min.css">
     <!-- Magnific Popup -->
     <link rel="stylesheet" href="~/frontendassets/css/plugins/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/plugins/extensions/ext-component-toastr.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/css/extensions/toastr.min.css">
 
     <!-- Vendor & Plugins CSS (Please remove the comment from below vendor.min.css & plugins.min.css for better website load performance and remove css files from the above) -->
     <!-- <link rel="stylesheet" href="~/frontendassets/css/vendor/vendor.min.css">
@@ -52,7 +54,7 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
                                     <div class="header-logo d-flex align-items-center">
-                                        <a href="index.html">
+                                        <a asp-action="Index" asp-controller="Home">
                                             <img class="img-full" src="~/frontendassets/images/logo/logo.png" alt="Header Logo">
                                         </a>
                                     </div>
@@ -61,7 +63,7 @@
                                     <nav class="main-nav d-flex justify-content-center">
                                         <ul class="nav">
                                             <li>
-                                                <a class="active" href="index.html">
+                                                <a class="active" asp-action="Index" asp-controller="Home">
                                                     <span class="menu-text"> Home</span>
                                                     <i class="fa fa-angle-down"></i>
                                                 </a>
@@ -72,10 +74,10 @@
                                             </li>
                                             <li>
                                                 <a asp-action="Index" asp-controller="Shop">
-                                                    <span class="menu-text">Shop</span>
+                                                    <span class="menu-text">Categories</span>
                                                     <i class="fa fa-angle-down"></i>
                                                 </a>
-                                                <div class="mega-menu dropdown-hover">
+                                                <div class="mega-menu dropdown-hover category-one">
                                                     @*<div class="menu-colum">
                                                             <ul>
                                                                 <li><span class="mega-menu-text">Shop</span></li>
@@ -96,7 +98,7 @@
                                                                 <li><a href="countdown-product-details.html">Countdown Product</a></li>
                                                             </ul>
                                                         </div>*@
-                                                    <div class="menu-colum">
+                                                    @*<div class="menu-colum">
                                                         <ul>
                                                             <li><span class="mega-menu-text">Others</span></li>
                                                             <li><a href="error-404.html">Error 404</a></li>
@@ -105,25 +107,10 @@
                                                             <li><a asp-action="Checkout" asp-controller="Shop">Checkout</a></li>
                                                             <li><a asp-action="WishList" asp-controller="Shop">Wishlist Page</a></li>
                                                         </ul>
-                                                    </div>
+                                                    </div>*@
                                                 </div>
                                             </li>
-                                            @*<li>
-                                                    <a href="blog-details-fullwidth.html">
-                                                        <span class="menu-text"> Blog</span>
-                                                        <i class="fa fa-angle-down"></i>
-                                                    </a>
-                                                    <ul class="dropdown-submenu dropdown-hover">
-                                                        <li><a href="blog.html">Blog Left Sidebar</a></li>
-                                                        <li><a href="blog-list-right-sidebar.html">Blog List Right Sidebar</a></li>
-                                                        <li><a href="blog-list-fullwidth.html">Blog List Fullwidth</a></li>
-                                                        <li><a href="blog-grid.html">Blog Grid Page</a></li>
-                                                        <li><a href="blog-grid-right-sidebar.html">Blog Grid Right Sidebar</a></li>
-                                                        <li><a href="blog-grid-fullwidth.html">Blog Grid Fullwidth</a></li>
-                                                        <li><a href="blog-details-sidebar.html">Blog Details Sidebar</a></li>
-                                                        <li><a href="blog-details-fullwidth.html">Blog Details Fullwidth</a></li>
-                                                    </ul>
-                                                </li>*@
+
                                             <li>
                                                 <a href="#">
                                                     <span class="menu-text"> Pages</span>
@@ -131,10 +118,14 @@
                                                 </a>
                                                 <ul class="dropdown-submenu dropdown-hover">
                                                     <li><a href="frequently-questions.html">FAQ</a></li>
-                                                    <li><a asp-action="Information" asp-controller="Account">My Account</a></li>
-                                                    @* If user is logged in hide this *@
-                                                    <li><a asp-action="Login" asp-controller="Account">Login</a></li>
-                                                    <li><a asp-action="Register" asp-controller="Account">Register</a></li>
+                                                    <li class="logout"><a asp-action="Information" asp-controller="Account">My Account</a></li>
+                                                    <li class="logout"><a asp-action="Cart" asp-controller="Shop">Cart</a></li>
+                                                    <li class="logout"><a asp-action="Checkout" asp-controller="Shop">Checkout</a></li>
+                                                    <li class="logout"><a asp-action="WishList" asp-controller="Shop">Wishlist</a></li>
+                                                    <li class="logout"><a asp-action="Index" asp-controller="Shop">Shop</a></li>
+
+                                                    <li class="login_register"><a asp-action="Login" asp-controller="Account">Login</a></li>
+                                                    <li class="login_register"><a asp-action="Register" asp-controller="Account">Register</a></li>
                                                 </ul>
                                             </li>
                                             <li>
@@ -154,74 +145,19 @@
                                     <div class="header-right-area main-nav">
                                         <ul class="nav">
                                             <li class="login-register-wrap d-none d-xl-flex">
+                                                <span class="logout"><a class="logout-btn">Logout</a></span>
                                                 <span class="welcome_msg"></span>
                                                 <span class="login_register"><a asp-action="Login" asp-controller="Account">Login</a></span>
                                                 <span class="login_register"><a asp-action="Register" asp-controller="Account">Register</a></span>
                                             </li>
-                                            @*<li class="sidemenu-wrap d-none d-lg-flex">
-                                                    <a href="#">USD <i class="fa fa-caret-down"></i> </a>
-                                                    <ul class="dropdown-sidemenu dropdown-hover-2 dropdown-language">
-                                                        <li><a href="#">USD - US Dollar</a></li>
-                                                        <li><a href="#">EUR - Euro</a></li>
-                                                        <li><a href="#">GBP - British Pound</a></li>
-                                                        <li><a href="#">INR - Indian Rupee</a></li>
-                                                        <li><a href="#">BDT - Bangladesh Taka</a></li>
-                                                        <li><a href="#">JPY - Japan Yen</a></li>
-                                                        <li><a href="#">CAD - Canada Dollar</a></li>
-                                                        <li><a href="#">AUD - Australian Dollar</a></li>
-                                                    </ul>
-                                                </li>*@
+
                                             <li class="minicart-wrap">
                                                 <a href="#" class="minicart-btn toolbar-btn">
                                                     <i class="ion-bag"></i>
                                                     <span class="cart-item_count">3</span>
                                                 </a>
                                                 <div class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
-                                                    @*<div class="single-cart-item">
-                                                            <div class="cart-img">
-                                                                <a href="cart.html"><img src="~/frontendassets/images/cart/1.jpg" alt=""></a>
-                                                            </div>
-                                                            <div class="cart-text">
-                                                                <h5 class="title"><a href="cart.html">11. Product with video - navy</a></h5>
-                                                                <div class="cart-text-btn">
-                                                                    <div class="cart-qty">
-                                                                        <span>1×</span>
-                                                                        <span class="cart-price">$98.00</span>
-                                                                    </div>
-                                                                    <button type="button"><i class="ion-trash-b"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="single-cart-item">
-                                                            <div class="cart-img">
-                                                                <a href="cart.html"><img src="~/frontendassets/images/cart/2.jpg" alt=""></a>
-                                                            </div>
-                                                            <div class="cart-text">
-                                                                <h5 class="title"><a href="cart.html" title="10. This is the large title for testing large title and there is an image for testing - white">10. This is the large title for testing...</a></h5>
-                                                                <div class="cart-text-btn">
-                                                                    <div class="cart-qty">
-                                                                        <span>1×</span>
-                                                                        <span class="cart-price">$98.00</span>
-                                                                    </div>
-                                                                    <button type="button"><i class="ion-trash-b"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="single-cart-item">
-                                                            <div class="cart-img">
-                                                                <a href="cart.html"><img src="~/frontendassets/images/cart/3.jpg" alt=""></a>
-                                                            </div>
-                                                            <div class="cart-text">
-                                                                <h5 class="title"><a href="cart.html">1. New and sale badge product - s / red</a></h5>
-                                                                <div class="cart-text-btn">
-                                                                    <div class="cart-qty">
-                                                                        <span>1×</span>
-                                                                        <span class="cart-price">$98.00</span>
-                                                                    </div>
-                                                                    <button type="button"><i class="ion-trash-b"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>*@
+
                                                     <div class="cart-price-total d-flex justify-content-between">
                                                         <h5>Total :</h5>
                                                         <h5 class="total"></h5>
@@ -254,7 +190,7 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
                                     <div class="header-logo">
-                                        <a href="index.html">
+                                        <a asp-action="Index" asp-controller="Home">
                                             <img class="img-full" src="~/frontendassets/images/logo/logo.png" alt="Header Logo">
                                         </a>
                                     </div>
@@ -263,7 +199,7 @@
                                     <nav class="main-nav d-flex justify-content-center">
                                         <ul class="nav">
                                             <li>
-                                                <a class="active" href="index.html">
+                                                <a class="active" asp-action="Index" asp-controller="Home">
                                                     <span class="menu-text"> Home</span>
                                                     <i class="fa fa-angle-down"></i>
                                                 </a>
@@ -275,31 +211,12 @@
                                             </li>
                                             <li>
                                                 <a asp-action="Index" asp-controller="Shop">
-                                                    <span class="menu-text">Shop</span>
+                                                    <span class="menu-text">Categories</span>
                                                     <i class="fa fa-angle-down"></i>
                                                 </a>
-                                                <div class="mega-menu dropdown-hover">
+                                                <div class="mega-menu dropdown-hover category-one">
+
                                                     @*<div class="menu-colum">
-                                                            <ul>
-                                                                <li><span class="mega-menu-text">Shop</span></li>
-                                                                <li><a href="shop.html">Shop Left Sidebar</a></li>
-                                                                <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                                                <li><a href="shop-list-left.html">Shop List Left Sidebar</a></li>
-                                                                <li><a href="shop-list-right.html">Shop List Right Sidebar</a></li>
-                                                                <li><a href="shop-fullwidth.html">Shop Full Width</a></li>
-                                                            </ul>
-                                                        </div>*@
-                                                    @*<div class="menu-colum">
-                                                            <ul>
-                                                                <li><span class="mega-menu-text">Product</span></li>
-                                                                <li><a href="product-details.html">Single Product</a></li>
-                                                                <li><a href="variable-product-details.html">Variable Product</a></li>
-                                                                <li><a href="external-product-details.html">External Product</a></li>
-                                                                <li><a href="gallery-product-details.html">Gallery Product</a></li>
-                                                                <li><a href="countdown-product-details.html">Countdown Product</a></li>
-                                                            </ul>
-                                                        </div>*@
-                                                    <div class="menu-colum">
                                                         <ul>
                                                             <li><span class="mega-menu-text">Others</span></li>
                                                             <li><a href="error-404.html">Error 404</a></li>
@@ -308,25 +225,10 @@
                                                             <li><a asp-action="Checkout" asp-controller="Shop">Checkout</a></li>
                                                             <li><a asp-action="WishList" asp-controller="Shop">Wishlist</a></li>
                                                         </ul>
-                                                    </div>
+                                                    </div>*@
                                                 </div>
                                             </li>
-                                            @*<li>
-                                                    <a href="blog-details-fullwidth.html">
-                                                        <span class="menu-text"> Blog</span>
-                                                        <i class="fa fa-angle-down"></i>
-                                                    </a>
-                                                    <ul class="dropdown-submenu dropdown-hover">
-                                                        <li><a href="blog.html">Blog Left Sidebar</a></li>
-                                                        <li><a href="blog-list-right-sidebar.html">Blog List Right Sidebar</a></li>
-                                                        <li><a href="blog-list-fullwidth.html">Blog List Fullwidth</a></li>
-                                                        <li><a href="blog-grid.html">Blog Grid Page</a></li>
-                                                        <li><a href="blog-grid-right-sidebar.html">Blog Grid Right Sidebar</a></li>
-                                                        <li><a href="blog-grid-fullwidth.html">Blog Grid Fullwidth</a></li>
-                                                        <li><a href="blog-details-sidebar.html">Blog Details Sidebar</a></li>
-                                                        <li><a href="blog-details-fullwidth.html">Blog Details Fullwidth</a></li>
-                                                    </ul>
-                                                </li>*@
+
                                             <li>
                                                 <a href="#">
                                                     <span class="menu-text"> Pages</span>
@@ -334,11 +236,14 @@
                                                 </a>
                                                 <ul class="dropdown-submenu dropdown-hover">
                                                     <li><a href="frequently-questions.html">FAQ</a></li>
-                                                    <li><a asp-action="Information" asp-controller="Account">My Account</a></li>
+                                                    <li class="logout"><a asp-action="Information" asp-controller="Account">My Account</a></li>
+                                                    <li class="logout"><a asp-action="Cart" asp-controller="Shop">Cart</a></li>
+                                                    <li class="logout"><a asp-action="Checkout" asp-controller="Shop">Checkout</a></li>
+                                                    <li class="logout"><a asp-action="WishList" asp-controller="Shop">Wishlist</a></li>
+                                                    <li class="logout"><a asp-action="Index" asp-controller="Shop">Shop</a></li>
 
-
-                                                    <li><a asp-action="Login" asp-controller="Account">Login</a></li>
-                                                    <li><a asp-action="Register" asp-controller="Account">Register</a></li>
+                                                    <li class="login_register"><a asp-action="Login" asp-controller="Account">Login</a></li>
+                                                    <li class="login_register"><a asp-action="Register" asp-controller="Account">Register</a></li>
                                                 </ul>
                                             </li>
                                             <li>
@@ -358,74 +263,19 @@
                                     <div class="header-right-area main-nav">
                                         <ul class="nav">
                                             <li class="login-register-wrap d-none d-xl-flex">
+                                                <span class="logout"><a class="logout-btn">Logout</a></span>
                                                 <span class="welcome_msg"></span>
                                                 <span class="login_register"><a asp-action="Login" asp-controller="Account">Login</a></span>
                                                 <span class="login_register"><a asp-action="Register" asp-controller="Account">Register</a></span>
                                             </li>
-                                            @*<li class="sidemenu-wrap d-none d-lg-flex">
-                                                    <a href="#">USD <i class="fa fa-caret-down"></i> </a>
-                                                    <ul class="dropdown-sidemenu dropdown-hover-2 dropdown-language">
-                                                        <li><a href="#">USD - US Dollar</a></li>
-                                                        <li><a href="#">EUR - Euro</a></li>
-                                                        <li><a href="#">GBP - British Pound</a></li>
-                                                        <li><a href="#">INR - Indian Rupee</a></li>
-                                                        <li><a href="#">BDT - Bangladesh Taka</a></li>
-                                                        <li><a href="#">JPY - Japan Yen</a></li>
-                                                        <li><a href="#">CAD - Canada Dollar</a></li>
-                                                        <li><a href="#">AUD - Australian Dollar</a></li>
-                                                    </ul>
-                                                </li>*@
+
                                             <li class="minicart-wrap">
                                                 <a href="#" class="minicart-btn toolbar-btn">
                                                     <i class="ion-bag"></i>
                                                     <span class="cart-item_count">0</span>
                                                 </a>
                                                 <div class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
-                                                    @*<div class="single-cart-item">
-                                                            <div class="cart-img">
-                                                                <a href="cart.html"><img src="~/frontendassets/images/cart/1.jpg" alt=""></a>
-                                                            </div>
-                                                            <div class="cart-text">
-                                                                <h5 class="title"><a href="cart.html">11. Product with video - navy</a></h5>
-                                                                <div class="cart-text-btn">
-                                                                    <div class="cart-qty">
-                                                                        <span>1×</span>
-                                                                        <span class="cart-price">$98.00</span>
-                                                                    </div>
-                                                                    <button type="button"><i class="ion-trash-b"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="single-cart-item">
-                                                            <div class="cart-img">
-                                                                <a href="cart.html"><img src="~/frontendassets/images/cart/2.jpg" alt=""></a>
-                                                            </div>
-                                                            <div class="cart-text">
-                                                                <h5 class="title"><a href="cart.html" title="10. This is the large title for testing large title and there is an image for testing - white">10. This is the large title for testing...</a></h5>
-                                                                <div class="cart-text-btn">
-                                                                    <div class="cart-qty">
-                                                                        <span>1×</span>
-                                                                        <span class="cart-price">$98.00</span>
-                                                                    </div>
-                                                                    <button type="button"><i class="ion-trash-b"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="single-cart-item">
-                                                            <div class="cart-img">
-                                                                <a href="cart.html"><img src="~/frontendassets/images/cart/3.jpg" alt=""></a>
-                                                            </div>
-                                                            <div class="cart-text">
-                                                                <h5 class="title"><a href="cart.html">1. New and sale badge product - s / red</a></h5>
-                                                                <div class="cart-text-btn">
-                                                                    <div class="cart-qty">
-                                                                        <span>1×</span>
-                                                                        <span class="cart-price">$98.00</span>
-                                                                    </div>
-                                                                    <button type="button"><i class="ion-trash-b"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>*@
+
                                                     <div class="cart-price-total d-flex justify-content-between">
                                                         <h5>Total :</h5>
                                                         <h5 class="total"></h5>
@@ -480,26 +330,7 @@
                                     <li class="menu-item-has-children">
                                         <a asp-action="Index" asp-controller="Shop">Shop</a>
                                         <ul class="megamenu dropdown">
-                                            @*<li class="mega-title has-children">
-                                                    <a href="#">Shop Layouts</a>
-                                                    <ul class="dropdown">
-                                                        <li><a href="shop.html">Shop Left Sidebar</a></li>
-                                                        <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                                        <li><a href="shop-list-left.html">Shop List Left Sidebar</a></li>
-                                                        <li><a href="shop-list-right.html">Shop List Right Sidebar</a></li>
-                                                        <li><a href="shop-fullwidth.html">Shop Full Width</a></li>
-                                                    </ul>
-                                                </li>*@
-                                            @*<li class="mega-title has-children">
-                                                    <a href="#">Product Details</a>
-                                                    <ul class="dropdown">
-                                                        <li><a href="product-details.html">Single Product Details</a></li>
-                                                        <li><a href="variable-product-details.html">Variable Product Details</a></li>
-                                                        <li><a href="external-product-details.html">External Product Details</a></li>
-                                                        <li><a href="gallery-product-details.html">Gallery Product Details</a></li>
-                                                        <li><a href="countdown-product-details.html">Countdown Product Details</a></li>
-                                                    </ul>
-                                                </li>*@
+
                                             <li class="mega-title has-children">
                                                 <a href="#">Others</a>
                                                 <ul class="dropdown">
@@ -530,15 +361,26 @@
                                         <a href="#">Pages</a>
                                         <ul class="dropdown">
                                             <li><a href="frequently-questions.html">FAQ</a></li>
-                                            <li><a asp-action="Information" asp-controller="Account">My Account</a></li>
+                                            <li class="logout"><a asp-action="Information" asp-controller="Account">My Account</a></li>
+                                            <li class="logout"><a asp-action="Cart" asp-controller="Shop">Cart</a></li>
+                                            <li class="logout"><a asp-action="Checkout" asp-controller="Shop">Checkout</a></li>
+                                            <li class="logout"><a asp-action="WishList" asp-controller="Shop">Wishlist</a></li>
+                                            <li class="logout"><a asp-action="Index" asp-controller="Shop">Shop</a></li>
 
-
-                                            <li><a asp-action="Login" asp-controller="Account">Login</a></li>
-                                            <li><a asp-action="Register" asp-controller="Account">Register</a></li>
+                                            <li class="login_register"><a asp-action="Login" asp-controller="Account">Login</a></li>
+                                            <li class="login_register"><a asp-action="Register" asp-controller="Account">Register</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="contact-us.html">Contact</a></li>
+                                    <li>
+                                        <a asp-action="About" asp-controller="Home">
+                                            <span class="menu-text"> About</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-action="Contact" asp-controller="Home">
+                                            <span class="menu-text">Contact</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </nav>
                             <!-- mobile menu navigation end -->
@@ -551,23 +393,14 @@
                                     <li class="menu-item-has-children">
                                         <a href="#">My Account</a>
                                         <ul class="dropdown">
-                                            <li><a asp-action="Login" asp-controller="Account">Login</a></li>
-                                            <li><a asp-action="Register" asp-controller="Account">Register</a></li>
+                                            <li class="logout"><a asp-action="Information" asp-controller="Account">My Account</a></li>
+
+
+                                            <li class="login_register"><a asp-action="Login" asp-controller="Account">Login</a></li>
+                                            <li class="login_register"><a asp-action="Register" asp-controller="Account">Register</a></li>
                                         </ul>
                                     </li>
-                                    @*<li class="menu-item-has-children">
-                                            <a href="#">Currency:USD</a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">USD - US Dollar</a></li>
-                                                <li><a href="#">EUR - Euro</a></li>
-                                                <li><a href="#">GBP - British Pound</a></li>
-                                                <li><a href="#">INR - Indian Rupee</a></li>
-                                                <li><a href="#">BDT - Bangladesh Taka</a></li>
-                                                <li><a href="#">JPY - Japan Yen</a></li>
-                                                <li><a href="#">CAD - Canada Dollar</a></li>
-                                                <li><a href="#">AUD - Australian Dollar</a></li>
-                                            </ul>
-                                        </li>*@
+
                                 </ul>
                             </nav>
                             <!-- mobile menu navigation end -->
@@ -700,8 +533,8 @@
                                                         <h4 class="title-2"> <a asp-action="ProductDetail" asp-controller="Shop" asp-route-productId="@featuredProduct.Id">@featuredProduct.ProductName</a></h4>
                                                     </div>
                                                     <div class="price-box">
-                                                        <span class="regular-price ">NGN @featuredProduct.DiscountPrice</span>
-                                                        <span class="old-price"><del>NGN @featuredProduct.SellingPrice</del></span>
+                                                        <span class="regular-price ">₦ @featuredProduct.DiscountPrice</span>
+                                                        <span class="old-price"><del>₦ @featuredProduct.SellingPrice</del></span>
                                                     </div>
                                                 </div>
                                                 <div class="add-action d-flex position-absolute">
@@ -812,8 +645,8 @@
                                                         <h4 class="title-2"> <a asp-action="ProductDetail" asp-controller="Shop" asp-route-productId="@bestseller.Id">@bestseller.ProductName</a></h4>
                                                     </div>
                                                     <div class="price-box">
-                                                        <span class="regular-price ">NGN @bestseller.DiscountPrice</span>
-                                                        <span class="old-price"><del>NGN @bestseller.SellingPrice</del></span>
+                                                        <span class="regular-price ">₦ @bestseller.DiscountPrice</span>
+                                                        <span class="old-price"><del>₦ @bestseller.SellingPrice</del></span>
                                                     </div>
                                                 </div>
                                                 <div class="add-action d-flex position-absolute">
@@ -834,44 +667,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                            @*<div class="single-product position-relative">
-                                                    <div class="product-image">
-                                                        <a class="d-block" href="product-details.html">
-                                                            <img src="@bestseller.ImageTwo" alt="" class="product-image-1 w-100">
-                                                            <img src="@bestseller.ImageThree" alt="" class="product-image-2 position-absolute w-100">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-content">
-                                                        <div class="product-rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                        </div>
-                                                        <div class="product-title">
-                                                            <h4 class="title-2"> <a href="product-details.html">@bestseller.ProductName</a></h4>
-                                                        </div>
-                                                        <div class="price-box">
-                                                            <span class="regular-price ">NGN @bestseller.DiscountPrice</span>
-                                                            <span class="old-price"><del>NGN @bestseller.SellingPrice</del></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="add-action d-flex position-absolute">
-                                                        <a href="cart.html" title="Add To cart">
-                                                            <i class="ion-bag"></i>
-                                                        </a>
-                                                        <a href="compare.html" title="Compare">
-                                                            <i class="ion-ios-loop-strong"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" title="Add To Wishlist">
-                                                            <i class="ion-ios-heart-outline"></i>
-                                                        </a>
-                                                        <a href="#exampleModalCenter" data-toggle="modal" title="Quick View">
-                                                            <i class="ion-eye"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>*@
+
                                         </div> }
                                 } }
                         </div>
@@ -920,8 +716,8 @@
                         <div class="feature-content-countdown">
                             <h2 class="title">8. Countdown Product</h2>
                             <div class="price-box">
-                                <span class="regular-price">NGN 80.00</span>
-                                <span class="old-price"><del>NGN 90.00</del></span>
+                                <span class="regular-price">₦ 80.00</span>
+                                <span class="old-price"><del>₦ 90.00</del></span>
                             </div>
                             <p class="desc-content">
                                 Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
@@ -1032,11 +828,11 @@
                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-custom">
                             <div class="single-footer-widget m-0">
                                 <div class="footer-logo">
-                                    <a href="index.html">
+                                    <a asp-action="Index" asp-controller="Home">
                                         <img src="~/frontendassets/images/logo/footer.png" alt="Logo Image">
                                     </a>
                                 </div>
-                                <p class="desc-content">Vreshly is the best parts shop of your daily nutritions. What kind of nutrition do you need you can get here soluta nobis</p>
+                                <p class="desc-content">Vreshly is the best parts shop of your daily nutritions. What kind of nutrition do you need you can get here</p>
                                 <div class="social-links">
                                     <ul class="d-flex">
                                         <li>
@@ -1108,7 +904,7 @@
                             <div class="single-footer-widget">
                                 <h2 class="widget-title">See Information</h2>
                                 <div class="widget-body">
-                                    <address>123, H2, Road #21, Main City, Your address goes here.<br>Phone: 01254 698 785, 36598 254 987<br>Email: https://example.com</address>
+                                    <address>Alayode Close, Opebi - Ikeja, Lagos, Nigeria.<br>Phone: +234 8108105100<br>Email: <a href="mailto:contact@vreshly.com">contact@vreshly.com</a></address>
                                 </div>
                             </div>
                         </div>
@@ -1120,7 +916,7 @@
                     <div class="row">
                         <div class="col-12 text-center col-custom">
                             <div class="copyright-content">
-                                <p>Copyright © 2020 <a href="#" title="SAMMIXTECH">SAMMIXTECH</a> | Built with&nbsp;<strong>Sammixt</strong>&nbsp;by <a href="https://hasthemes.com/" title="https://hasthemes.com/">HasThemes</a>.</p>
+                                <p>Copyright © 2021 <a href="#" title="#">Vreshly Stores</a> </p>
                             </div>
                         </div>
                     </div>
@@ -1172,6 +968,24 @@
     <script src="~/frontendassets/js/plugins/jquery-ui.min.js"></script>
     <!-- jquery magnific popup js -->
     <script src="~/frontendassets/js/plugins/jquery.magnific-popup.min.js"></script>
+
+    <script src="~/assets/vendors/js/extensions/toastr.min.js"></script>
+    <script src="~/assets/js/scripts/extensions/ext-component-toastr.js"></script>
+
+    <script type="text/javascript">
+        function toast(type, message) {
+            toastr[type](`👋 ${message}`, `${capitalize(type)}!`, {
+                closeButton: true,
+                tapToDismiss: true,
+                rtl: false
+            });
+        }
+
+        function capitalize(word) {
+            const lower = word.toLowerCase();
+            return word.charAt(0).toUpperCase() + lower.slice(1);
+        }
+    </script>
 
     <!-- Main JS -->
     <script src="~/frontendassets/js/main.js"></script>

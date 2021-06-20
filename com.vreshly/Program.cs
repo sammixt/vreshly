@@ -16,7 +16,7 @@ namespace com.vreshly
 {
     public class Program
     {
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();//.Run();
 
@@ -25,18 +25,18 @@ namespace com.vreshly
                 var service = scope.ServiceProvider;
                 var loggerFactory = service.GetRequiredService<ILoggerFactory>();
 
-                try
-                {
-                    var userManager = service.GetRequiredService<UserManager<AppUser>>();
-                    var identityContext = service.GetRequiredService<AppIdentityDbContext>();
-                    await identityContext.Database.MigrateAsync();
-                    await AppIdentityDbContextSeed.SeedUserAsync(userManager);
-                }
-                catch(Exception ex)
-                {
-                    var logger = loggerFactory.CreateLogger<Program>();
-                    logger.LogError(ex, "An Error occurred durig Migration");
-                }
+                //try
+                //{
+                //    var userManager = service.GetRequiredService<UserManager<AppUser>>();
+                //    var identityContext = service.GetRequiredService<AppIdentityDbContext>();
+                //    await identityContext.Database.MigrateAsync();
+                //    await AppIdentityDbContextSeed.SeedUserAsync(userManager);
+                //}
+                //catch(Exception ex)
+                //{
+                //    var logger = loggerFactory.CreateLogger<Program>();
+                //    logger.LogError(ex, "An Error occurred durig Migration");
+                //}
             }
 
             host.Run();

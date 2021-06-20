@@ -18,6 +18,7 @@
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/bin/Debug/net5.0/BLL.dll
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/bin/Debug/net5.0/ref/BLL.dll
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/bin/Debug/net5.0/BLL.pdb
+/Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/obj/Debug/net5.0/BLL.csproj.AssemblyReference.cache
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/obj/Debug/net5.0/BLL.GeneratedMSBuildEditorConfig.editorconfig
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/obj/Debug/net5.0/BLL.AssemblyInfoInputs.cache
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/obj/Debug/net5.0/BLL.AssemblyInfo.cs
@@ -26,4 +27,3 @@
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/obj/Debug/net5.0/ref/BLL.dll
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/obj/Debug/net5.0/BLL.pdb
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/obj/Debug/net5.0/BLL.genruntimeconfig.cache
-/Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/obj/Debug/net5.0/BLL.csproj.AssemblyReference.cache

@@ -32,15 +32,24 @@ namespace BLL.Infrastructure.Identity
                 //optionsBuilder.UseSqlServer(@"Server=ESC2581\SQLEXPRESS;
                 //                                Initial Catalog=IInvest;
                 //                                Trusted_Connection=True;");
-                optionsBuilder.UseSqlServer(@"Server=localhost;
+                //optionsBuilder.UseSqlServer(@"Server=localhost;
+                //                                Initial Catalog=VreshlyUserIdentity;
+                //                                Persist Security Info=False;
+                //                                User ID=sa;
+                //                                Password=Sammy1234;
+                //                                MultipleActiveResultSets=False;
+                //                                Encrypt=True;
+                //                                TrustServerCertificate=True;
+                //                                ");
+                optionsBuilder.UseSqlServer(@"Server=tcp:vreshly.database.windows.net,1433;
                                                 Initial Catalog=VreshlyUserIdentity;
                                                 Persist Security Info=False;
-                                                User ID=sa;
-                                                Password=Sammy1234;
+                                                User ID=vreshly;
+                                                Password=Sammy@1234;
                                                 MultipleActiveResultSets=False;
                                                 Encrypt=True;
-                                                TrustServerCertificate=True;
-                                                ");
+                                                TrustServerCertificate=False;
+                                                Connection Timeout=30;");
             }
         }
 

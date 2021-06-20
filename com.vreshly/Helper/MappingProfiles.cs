@@ -59,6 +59,7 @@ namespace com.vreshly.Helper
                 .ForMember(d => d.PictureUrl, o => o.MapFrom(s => s.ItemOrdered.PictureUrl))
                 .ForMember(d => d.PictureUrl, o => o.MapFrom<OrderItemUrlResover>());
             CreateMap<WishList, WishListDto>().ReverseMap();
+            CreateMap<NewsLetterSubscription, NewsLetterDto>().ReverseMap();
 
         }
     }

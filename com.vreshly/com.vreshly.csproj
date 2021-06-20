@@ -22,6 +22,7 @@
     <Folder Include="Views\Shop\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Views\Newsletter\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
@@ -42,5 +43,8 @@
     <Content Remove="wwwroot\frontendassets\images\slider\2-2.jpg" />
     <Content Remove="wwwroot\frontendassets\images\slider\1-1.jpg" />
     <Content Remove="wwwroot\frontendassets\images\slider\1-2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\Newsletter\" />
   </ItemGroup>
 </Project>

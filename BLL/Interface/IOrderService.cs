@@ -14,9 +14,12 @@ namespace BLL.Interface
         Task<Order> GetOrdersByPaymentIntent(string paymentIntentId);
 
         Task<Order> GetOrderByIdAsync(int id, string buyerEmail);
+        Task<Order> GetOrderByIdAsync(int id);
 
         Task<IReadOnlyList<DeliveryMethod>> GetDeliveryMethodsAsync();
         Task UpdateOrderStatus(Order order);
         Task DeleteOrder(Order order);
+        Task<IReadOnlyList<Order>> GetNewOrders();
+        Task<IReadOnlyList<Order>> GetOrdersByActualSatus(OrderActualStatus orderActualStatus);
     }
 }

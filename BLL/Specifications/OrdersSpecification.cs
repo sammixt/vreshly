@@ -18,5 +18,21 @@ namespace BLL.Specifications
             AddInclude(o => o.OrderItems);
             AddInclude(o => o.DeliveryMethod);
         }
+
+        public OrdersSpecification(OrderActualStatus orderStatus)
+            : base(x => x.ActualOrderStatus == orderStatus)
+        {
+            AddInclude(o => o.OrderItems);
+            AddInclude(o => o.DeliveryMethod);
+        }
+
+        public OrdersSpecification(OrderStatus orderStatusPaid, PaymentMethod onlinepayment, 
+            OrderStatus orderStatusPending, PaymentMethod transfer, PaymentMethod ondelivery, OrderActualStatus actualStatus)
+            : base(x => ((x.Status == orderStatusPaid && x.PaymentMethod == onlinepayment)
+            || (x.Status == orderStatusPending && (x.PaymentMethod == transfer || x.PaymentMethod == ondelivery))) && x.ActualOrderStatus == actualStatus )
+        {
+            AddInclude(o => o.OrderItems);
+            AddInclude(o => o.DeliveryMethod);
+        }
     }
 }

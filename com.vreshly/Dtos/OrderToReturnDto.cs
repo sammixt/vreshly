@@ -35,6 +35,8 @@ namespace com.vreshly.Dtos
 
         public string PaymentIntentId { get; set; }
 
+        public  string  BasketId { get; set; }
+
         public string OrderDateFormated 
         {
             get

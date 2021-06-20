@@ -45,6 +45,19 @@ namespace com.vreshly.Controllers
                 return new BadRequestObjectResult(new ApiValidationErrorResponse { Errors = new[] { "Email Address is in user" } });
             }
 
+            if (!ModelState.IsValid)
+            {
+                var modelErrors = new List<string>();
+                foreach (var modelState in ModelState.Values)
+                {
+                    foreach (var modelError in modelState.Errors)
+                    {
+                        modelErrors.Add(modelError.ErrorMessage);
+                    }
+                }
+                return new BadRequestObjectResult(new ApiValidationErrorResponse { Errors = modelErrors });
+            }
+
             var user = new AppUser
             {
                 DisplayName = registerDto.DisplayName,
@@ -85,6 +98,13 @@ namespace com.vreshly.Controllers
                 Token = _tokenService.CreateToken(user),
                 DisplayName = user.DisplayName
             });
+        }
+
+        public async Task<ActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+
+            return Ok();
         }
 
         [HttpGet]

@@ -9,8 +9,10 @@ using BLL.Interface;
 using BLL.Specifications;
 using com.vreshly.Dtos;
 using com.vreshly.Errors;
+using com.vreshly.Helper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,9 +40,35 @@ namespace com.vreshly.Controllers
             return PartialView();
         }
 
+        [Authorize(AuthenticationSchemes = "Cookies")]
         public IActionResult Dashboard()
         {
+            //CheckNewClaimsUsage();
             return View();
+        }
+
+        private  void CheckNewClaimsUsage()
+        {
+            //ClaimsPrincipal currentClaimsPrincipal = Thread.CurrentPrincipal as ClaimsPrincipal;
+            //Claim nameClaim = currentClaimsPrincipal.FindFirst(ClaimTypes.Name);
+            //var value = nameClaim.Value;
+            var userName = User.Claims
+                           .First(c => c.Type == "UserName").Value;
+        }
+
+        [HttpGet]
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+        public async Task<ActionResult> GetSessionDetails()
+        {
+            var _userName = User.Claims
+                           .First(c => c.Type == "UserName").Value;
+            var _email = User.Claims
+                           .First(c => c.Type == "Email").Value;
+            return Ok(new
+            {
+                username = _userName,
+                email = _email
+            });
         }
 
         [HttpPost]
@@ -71,6 +99,14 @@ namespace com.vreshly.Controllers
             {
                 return Ok(new ApiResponse(401, "Invalid User Name or Password"));
             }
+        }
+
+        
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

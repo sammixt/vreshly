@@ -29,6 +29,7 @@ namespace BLL.Data
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
         public DbSet<WishList> WishLists { get; set; }
+        public DbSet<NewsLetterSubscription> NewsLetters { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -44,18 +45,28 @@ namespace BLL.Data
                 //                                Encrypt=True;
                 //                                TrustServerCertificate=False;
                 //                                Connection Timeout=30;");
+
+                optionsBuilder.UseSqlServer(@"Server=tcp:vreshly.database.windows.net,1433;
+                                                Initial Catalog=vreshly;
+                                                Persist Security Info=False;
+                                                User ID=vreshly;
+                                                Password=Sammy@1234;
+                                                MultipleActiveResultSets=False;
+                                                Encrypt=True;
+                                                TrustServerCertificate=False;
+                                                Connection Timeout=30;");
                 //optionsBuilder.UseSqlServer(@"Server=ESC2581\SQLEXPRESS;
                 //                                Initial Catalog=IInvest;
                 //                                Trusted_Connection=True;");
-                optionsBuilder.UseSqlServer(@"Server=localhost;
-                                                Initial Catalog=Vreshly;
-                                                Persist Security Info=False;
-                                                User ID=sa;
-                                                Password=Sammy1234;
-                                                MultipleActiveResultSets=False;
-                                                Encrypt=True;
-                                                TrustServerCertificate=True;
-                                                ");
+                //optionsBuilder.UseSqlServer(@"Server=localhost;
+                //                                Initial Catalog=Vreshly;
+                //                                Persist Security Info=False;
+                //                                User ID=sa;
+                //                                Password=Sammy1234;
+                //                                MultipleActiveResultSets=False;
+                //                                Encrypt=True;
+                //                                TrustServerCertificate=True;
+                //                                ");
             }
         }
 

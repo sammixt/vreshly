@@ -36,6 +36,12 @@ namespace BLL.Entities.OrderAggregate
         [EnumMember(Value = "Payment Failed")]
         PaymentFailed,
 
+        [EnumMember(Value = "Order Cancelled")]
+        Cancelled,
+
+        [EnumMember(Value = "Processing Delivery")]
+        Processing,
+
         [EnumMember(Value = "Shipped")]
         Shipped,
 
