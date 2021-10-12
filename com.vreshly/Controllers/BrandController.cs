@@ -9,6 +9,9 @@ using BLL.Interface;
 using BLL.Specifications;
 using com.vreshly.Dtos;
 using com.vreshly.Errors;
+using com.vreshly.Service;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,17 +25,20 @@ namespace com.vreshly.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly ILogger logger;
 
-        public BrandController(IUnitOfWork unitOfWork, IMapper mapper, IWebHostEnvironment hostEnvironment)
+        public BrandController(IUnitOfWork unitOfWork, IMapper mapper, IWebHostEnvironment hostEnvironment,
+            ILogger logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             webHostEnvironment = hostEnvironment;
+            this.logger = logger;
         }
 
 
         // GET: /<controller>
-
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Index()
         {
             var brands = await _unitOfWork.Repository<Brand>().ListAllAsync();
@@ -67,6 +73,7 @@ namespace com.vreshly.Controllers
             return Ok(BrandDto);
         }
 
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         [HttpPost]
         public async Task<ActionResult> AddBrand([FromForm] BrandDto model)
         {
@@ -90,6 +97,7 @@ namespace com.vreshly.Controllers
             return BadRequest(new ApiResponse(500, "An error occurred when adding Brand"));
         }
 
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         [HttpPut]
         public async Task<ActionResult> UpdateBrand([FromForm] BrandDto model)
         {
@@ -144,7 +152,7 @@ namespace com.vreshly.Controllers
                 }
                 catch (Exception ex)
                 {
-                    
+                    logger.Error(ex);
                 }
                 
             }
@@ -157,6 +165,7 @@ namespace com.vreshly.Controllers
             return @$"{this.webHostEnvironment.WebRootPath}/Uploads/Brand/";
         }
 
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         [HttpDelete]
         public async Task<IActionResult> DeleteBrand(int id)
         {

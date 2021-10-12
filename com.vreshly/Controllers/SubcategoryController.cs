@@ -8,6 +8,8 @@ using BLL.Interface;
 using BLL.Specifications;
 using com.vreshly.Dtos;
 using com.vreshly.Errors;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -27,6 +29,7 @@ namespace com.vreshly.Controllers
             _mapper = mapper;
         }
         // GET: /<controller>/
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Index()
         {
             ViewBag.PageName = "Sub Category";
@@ -65,7 +68,7 @@ namespace com.vreshly.Controllers
         }
 
 
-
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         [HttpPost]
         public async Task<ActionResult> AddSubCategory([FromBody] SubCategoryDto model)
         {
@@ -87,6 +90,7 @@ namespace com.vreshly.Controllers
             return BadRequest(new ApiResponse(500, "An error occurred when adding Sub Category"));
         }
 
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         [HttpPut]
         public async Task<ActionResult> UpdateSubCategory([FromBody] SubCategoryDto model)
         {
@@ -114,6 +118,7 @@ namespace com.vreshly.Controllers
             return BadRequest(new ApiResponse(500, "An error occurred when Updating Sub Category"));
         }
 
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         [HttpDelete]
         public async Task<IActionResult> DeleteSubCategory(int id)
         {

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using BLL.Entities;
 using BLL.Entities.OrderAggregate;
 using BLL.Interface;
 using com.vreshly.Dtos;
@@ -14,12 +15,15 @@ namespace com.vreshly.Controllers
         private readonly IDashboardService _dashbaordService;
         private readonly IOrderService _orderService;
         private readonly IMapper _mapper;
+        private readonly IRecurringOrderService _recurringOrderService;
 
-        public DashboardController(IDashboardService dashboardService, IOrderService orderService, IMapper mapper)
+        public DashboardController(IDashboardService dashboardService, IOrderService orderService, IMapper mapper,
+            IRecurringOrderService recurringOrderService)
         {
             _dashbaordService = dashboardService;
             _orderService = orderService;
             _mapper = mapper;
+            _recurringOrderService = recurringOrderService;
         }
 
         public async Task<ActionResult> GetDashboardData()
@@ -40,6 +44,14 @@ namespace com.vreshly.Controllers
                 revenuePerMonth = monthsRevenue,
                 neworders = newOrders
             });
+        }
+
+        public async Task<ActionResult> GetReccurringOrdersDueInFiveDays()
+        {
+            var allRecurringOrders = await _recurringOrderService.GetAllRecurringOrders();
+            var allRecurringOrdersDto = _mapper.Map<IEnumerable<RecurringOrder>, IEnumerable<RecurringOrderDto>>(allRecurringOrders);
+            var dueInFiveDays = allRecurringOrdersDto.Where(x => x.DateDifference < 5).ToList();
+            return Ok(dueInFiveDays);
         }
 
        

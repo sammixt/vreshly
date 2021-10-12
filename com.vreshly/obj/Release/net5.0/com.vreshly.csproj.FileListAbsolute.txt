@@ -107,3 +107,14 @@
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Release/net5.0/ref/com.vreshly.dll
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Release/net5.0/com.vreshly.pdb
 /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Release/net5.0/com.vreshly.genruntimeconfig.cache
+/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Release/net5.0/Razor/Views/AdminMail/Index.cshtml.g.cs
+/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Release/net5.0/Razor/Views/AdminRecurring/Details.cshtml.g.cs
+/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Release/net5.0/Razor/Views/AdminRecurring/NewOrders.cshtml.g.cs
+/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Release/net5.0/Razor/Views/Customers/CustomerOrders.cshtml.g.cs
+/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Release/net5.0/Razor/Views/Customers/Index.cshtml.g.cs
+/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Release/net5.0/Razor/Views/Settings/Banner.cshtml.g.cs
+/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Release/net5.0/Razor/Views/Settings/Contact.cshtml.g.cs
+/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Release/net5.0/Razor/Views/Account/ForgotPassword.cshtml.g.cs
+/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Release/net5.0/Razor/Views/Account/ResetPassword.cshtml.g.cs
+/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Release/net5.0/Razor/Views/Settings/Educative.cshtml.g.cs
+/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/Release/net5.0/Razor/Views/Settings/AboutUs.cshtml.g.cs

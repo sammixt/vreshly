@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using BLL.Entities;
 using BLL.Entities.OrderAggregate;
 
 namespace BLL.Interface
@@ -9,7 +10,7 @@ namespace BLL.Interface
     {
 
         Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethod, string basketId, OrderAddress shippingAddress, int paymentMethod);
-
+        Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, Product product, OrderAddress shippingAddress, int paymentMethod, int quantity);
         Task<IReadOnlyList<Order>> GetOrdersForUser(string buyerEmail);
         Task<Order> GetOrdersByPaymentIntent(string paymentIntentId);
 
@@ -21,5 +22,7 @@ namespace BLL.Interface
         Task DeleteOrder(Order order);
         Task<IReadOnlyList<Order>> GetNewOrders();
         Task<IReadOnlyList<Order>> GetOrdersByActualSatus(OrderActualStatus orderActualStatus);
+        Task<IReadOnlyList<Order>> GetOrdersByEmail(string email);
+        Task UpdateProduct(int productid, int qty, bool increment);
     }
 }

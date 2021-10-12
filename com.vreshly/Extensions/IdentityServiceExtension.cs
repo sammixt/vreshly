@@ -18,6 +18,7 @@ namespace com.vreshly.Extensions
             var builder = services.AddIdentityCore<AppUser>();
             builder = new IdentityBuilder(builder.UserType, builder.Services);
             builder.AddEntityFrameworkStores<AppIdentityDbContext>();
+            builder.AddDefaultTokenProviders();
             builder.AddSignInManager<SignInManager<AppUser>>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -32,6 +33,9 @@ namespace com.vreshly.Extensions
                         ValidateAudience = false
                     };
                 });
+
+            services.Configure<DataProtectionTokenProviderOptions>(opt =>
+                    opt.TokenLifespan = TimeSpan.FromHours(1));
 
             return services;
         }

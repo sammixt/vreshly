@@ -7,11 +7,14 @@ using AutoMapper;
 using BLL.Entities.Identity;
 using BLL.Interface;
 using com.vreshly.Dtos;
+using com.vreshly.EmailProcessor;
 using com.vreshly.Errors;
 using com.vreshly.Extensions;
+using com.vreshly.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -23,13 +26,16 @@ namespace com.vreshly.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly ITokenService _tokenService;
         private readonly IMapper _mapper;
+        private readonly IReadTemplate readTemplate;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService,IMapper mapper)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager,
+            ITokenService tokenService,IMapper mapper, IReadTemplate readTemplate)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _tokenService = tokenService;
             _mapper = mapper;
+            this.readTemplate = readTemplate;
         }
         // GET: /<controller>/
         public async Task<IActionResult> Register()
@@ -77,9 +83,122 @@ namespace com.vreshly.Controllers
             };
         }
 
+        [Authorize]
+        [HttpPut]
+        public async Task<ActionResult> UpdateCustomer([FromBody] RegisterDto registerDto)
+        {
+            
+            var user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
+            if (user == null) return BadRequest(new ApiResponse(404, "Email does not exist"));
+
+            if(string.IsNullOrEmpty(registerDto.DisplayName)) return BadRequest(new ApiResponse(404, "Display name is required"));
+
+            user.DisplayName = registerDto.DisplayName;
+
+            if (!string.IsNullOrEmpty(registerDto.Password))
+            {
+                if (ModelState.GetValidationState("Password") == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid)
+                {
+                    var modelErrors = new List<string>();
+                    foreach (var modelState in ModelState.Values)
+                    {
+                        foreach (var modelError in modelState.Errors)
+                        {
+                            modelErrors.Add(modelError.ErrorMessage);
+                        }
+                    }
+                    return new BadRequestObjectResult(new ApiValidationErrorResponse { Errors = modelErrors });
+                }
+                var newPassword = _userManager.PasswordHasher.HashPassword(user, registerDto.Password);
+                user.PasswordHash = newPassword;
+            }
+            
+            var result = await _userManager.UpdateAsync(user);
+
+            if (!result.Succeeded) return BadRequest(new ApiResponse(400));
+
+            return Ok( new 
+            {
+                message = "record updated"
+            });
+        }
+
         public async Task<IActionResult> Login()
         {
             return View();
+        }
+
+        public async Task<ActionResult> ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SendLink([FromBody]ForgotPasswordModel model)
+        {
+            if (!ModelState.IsValid) return BadRequest(new ApiResponse(400, "Email is required"));
+
+            var user = await _userManager.Users.Where(x=> x.Email == model.Email.ToLower()).Include(x => x.Address).FirstOrDefaultAsync();
+            if (user == null) return BadRequest(new ApiResponse(204, "Email doesnot exist"));
+
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            //send email
+            var callback = Url.Action(nameof(ResetPassword), "Account", new { token, email = user.Email }, Request.Scheme);
+
+            ResetPasswordModel resetModel = new ResetPasswordModel()
+            {
+                FullName = $"{user.Address?.FirstName} {user.Address?.LastName}",
+                Email = user.Email,
+                ResetLink = callback
+            };
+            readTemplate.SendMailResetPassword("Reset Password", resetModel, TemplateFiles.ResetPasswordTemplate);
+            return Ok(new ApiResponse(200, "Reset link has been sent to your email"));
+
+
+        }
+
+        public async Task<ActionResult> ResetPassword(String token, string email)
+        {
+            PasswordResetModel passwordReset = new PasswordResetModel
+            {
+                Token = token,
+                Email = email
+            };
+            return View(passwordReset);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword([FromBody]PasswordResetModel resetPasswordModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                var modelErrors = new List<string>();
+                var errors = ModelState.Values.Select(x => x.Errors).ToList();
+               
+                foreach (var modelError in errors)
+                {
+                    modelErrors.Add(modelError.FirstOrDefault().ErrorMessage);
+                }
+                return new BadRequestObjectResult(new ApiValidationErrorResponse { Errors = modelErrors });
+            }
+
+            var user = await _userManager.FindByEmailAsync(resetPasswordModel.Email);
+            if (user == null)
+                return BadRequest(new ApiResponse(204, "Email doesnot exist"));
+
+            var resetPassResult = await _userManager.ResetPasswordAsync(user, resetPasswordModel.Token, resetPasswordModel.Password);
+            if (!resetPassResult.Succeeded)
+            {
+               
+                //foreach (var error in resetPassResult.Errors)
+                //{
+                //    ModelState.TryAddModelError(error.Code, error.Description);
+                //}
+
+                return BadRequest(new ApiResponse(500, "An error occurred while processing"));
+            }
+
+            return Ok(new ApiResponse(200, "Password reset successful, you can login"));
         }
 
         [HttpPost]

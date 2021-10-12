@@ -30,34 +30,30 @@ namespace BLL.Data
         public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
         public DbSet<WishList> WishLists { get; set; }
         public DbSet<NewsLetterSubscription> NewsLetters { get; set; }
+        public DbSet<RecurringOrder> RecurringOrders { get; set; }
+        public DbSet<Message> Message { get; set; }
+
+        public DbSet<Banner> Banners { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<AppRedis> Redis { get; set; }
+        public DbSet<Educative> Educatives { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 
-                //optionsBuilder.UseSqlServer(@"Server=tcp:brainballerserver.database.windows.net,1433;
-                //                                Initial Catalog=IInvest;
-                //                                Persist Security Info=False;
-                //                                User ID=brainballeradmin;
-                //                                Password=Br@inB@ller;
-                //                                MultipleActiveResultSets=False;
-                //                                Encrypt=True;
-                //                                TrustServerCertificate=False;
-                //                                Connection Timeout=30;");
 
-                optionsBuilder.UseSqlServer(@"Server=tcp:vreshly.database.windows.net,1433;
-                                                Initial Catalog=vreshly;
+                optionsBuilder.UseSqlServer(@"Server=192.99.150.165;
+                                                Initial Catalog=vreshlyc_Vreshly;
                                                 Persist Security Info=False;
-                                                User ID=vreshly;
-                                                Password=Sammy@1234;
+                                                User ID=bode;
+                                                Password=P@$$w0rd;
                                                 MultipleActiveResultSets=False;
                                                 Encrypt=True;
-                                                TrustServerCertificate=False;
+                                                TrustServerCertificate=True;
                                                 Connection Timeout=30;");
-                //optionsBuilder.UseSqlServer(@"Server=ESC2581\SQLEXPRESS;
-                //                                Initial Catalog=IInvest;
-                //                                Trusted_Connection=True;");
+
                 //optionsBuilder.UseSqlServer(@"Server=localhost;
                 //                                Initial Catalog=Vreshly;
                 //                                Persist Security Info=False;

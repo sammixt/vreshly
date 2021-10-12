@@ -15,39 +15,7 @@ namespace com.vreshly.Helper
             _config = config;
         }
 
-        //public string Resolve(Brand source, BrandDto destination, string destMember, ResolutionContext context)
-        //{
-        //    if (!string.IsNullOrEmpty(source.BrandLogo))
-        //    {
-        //        return $"{_config["AppUrl"]}//Uploads//Brand//{source.BrandLogo}";
-        //    }
-        //    return null;
-        //}
-
-        //public string Resolve(Product source, ProductDto destination, string destMember, ResolutionContext context)
-        //{
-        //    if (!string.IsNullOrEmpty(source.MainImage))
-        //    {
-        //        return $"{_config["AppUrl"]}//Uploads//Product//{destMember}";
-        //    }
-        //    else if (!string.IsNullOrEmpty(source.ImageOne))
-        //    {
-        //        return $"{_config["AppUrl"]}//Uploads//Product//{destMember}";
-        //    }
-        //    else if (!string.IsNullOrEmpty(source.ImageTwo))
-        //    {
-        //        return $"{_config["AppUrl"]}//Uploads//Product//{destMember}";
-        //    }
-        //    else if (!string.IsNullOrEmpty(source.ImageThree))
-        //    {
-        //        return $"{_config["AppUrl"]}//Uploads//Product//{destMember}";
-        //    }
-        //    else if (!string.IsNullOrEmpty(source.ImageFour))
-        //    {
-        //        return $"{_config["AppUrl"]}//Uploads//Product//{destMember}";
-        //    }
-        //    return null;
-        //}
+       
 
         public string Resolve(Product source, ProductDto destination, string sourceMember, string destMember, ResolutionContext context)
         {

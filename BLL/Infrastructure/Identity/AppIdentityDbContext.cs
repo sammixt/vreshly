@@ -20,18 +20,6 @@ namespace BLL.Infrastructure.Identity
             if (!optionsBuilder.IsConfigured)
             {
 
-                //optionsBuilder.UseSqlServer(@"Server=tcp:brainballerserver.database.windows.net,1433;
-                //                                Initial Catalog=IInvest;
-                //                                Persist Security Info=False;
-                //                                User ID=brainballeradmin;
-                //                                Password=Br@inB@ller;
-                //                                MultipleActiveResultSets=False;
-                //                                Encrypt=True;
-                //                                TrustServerCertificate=False;
-                //                                Connection Timeout=30;");
-                //optionsBuilder.UseSqlServer(@"Server=ESC2581\SQLEXPRESS;
-                //                                Initial Catalog=IInvest;
-                //                                Trusted_Connection=True;");
                 //optionsBuilder.UseSqlServer(@"Server=localhost;
                 //                                Initial Catalog=VreshlyUserIdentity;
                 //                                Persist Security Info=False;
@@ -39,16 +27,15 @@ namespace BLL.Infrastructure.Identity
                 //                                Password=Sammy1234;
                 //                                MultipleActiveResultSets=False;
                 //                                Encrypt=True;
-                //                                TrustServerCertificate=True;
-                //                                ");
-                optionsBuilder.UseSqlServer(@"Server=tcp:vreshly.database.windows.net,1433;
-                                                Initial Catalog=VreshlyUserIdentity;
+                //                                TrustServerCertificate=True;");
+                optionsBuilder.UseSqlServer(@"Server=192.99.150.165;
+                                                Initial Catalog=vreshlyc_VreshlyIdentity;
                                                 Persist Security Info=False;
-                                                User ID=vreshly;
-                                                Password=Sammy@1234;
+                                                User ID=bode;
+                                                Password=P@$$w0rd;
                                                 MultipleActiveResultSets=False;
                                                 Encrypt=True;
-                                                TrustServerCertificate=False;
+                                                TrustServerCertificate=True;
                                                 Connection Timeout=30;");
             }
         }

@@ -7,18 +7,22 @@ using BLL.Infrastructure.Data;
 using BLL.Infrastructure.Identity;
 using BLL.Infrastructure.Services;
 using BLL.Interface;
+using com.vreshly.EmailProcessor;
 using com.vreshly.Extensions;
 using com.vreshly.Helper;
 using com.vreshly.Middleware;
+using com.vreshly.Models;
+using com.vreshly.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using StackExchange.Redis;
+//using StackExchange.Redis;
 
 namespace com.vreshly
 {
@@ -42,14 +46,26 @@ namespace com.vreshly
             });
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IMailer, Mailer>();
+            services.AddScoped<ILogger, Logger>();
+            services.AddScoped<ISettingsService, SettingsService>();
+            services.AddScoped<IReadTemplate, ReadTemplate>();
             services.AddScoped<IDashboardService,DashboardService>();
             services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IBasketRepository, BasketRepository>();
+            services.AddScoped<IRecurringOrderService, RecurringOrderService>();
             services.AddAutoMapper(typeof(MappingProfiles));
             //services.Configure<ApiBehaviourOptions>
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie();
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, o =>
+                {
+                    o.LoginPath = new PathString("/Home");
+                    o.SlidingExpiration = true;
+                    o.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+                    //o.Cookie.Expiration = TimeSpan.FromMinutes(60);
+                });
+            services.Configure<EmailConfiguration>(Configuration.GetSection("EmailConfiguration"));
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("Administrator",
@@ -63,11 +79,11 @@ namespace com.vreshly
                 //       ))
                 //    );
             });
-            services.AddSingleton<IConnectionMultiplexer>(c =>
-            {
-                var configuration = ConfigurationOptions.Parse(Configuration.GetConnectionString("redis"), true);
-                return ConnectionMultiplexer.Connect(configuration);
-            });
+            //services.AddSingleton<IConnectionMultiplexer>(c =>
+            //{
+            //    var configuration = ConfigurationOptions.Parse(Configuration.GetConnectionString("redis"), true);
+            //    return ConnectionMultiplexer.Connect(configuration);
+            //});
             services.AddIdentityServices(Configuration);
             
 

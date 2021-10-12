@@ -1,0 +1,102 @@
+﻿@model IEnumerable<com.vreshly.Dtos.RecurringOrderDto>
+<div class="content-body">
+    <section id="basic-datatable">
+        <div class="row">
+            <div class="col-12">
+
+                <div class="card">
+                    <div class="card-header border-bottom">
+                        <h4 class="card-title"> @ViewBag.PageName</h4>
+                    </div>
+                    <div class="card-body">
+                        <table id="dt_basic" class="table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>User Email</th>
+                                    <th>Previous Delivery</th>
+                                    <th>Next Delivery</th>
+                                    <th>Date Created</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="products">
+                                @if (Model.Any())
+                                {
+                                    //int count = 1;
+                                    foreach (var order in Model)
+                                    {
+                                        <tr>
+                                            <td>
+
+                                                <div class="d-flex align-items-center">
+                                                    <div class="avatar rounded">
+                                                        <div class="avatar-content">
+                                                            <img src="@order.Product.MainImage" height="21px" width="21px" alt="Speaker svg" />
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="font-weight-bolder">@order.Product.ProductName</div>
+                                                        <div class="font-small-2 text-muted">Quantity : @order.Quantity</div>
+                                                        <div class="font-small-2 text-muted">Price : ₦@order.Product.DiscountPrice</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>@order.UserEmail</td>
+                                            <td>@order.NextDeliveryDateString</td>
+                                            <td>@order.PreviousDeliveryDateString</td>
+                                            <td>@order.CreatedDate.Value.ToShortDateString()</td>
+                                            <td>
+                                                <a asp-controller="AdminRecurring" asp-action="Details" asp-route-rd="@order.Id" asp-route-returnUrl="@ViewBag.returnUrl" asp-route-pg="@ViewBag.PageName">
+                                                    <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-file-text mr-50 font-small-4'>
+                                                        <path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'></path>
+                                                        <polyline points='14 2 14 8 20 8'></polyline>
+                                                        <line x1='16' y1='13' x2='8' y2='13'></line>
+                                                        <line x1='16' y1='17' x2='8' y2='17'></line>
+                                                        <polyline points='10 9 9 9 8 9'></polyline>
+                                                    </svg>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal to add new record -->
+
+
+
+    </section>
+</div>
+
+@section HeaderScripts {
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/css/tables/datatable/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/css/tables/datatable/rowGroup.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/css/pickers/flatpickr/flatpickr.min.css">
+}
+
+@section FooterScripts{
+    <script src="~/assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/responsive.bootstrap4.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/jszip.min.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/pdfmake.min.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/vfs_fonts.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
+    <script src="~/assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
+    <script src="~/assets/js/scripts/tables/table-datatables-basic.js"></script>
+    <script src="~/js/product.js"></script>
+
+} 

@@ -23,6 +23,14 @@
     <Folder Include="Views\Account\" />
     <Folder Include="Extensions\" />
     <Folder Include="Views\Newsletter\" />
+    <Folder Include="Views\AdminRecurring\" />
+    <Folder Include="Views\Customers\" />
+    <Folder Include="Views\AdminMail\" />
+    <Folder Include="Views\Settings\" />
+    <Folder Include="Template\" />
+    <Folder Include="EmailProcessor\" />
+    <Folder Include="Service\" />
+    <Folder Include="Logs\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
@@ -39,12 +47,21 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.6" />
   </ItemGroup>
   <ItemGroup>
-    <Content Remove="wwwroot\frontendassets\images\slider\2-1.jpg" />
+    <!-- <Content Remove="wwwroot\frontendassets\images\slider\2-1.jpg" />
     <Content Remove="wwwroot\frontendassets\images\slider\2-2.jpg" />
     <Content Remove="wwwroot\frontendassets\images\slider\1-1.jpg" />
     <Content Remove="wwwroot\frontendassets\images\slider\1-2.jpg" />
+    <Content Remove="wwwroot\frontendassets\images\logo\logo.png" /> -->
   </ItemGroup>
   <ItemGroup>
     <None Remove="Views\Newsletter\" />
+    <None Remove="Views\AdminRecurring\" />
+    <None Remove="Views\Customers\" />
+    <None Remove="Views\AdminMail\" />
+    <None Remove="Views\Settings\" />
+    <!-- <None Remove="Template\" /> -->
+    <None Remove="EmailProcessor\" />
+    <None Remove="Service\" />
+    <!-- <None Remove="Logs\" /> -->
   </ItemGroup>
 </Project>

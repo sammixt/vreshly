@@ -8,6 +8,8 @@ using BLL.Interface;
 using BLL.Specifications;
 using com.vreshly.Dtos;
 using com.vreshly.Errors;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -26,6 +28,7 @@ namespace com.vreshly.Controllers
             _mapper = mapper;
         }
 
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Index()
         {
             ViewBag.PageName = "Category";
@@ -63,6 +66,7 @@ namespace com.vreshly.Controllers
         }
 
         [HttpPost]
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public async Task<ActionResult> AddCategory([FromBody]CategoryDto model)
         {
             if (string.IsNullOrEmpty(model.CategoryName)) return BadRequest(new ApiResponse(400,"Category Name was not supplied"));
@@ -84,6 +88,7 @@ namespace com.vreshly.Controllers
         }
 
         [HttpPut]
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public async Task<ActionResult> UpdateCategory([FromBody] CategoryDto model)
         {
             if (string.IsNullOrEmpty(model.CategoryName)) return BadRequest(new ApiResponse(400, "Category Name was not supplied"));
@@ -110,6 +115,7 @@ namespace com.vreshly.Controllers
         }
 
         [HttpDelete]
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public async Task<IActionResult> DeleteCategory(int id)
         {
             var specwithId = new CategorySpecification((int)id);

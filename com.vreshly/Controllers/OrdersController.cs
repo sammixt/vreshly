@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Security.Claims;
 using System.Text.Json;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -10,12 +7,15 @@ using BLL.Entities.OrderAggregate;
 using BLL.Infrastructure.Paystack;
 using BLL.Interface;
 using com.vreshly.Dtos;
+using com.vreshly.EmailProcessor;
 using com.vreshly.Errors;
 using com.vreshly.Extensions;
+using com.vreshly.Helper;
+using com.vreshly.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 
 namespace com.vreshly.Controllers
 {
@@ -24,12 +24,13 @@ namespace com.vreshly.Controllers
         private readonly IOrderService _orderService;
         private readonly IMapper _mapper;
         private readonly IConfiguration _config;
-
-        public OrdersController(IOrderService orderService, IMapper mapper, IConfiguration config)
+        private readonly IReadTemplate readTemplate;
+        public OrdersController(IOrderService orderService, IMapper mapper, IConfiguration config, IReadTemplate readTemplate)
         {
             _orderService = orderService;
             _mapper = mapper;
             _config = config;
+            this.readTemplate = readTemplate;
         }
         // GET: /<controller>/
         public IActionResult Index()
@@ -49,6 +50,14 @@ namespace com.vreshly.Controllers
             if (order == null) return BadRequest(new ApiResponse(400, "Problem Creating  Order"));
             string key = _config["Paystack:Publickey"];
             var totalAmount = order.GetTotal();
+            GenerateOrderMail orderMail = new GenerateOrderMail(order);
+            var content = orderMail.GetContent();
+            await  Task.Run(() =>
+              {
+                readTemplate.SendMailInvoice("Invoice", content, TemplateFiles.InvoiceTemplate);
+            });
+            
+            //send mail
 
             return Ok(new
             {
@@ -72,6 +81,13 @@ namespace com.vreshly.Controllers
             {
                 order.Status = output.data.status.Equals("success") ? OrderStatus.PaymentReceived : OrderStatus.PaymentFailed;
                 await _orderService.UpdateOrderStatus(order);
+                //send mail
+                GenerateOrderMail orderMail = new GenerateOrderMail(order);
+                var content = orderMail.GetContent();
+                await Task.Run(() =>
+                {
+                    readTemplate.SendMailInvoice("Invoice", content, TemplateFiles.InvoiceTemplate);
+                });
                 return Ok(output.data);
             }
 
@@ -119,9 +135,38 @@ namespace com.vreshly.Controllers
                     orders.PaymentMethod == PaymentMethod.PaymentOnDelivery)
                 {
                     orders.Status = OrderStatus.PaymentReceived;
+                    foreach(var item in orders.OrderItems)
+                    {
+                        _ = _orderService.UpdateProduct(
+                                (int)item.ItemOrdered.ProductItemId,
+                                item.Quantity,
+                                false
+                                );
+                    }
+                }
+            }
+
+            if((OrderActualStatus)status == OrderActualStatus.Cancelled && orders.Status == OrderStatus.PaymentReceived)
+            {
+                foreach (var item in orders.OrderItems)
+                {
+                    _ = _orderService.UpdateProduct(
+                            (int)item.ItemOrdered.ProductItemId,
+                            item.Quantity,
+                            true
+                            );
                 }
             }
             await _orderService.UpdateOrderStatus(orders);
+            //send mail
+            //send mail
+            GenerateOrderMail orderMail = new GenerateOrderMail(orders);
+            var content = orderMail.GetContent();
+            await Task.Run(() =>
+            {
+                readTemplate.SendMailInvoice("Invoice", content, TemplateFiles.InvoiceTemplate);
+            });
+            
             return Ok(new ApiResponse(200, orders.ActualOrderStatus.GetAttributeOfType<EnumMemberAttribute>().Value));
         }
 

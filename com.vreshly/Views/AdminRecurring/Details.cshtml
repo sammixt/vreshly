@@ -1,0 +1,123 @@
+﻿@model com.vreshly.Dtos.RecurringDetailsDto
+<div class="content-body">
+
+    @*<div class="bs-stepper-content">*@
+    <!-- Checkout Place order starts -->
+    <div id="step-cart">
+        <div id="place-order" class="list-view product-checkout">
+            <!-- Checkout Place Order Left starts -->
+            <div class="checkout-items" id="recurring-items">
+                @if (Model.Orders.Any())
+            {
+                foreach(var order in Model.Orders)
+                {
+                <div class="card ecommerce-card">
+                    <div class="item-img">
+                        <a href="app-ecommerce-details.html">
+                            <img src="@order.Product.MainImage" alt="img-placeholder" />
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <div class="item-name">
+                            <h6 class="mb-0"><a href="app-ecommerce-details.html" class="text-body">@order.Product.ProductName</a></h6>
+                            <span class="item-company">By <a href="#" class="company-name">@order.Product.Brand</a></span>
+
+                        </div>
+                        <span class="text-success mb-1">In Stock</span>
+                        <div class="item-quantity">
+                            <span class="quantity-title">Qty:</span>
+                            <div class="quantity-counter-wrapper">
+                                <div class="input-group">
+                                    <input type="text" class="quantity-counter" value="@order.Quantity" readonly />
+                                </div>
+                            </div>
+                        </div>
+                        <span class="delivery-date text-muted">Next Delivery by, @order.NextDeliveryDateString</span>
+                        <span class="text-success delivery-date text-muted">Previous Delivery, @order.PreviousDeliveryDateString</span>
+                    </div>
+                    <div class="item-options text-center">
+                        <div class="item-wrapper">
+                            <div class="item-cost">
+                                <h4 class="item-price" data-price="@order.Product.DiscountPrice">₦@order.Product.DiscountPrice</h4>
+                                <p class="card-text shipping">
+                                    <span class="badge rounded-pill badge-light-success">@order.DateCreatedToDate Day(s) ago</span>
+                                </p>
+                            </div>
+                        </div>
+                        <select type="button" class="btn btn-light mt-1 delivery-method">
+                            <option value="0" data-price="0">Delivery</option>
+                        </select>
+                        <button type="button" data-id="@order.Id" class="btn btn-primary btn-cart process-item">
+                            <i data-feather="heart" class="align-middle me-25"></i>
+                            <span class="text-truncate">Process</span>
+                        </button>
+                    </div>
+                </div>
+                }
+            }
+                
+
+            </div>
+            <!-- Checkout Place Order Left ends -->
+            <!-- Checkout Place Order Right starts -->
+            <div class="checkout-options">
+                <div class="card">
+                    <div class="card-body">
+                        
+                        <div class="price-details">
+                            <h6 class="price-title">Users Information</h6>
+                            <ul class="list-unstyled">
+                                <li class="price-detail">
+                                    <div class="detail-title">Full Name</div>
+                                    <div class="detail-amt">@Model.CustomerInformation.FirstName @Model.CustomerInformation.LastName</div>
+                                </li>
+                                <li class="price-detail">
+                                    <div class="detail-title">Email</div>
+                                    <div class="detail-amt discount-amt text-success">@Model.CustomerInformation.Email</div>
+                                </li>
+                                <li class="price-detail">
+                                    <div class="detail-title">Phone Number</div>
+                                    <div class="detail-amt">@Model.CustomerInformation.PhoneNumber</div>
+                                </li>
+                                <li class="price-detail">
+                                    <div class="detail-title">User Name</div>
+                                    <a href="#" class="detail-amt text-primary">@Model.CustomerInformation.DisplayName</a>
+                                </li>
+                                <li class="price-detail">
+                                    <div class="detail-title">Address</div>
+                                    <div class="detail-amt discount-amt text-success">@Model.CustomerInformation.Street @Model.CustomerInformation.City</div>
+                                </li>
+                                <li class="price-detail">
+                                    <div class="detail-title">State/Zip Code</div>
+                                    <div class="detail-amt discount-amt text-success">@Model.CustomerInformation.State / @Model.CustomerInformation.ZipCode</div>
+                                </li>
+                            </ul>
+                            
+                            @*<button type="button" class="btn btn-primary w-100 btn-next place-order">Place Order</button>*@
+                        </div>
+                    </div>
+                </div>
+                <!-- Checkout Place Order Right ends -->
+            </div>
+        </div>
+        <!-- Checkout Place order Ends -->
+    </div>
+
+    @*</div>*@
+
+</div>
+
+
+
+@section HeaderScripts{
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/css/forms/wizard/bs-stepper.min.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/pages/app-ecommerce.min.css">
+
+}
+
+@section FooterScripts{
+    <script src="~/assets/vendors/js/forms/wizard/bs-stepper.min.js"></script>
+    <script src="~/assets/js/scripts/pages/app-ecommerce-checkout.min.js"></script>
+    <script src="~/js/admin-recurringdetails.js"></script>
+}
+

@@ -24,7 +24,8 @@ namespace com.vreshly.Dtos
         /// password is 8-16 characters with no space
         /// </summary>
         [Required]
-        [RegularExpression("^(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\\w\\d\\s:])([^\\s]){8,16}$",ErrorMessage = "Password must b 8 char long alphanumeric char")]
+        [RegularExpression("^(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\\w\\d\\s:])([^\\s]){8,16}$",ErrorMessage = "Password must be 8-16 char " +
+            "long 1 uppercase, 1 lowercase, 1 non-alphanumeric number")]
         public string Password { get; set; }
     }
 }

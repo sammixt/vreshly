@@ -1,37 +1,57 @@
-﻿<Properties StartupConfiguration="{D13B51E9-337B-42DA-AFE1-244C873D4D7B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="BLL/Infrastructure/Data/BasketRepository.cs">
+﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{D13B51E9-337B-42DA-AFE1-244C873D4D7B}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="com.vreshly/Controllers/HomeController.cs">
     <Files>
-      <File FileName="com.vreshly/Views/Shared/_LayoutFrontend.cshtml" Line="771" Column="90" />
-      <File FileName="com.vreshly/Extensions/IdentityServiceExtension.cs" />
-      <File FileName="com.vreshly/appsettings.Development.json" />
-      <File FileName="com.vreshly/appsettings.json" />
-      <File FileName="BLL/Infrastructure/Identity/AppIdentityDbContext.cs" />
-      <File FileName="BLL/Infrastructure/Identity/AppIdentityDbContextSeed.cs" />
+      <File FileName="BLL/Data/StoreContext.cs" Line="50" Column="62" />
+      <File FileName="BLL/Infrastructure/Identity/AppIdentityDbContext.cs" Line="15" Column="10" />
+      <File FileName="com.vreshly/appsettings.Development.json" Line="8" Column="5" />
+      <File FileName="com.vreshly/Views/Shared/_LayoutFrontend.cshtml" Line="566" Column="85" />
+      <File FileName="com.vreshly/wwwroot/js/shop.js" />
+      <File FileName="com.vreshly/Views/Home/About.cshtml" />
+      <File FileName="com.vreshly/wwwroot/frontendassets/css/style.css" />
+      <File FileName="com.vreshly/Models/EmailMessage.cs" />
+      <File FileName="com.vreshly/wwwroot/js/jwtok.js" />
+      <File FileName="com.vreshly/wwwroot/frontendassets/scss/2-layout/_header.scss" />
+      <File FileName="BLL/Infrastructure/Services/DashboardService.cs" />
+      <File FileName="com.vreshly/Controllers/SettingsController.cs" />
+      <File FileName="BLL/Infrastructure/Services/SettingsService.cs" />
       <File FileName="com.vreshly/Startup.cs" />
-      <File FileName="com.vreshly/Program.cs" Line="10" Column="42" />
-      <File FileName="com.vreshly/Controllers/BasketController.cs" Line="33" Column="69" />
-      <File FileName="BLL/Infrastructure/Data/BasketRepository.cs" Line="35" Column="43" />
+      <File FileName="com.vreshly/EmailProcessor/Mailer.cs" Line="71" Column="67" />
+      <File FileName="com.vreshly/Controllers/OrdersController.cs" Line="44" Column="70" />
+      <File FileName="com.vreshly/Template/Invoice.html" />
+      <File FileName="com.vreshly/EmailProcessor/ReadTemplate.cs" Line="45" Column="73" />
+      <File FileName="com.vreshly/Controllers/AccountController.cs" />
+      <File FileName="com.vreshly/Views/Account/Information.cshtml" />
+      <File FileName="com.vreshly/wwwroot/js/account.js" />
+      <File FileName="com.vreshly/wwwroot/js/checkout.js" />
+      <File FileName="com.vreshly/Views/Shop/Checkout.cshtml" />
+      <File FileName="BLL/Infrastructure/Services/OrderService.cs" Line="53" Column="34" />
+      <File FileName="com.vreshly/Helper/GenerateOrderMail.cs" />
+      <File FileName="com.vreshly/Controllers/AdminOrderController.cs" />
+      <File FileName="com.vreshly/Views/AdminOrder/Orders.cshtml" />
+      <File FileName="com.vreshly/wwwroot/js/product.js" />
+      <File FileName="com.vreshly/Service/Logger.cs" Line="11" Column="85" />
+      <File FileName="com.vreshly/EmailProcessor/IMailer.cs" Line="7" Column="14" />
+      <File FileName="BLL/Data/Migrations/StoreContextModelSnapshot.cs" Line="1" Column="1" />
+      <File FileName="com.vreshly/wwwroot/js/site.js" Line="11" Column="3" />
+      <File FileName="com.vreshly/Views/Home/Index.cshtml" Line="984" Column="86" />
+      <File FileName="com.vreshly/appsettings.json" Line="13" Column="5" />
+      <File FileName="com.vreshly/Controllers/HomeController.cs" Line="51" Column="17" />
+      <File FileName="com.vreshly/Dtos/HomeDto.cs" Line="6" Column="18" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="com.vreshly" expanded="True">
-            <Node name="BLL" expanded="True">
-              <Node name="Data" expanded="True" />
-              <Node name="Entities" expanded="True">
-                <Node name="Identity" expanded="True" />
-              </Node>
-              <Node name="Infrastructure" expanded="True">
-                <Node name="Data" expanded="True">
-                  <Node name="BasketRepository.cs" selected="True" />
-                </Node>
-                <Node name="Identity" expanded="True" />
-              </Node>
-            </Node>
             <Node name="com.vreshly" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Views" expanded="True" />
-              <Node name="wwwroot" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="HomeController.cs" selected="True" />
+              </Node>
+              <Node name="Dtos" expanded="True" />
+              <Node name="EmailProcessor" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True" />
+                <Node name="Shared" expanded="True" />
+              </Node>
               <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
@@ -39,28 +59,50 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.com.vreshly PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.ItemProperties.com.vreshly PreferredExecutionTarget="/Applications/Safari.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/CategoryController.cs" relfile="com.vreshly/Controllers/CategoryController.cs" line="58" column="1" />
-      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/CategoryController.cs" relfile="com.vreshly/Controllers/CategoryController.cs" line="89" column="1" />
-      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/BrandController.cs" relfile="com.vreshly/Controllers/BrandController.cs" line="73" column="1" />
-      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/BrandController.cs" relfile="com.vreshly/Controllers/BrandController.cs" line="83" column="1" />
-      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/BrandController.cs" relfile="com.vreshly/Controllers/BrandController.cs" line="145" column="1" />
-      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/UsersController.cs" relfile="com.vreshly/Controllers/UsersController.cs" line="95" column="1" />
-      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/UsersController.cs" relfile="com.vreshly/Controllers/UsersController.cs" line="170" column="1" />
-      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/AccountController.cs" relfile="com.vreshly/Controllers/AccountController.cs" line="136" column="1" />
-      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/AccountController.cs" relfile="com.vreshly/Controllers/AccountController.cs" line="43" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/CategoryController.cs" relfile="com.vreshly/Controllers/CategoryController.cs" line="61" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/CategoryController.cs" relfile="com.vreshly/Controllers/CategoryController.cs" line="94" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/BrandController.cs" relfile="com.vreshly/Controllers/BrandController.cs" line="80" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/BrandController.cs" relfile="com.vreshly/Controllers/BrandController.cs" line="90" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/BrandController.cs" relfile="com.vreshly/Controllers/BrandController.cs" line="153" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/UsersController.cs" relfile="com.vreshly/Controllers/UsersController.cs" line="110" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/AccountController.cs" relfile="com.vreshly/Controllers/AccountController.cs" line="257" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/AccountController.cs" relfile="com.vreshly/Controllers/AccountController.cs" line="49" column="1" />
       <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/BasketController.cs" relfile="com.vreshly/Controllers/BasketController.cs" line="26" column="1" />
-      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/ShopController.cs" relfile="com.vreshly/Controllers/ShopController.cs" line="46" column="1" />
-      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/OrdersController.cs" relfile="com.vreshly/Controllers/OrdersController.cs" line="125" column="1" />
-      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/AdminOrderController.cs" relfile="com.vreshly/Controllers/AdminOrderController.cs" line="57" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/ShopController.cs" relfile="com.vreshly/Controllers/ShopController.cs" line="50" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/OrdersController.cs" relfile="com.vreshly/Controllers/OrdersController.cs" line="170" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/AdminOrderController.cs" relfile="com.vreshly/Controllers/AdminOrderController.cs" line="61" column="1" />
       <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/NewsletterController.cs" relfile="com.vreshly/Controllers/NewsletterController.cs" line="39" column="1" />
-      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/AccountController.cs" relfile="com.vreshly/Controllers/AccountController.cs" line="58" column="1" />
-      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/AuthController.cs" relfile="com.vreshly/Controllers/AuthController.cs" line="55" column="1" />
-      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/AccountController.cs" relfile="com.vreshly/Controllers/AccountController.cs" line="37" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/AccountController.cs" relfile="com.vreshly/Controllers/AccountController.cs" line="64" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/AuthController.cs" relfile="com.vreshly/Controllers/AuthController.cs" line="56" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/AccountController.cs" relfile="com.vreshly/Controllers/AccountController.cs" line="43" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/ShopController.cs" relfile="com.vreshly/Controllers/ShopController.cs" line="122" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/AdminRecurringController.cs" relfile="com.vreshly/Controllers/AdminRecurringController.cs" line="67" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/Infrastructure/Services/RecurringOrderService.cs" relfile="BLL/Infrastructure/Services/RecurringOrderService.cs" line="73" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/Infrastructure/Services/OrderService.cs" relfile="BLL/Infrastructure/Services/OrderService.cs" line="67" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/UsersController.cs" relfile="com.vreshly/Controllers/UsersController.cs" line="93" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/SettingsController.cs" relfile="com.vreshly/Controllers/SettingsController.cs" line="122" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/SettingsController.cs" relfile="com.vreshly/Controllers/SettingsController.cs" line="56" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/SettingsController.cs" relfile="com.vreshly/Controllers/SettingsController.cs" line="85" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/EmailProcessor/Mailer.cs" relfile="com.vreshly/EmailProcessor/Mailer.cs" line="52" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/BLL/Infrastructure/Services/OrderService.cs" relfile="BLL/Infrastructure/Services/OrderService.cs" line="46" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/EmailProcessor/Mailer.cs" relfile="com.vreshly/EmailProcessor/Mailer.cs" line="60" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/SettingsController.cs" relfile="com.vreshly/Controllers/SettingsController.cs" line="380" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/SettingsController.cs" relfile="com.vreshly/Controllers/SettingsController.cs" line="379" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/SettingsController.cs" relfile="com.vreshly/Controllers/SettingsController.cs" line="384" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/AccountController.cs" relfile="com.vreshly/Controllers/AccountController.cs" line="146" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/AccountController.cs" relfile="com.vreshly/Controllers/AccountController.cs" line="173" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/OrdersController.cs" relfile="com.vreshly/Controllers/OrdersController.cs" line="79" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/OrdersController.cs" relfile="com.vreshly/Controllers/OrdersController.cs" line="81" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/EmailProcessor/ReadTemplate.cs" relfile="com.vreshly/EmailProcessor/ReadTemplate.cs" line="60" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/Controllers/OrdersController.cs" relfile="com.vreshly/Controllers/OrdersController.cs" line="76" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/EmailProcessor/Mailer.cs" relfile="com.vreshly/EmailProcessor/Mailer.cs" line="62" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/EmailProcessor/ReadTemplate.cs" relfile="com.vreshly/EmailProcessor/ReadTemplate.cs" line="36" column="1" />
+      <Breakpoint file="/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/EmailProcessor/ReadTemplate.cs" relfile="com.vreshly/EmailProcessor/ReadTemplate.cs" line="53" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

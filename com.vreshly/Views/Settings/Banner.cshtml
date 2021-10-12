@@ -1,0 +1,181 @@
+﻿@model com.vreshly.Dtos.BannerDto
+<div class="content-body">
+    <section id="basic-tabs-components">
+        <div class="col-xl-12 col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Banners</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="banner-tab" data-toggle="tab" href="#home-banner" aria-controls="Home Banner" role="tab" aria-selected="true">Home Banner</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pagebanner-tab" data-toggle="tab" href="#page-banner" aria-controls="Sub-pages Banner" role="tab" aria-selected="false">Sub-pages Banner</a>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content">
+
+                        <div class="tab-pane active" id="home-banner" aria-labelledby="banner-tab" role="tabpanel">
+                            <div class="card-deck" style="border-radius:2px">
+                                <div class="card">
+                                    @if (!string.IsNullOrEmpty(Model.ImageOne))
+                                    {
+                                        <img class="card-img-top" src="@Model.ImageOne" alt="Card image cap" />
+                                    }
+                                    else
+                                    {
+                                        <img class="card-img-top" src="~/assets/images/slider/03.jpg" alt="Card image cap" />
+                                    }
+                                    <div class="card-body">
+                                        <h4 class="card-title">@Model.TitleOne</h4>
+                                        <p class="card-text">
+                                            @Model.SubTitleOne
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="button" class="btn btn-primary waves-effect waves-float waves-light" id="banner1">Edit</button>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    @if (!string.IsNullOrEmpty(Model.ImageTwo))
+                                    {
+                                        <img class="card-img-top" src="@Model.ImageTwo" alt="Card image cap" />
+                                    }
+                                    else
+                                    {
+                                        <img class="card-img-top" src="~/assets/images/slider/03.jpg" alt="Card image cap" />
+                                    }
+                                    <div class="card-body">
+                                        <h4 class="card-title">@Model.TitleTwo</h4>
+                                        <p class="card-text">
+                                            @Model.SubTitleTwo
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="button" class="btn btn-primary waves-effect waves-float waves-light" id="banner2">Edit</button>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    @if (!string.IsNullOrEmpty(Model.ImageThree))
+                                        {
+                                            <img class="card-img-top" src="@Model.ImageThree" alt="Card image cap" />
+                                        }
+                                        else
+                                        {
+                                            <img class="card-img-top" src="~/assets/images/slider/03.jpg" alt="Card image cap" />
+                                        }
+                                    <div class="card-body">
+                                        <h4 class="card-title">@Model.TitleThree</h4>
+                                        <p class="card-text">
+                                            @Model.SubTitleThree
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="button" class="btn btn-primary waves-effect waves-float waves-light" id="banner3">Edit</button>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    @if (!string.IsNullOrEmpty(Model.ImageFour))
+                                        {
+                                            <img class="card-img-top" src="@Model.ImageFour" alt="Card image cap" />
+                                        }
+                                        else
+                                        {
+                                            <img class="card-img-top" src="~/assets/images/slider/03.jpg" alt="Card image cap" />
+                                        }
+                                    <div class="card-body">
+                                        <h4 class="card-title">@Model.TitleFour</h4>
+                                        <p class="card-text">
+                                            @Model.SubTitleFour
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="button" class="btn btn-primary waves-effect waves-float waves-light" id="banner4">Edit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="page-banner" aria-labelledby="pagebanner-tab" role="tabpanel">
+                            <div class="card-deck" style="border-radius:2px">
+                                <div class="col-md-4 col-lg-4">
+                                    <div class="card">
+                                        @if (!string.IsNullOrEmpty(Model.SubPageImage))
+                                            {
+                                                <img class="card-img-top" src="@Model.SubPageImage" alt="Card image cap" />
+                                            }
+                                            else
+                                            {
+                                                <img class="card-img-top" src="~/assets/images/slider/03.jpg" alt="Card image cap" />
+                                            }
+                                        <div class="card-body">
+                                            <h4 class="card-title">Sub Pages</h4>
+                                            <p class="card-text">
+                                                Uses as banner for other pages
+                                            </p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <input type="file" class="form-control-file" onchange="uploadBannerImage('imagethree',4)" id="imagethree">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+
+
+<div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel33">Add Banner</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="#" id="add-banner">
+                <div class="modal-body">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="small-title">Small Title</label>
+                            <input type="text" id="small-title" class="form-control" name="small-title" placeholder="Small Title" />
+                            <input type="hidden" id="slide-type" name="slide-type" />
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="large-title">Large Title</label>
+                            <input type="text" id="large-title" class="form-control" name="large-title" placeholder="Large Title" />
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFile" />
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section FooterScripts{
+    <script src="~/js/settings.js"></script>
+}

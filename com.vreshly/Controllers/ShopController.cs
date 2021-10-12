@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using BLL.Entities;
+using BLL.Entities.OrderAggregate;
 using BLL.Interface;
 using BLL.Specifications;
 using com.vreshly.Dtos;
@@ -22,12 +23,15 @@ namespace com.vreshly.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly IRecurringOrderService _recurringOrderService;
 
-        public ShopController(IUnitOfWork unitOfWork, IMapper mapper, IWebHostEnvironment hostEnvironment)
+        public ShopController(IUnitOfWork unitOfWork, IMapper mapper, IWebHostEnvironment hostEnvironment,
+            IRecurringOrderService recurringOrderService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             webHostEnvironment = hostEnvironment;
+            _recurringOrderService = recurringOrderService;
         }
 
         // GET: /<controller>/
@@ -111,9 +115,48 @@ namespace com.vreshly.Controllers
 
             return BadRequest(new ApiResponse(500, "An error occurred when Deleting wishlist"));
         }
-    
 
-    public async Task<IActionResult> Cart()
+        [HttpPost]
+        public async Task<ActionResult<bool>> CreateRecurringOrder([FromBody] RecurringOrderDto recurring)
+        {
+            var email = HttpContext.User.RetrieveEmailFromPrincipal();
+
+            var mappedList = _mapper.Map<RecurringOrderDto, RecurringOrder>(recurring);
+            mappedList.UserEmail = email;
+            mappedList.CreatedDate = DateTime.Now;
+            mappedList.Frequency = (RecurringFrequency)recurring.InputFrequency;
+            int result = await _recurringOrderService.CreateRecurringOrder(mappedList);
+            if (result == 1)
+            {
+                return Ok(new ApiResponse(200, "Product added to recurring orders"));
+            }
+
+            return BadRequest(new ApiResponse(500, "An error occurred when adding Product to recurring orders"));
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IReadOnlyList<RecurringOrderDto>>> GetRecurringOrder()
+        {
+            var email = HttpContext.User.RetrieveEmailFromPrincipal();
+            var recurrinOrder = await _recurringOrderService.GetRecurringOrderByEmail(email);
+            var recurrinOrderDto = _mapper.Map<IReadOnlyList<RecurringOrder>, IReadOnlyList<RecurringOrderDto>>(recurrinOrder);
+            return Ok(recurrinOrderDto);
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult> DeleteRecurringOrder([FromBody] RecurringOrderDto order)
+        {
+
+            int result = await _recurringOrderService.DeleteRecurringOrder(order.Id);
+            if (result == 1)
+            {
+                return Ok(new ApiResponse(200, $"Order Successfully Deleted"));
+            }
+            return BadRequest(new ApiResponse(500, "An error occurred when Deleting Order"));
+        }
+
+
+        public async Task<IActionResult> Cart()
         {
             return View();
         }

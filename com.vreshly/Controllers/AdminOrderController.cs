@@ -4,11 +4,14 @@ using AutoMapper;
 using BLL.Entities.OrderAggregate;
 using BLL.Interface;
 using com.vreshly.Dtos;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
 namespace com.vreshly.Controllers
 {
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     public class AdminOrderController : Controller
     {
 
@@ -22,6 +25,7 @@ namespace com.vreshly.Controllers
             _mapper = mapper;
             _config = config;
         }
+
         public async Task<IActionResult> Orders()
         {
             ViewBag.PageName = $"New Orders";

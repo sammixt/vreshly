@@ -1,0 +1,137 @@
+﻿@model com.vreshly.Dtos.ContactDto
+<div class="content-body">
+    <section id="basic-vertical-layouts">
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Contact Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <form class="form form-vertical" id="contact-form">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label asp-for="Address">Address</label>
+                                        <input type="text" class="form-control" asp-for="Address" />
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label asp-for="City">City</label>
+                                        <input type="text" class="form-control" asp-for="City" />
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label asp-for="State">State</label>
+                                        <input type="text" class="form-control" asp-for="State" />
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label asp-for="Country">Country</label>
+                                        <input type="text" class="form-control" asp-for="Country" />
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label asp-for="Email">Email</label>
+                                        <div class="input-group input-group-merge">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i data-feather="mail"></i></span>
+                                            </div>
+                                            <input type="Email" asp-for="Email" class="form-control" placeholder="Email" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label asp-for="PhoneNumber">Mobile</label>
+                                        <div class="input-group input-group-merge">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i data-feather="smartphone"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" asp-for="PhoneNumber" placeholder="Mobile" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary mr-1">Submit</button>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Social Media Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <form class="form form-vertical" id="social-form">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label asp-for="Facebook">Facebook</label>
+                                        <div class="input-group input-group-merge">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i data-feather='facebook'></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" asp-for="Facebook" placeholder="https://web.facebook.com/name" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label asp-for="Instagram">Instagram</label>
+                                        <div class="input-group input-group-merge">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i data-feather='instagram'></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" asp-for="Instagram" placeholder="https://www.instagram.com/name/" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label asp-for="Twitter">Twitter</label>
+                                        <div class="input-group input-group-merge">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i data-feather='twitter'></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" asp-for="Twitter" placeholder="https://www.twitter.com/name" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label asp-for="Youtube">Youtube</label>
+                                        <div class="input-group input-group-merge">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i data-feather='youtube'></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" asp-for="Youtube" placeholder="https://www.youtube.com/channel/UC4JQzc1ynj2dYScUiPtQA" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary mr-1">Submit</button>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section FooterScripts{
+    <script src="~/js/settings.js"></script>
+}

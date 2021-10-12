@@ -40,6 +40,19 @@ namespace com.vreshly.Helper
                 .ForMember(b => b.Brand, o => o.MapFrom(s => s.Brand.BrandName))
                 .ForMember(b => b.variables, o => o.MapFrom(s => s.variables));
 
+            CreateMap<Banner, BannerDto>()
+                .ForMember(x => x.ImageOne, o => o.MapFrom<BannerResolver, string>(src => src.ImageOne))
+                .ForMember(x => x.ImageTwo, o => o.MapFrom<BannerResolver, string>(src => src.ImageTwo))
+                .ForMember(x => x.ImageThree, o => o.MapFrom<BannerResolver, string>(src => src.ImageThree))
+                .ForMember(x => x.ImageFour, o => o.MapFrom<BannerResolver, string>(src => src.ImageFour))
+                .ForMember(x => x.SubPageImage, o => o.MapFrom<SubBannerResolver, string>(src => src.SubPageImage));
+            CreateMap<BannerDto, Banner>();
+
+            CreateMap<Educative, EducativeDto>()
+                .ForMember(x => x.ImageUrl, o => o.MapFrom<EducativeResolver, string>(src => src.ImageUrl));
+
+            CreateMap<EducativeDto, Educative>();
+
             CreateMap<ProductDto, Product>();
 
             CreateMap<Role, RoleDto>().ReverseMap();
@@ -60,6 +73,23 @@ namespace com.vreshly.Helper
                 .ForMember(d => d.PictureUrl, o => o.MapFrom<OrderItemUrlResover>());
             CreateMap<WishList, WishListDto>().ReverseMap();
             CreateMap<NewsLetterSubscription, NewsLetterDto>().ReverseMap();
+            CreateMap<RecurringOrder, RecurringOrderDto>().ReverseMap();
+            CreateMap<AppUser, CustomersDto>()
+                .ForMember(s => s.DisplayName, o => o.MapFrom(d => d.DisplayName))
+                .ForMember(c => c.Street, o => o.MapFrom(s => s.Address.Street))
+                .ForMember(c => c.City, o => o.MapFrom(s => s.Address.City))
+                .ForMember(c => c.State, o => o.MapFrom(s => s.Address.State))
+                .ForMember(c => c.ZipCode, o => o.MapFrom(s => s.Address.ZipCode))
+                .ForMember(c => c.PhoneNumber, o => o.MapFrom(s => s.Address.PhoneNumber))
+                .ForMember(c => c.FirstName, o => o.MapFrom(s => s.Address.FirstName))
+                .ForMember(c => c.LastName, o => o.MapFrom(s => s.Address.LastName));
+
+            CreateMap<Message, MessageDto>().ReverseMap();
+            CreateMap<Contact, ContactDto>().ReverseMap();
+
+            CreateMap<ContactSocialMedia, Contact>();
+            CreateMap<ContactAddressDto, Contact>();
+           
 
         }
     }

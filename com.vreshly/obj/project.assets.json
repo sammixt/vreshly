@@ -6429,7 +6429,7 @@
       "outputPath": "/Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/sasmuelezeala/.config/NuGet/NuGet.Config"
+        "/Users/sasmuelezeala/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"

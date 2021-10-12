@@ -40,7 +40,8 @@ namespace com.vreshly.Controllers
             return PartialView();
         }
 
-        [Authorize(AuthenticationSchemes = "Cookies")]
+        //[Authorize(AuthenticationSchemes = "Cookies")]
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public IActionResult Dashboard()
         {
             //CheckNewClaimsUsage();
@@ -90,7 +91,12 @@ namespace com.vreshly.Controllers
                 identity.AddClaim(new Claim("UserStatus", status.ToString() ));
                 identity.AddClaim(new Claim(ClaimTypes.Role, user.Role.Name));
                 var principal = new ClaimsPrincipal(identity);
-                var props = new AuthenticationProperties();
+                var props = new AuthenticationProperties()
+                {
+                    ExpiresUtc = DateTime.UtcNow.AddMinutes(60),
+                    IsPersistent = true,
+                    AllowRefresh = true
+                };
                 //props.IsPersistent = model.RememberMe;
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, props);
                 return Ok(new ApiResponse(200, "User Successfully Logged on"));

@@ -56,6 +56,40 @@ namespace BLL.Infrastructure.Services
             return order;
         }
 
+        public async Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, Product product, OrderAddress shippingAddress, int paymentMethod, int quantity)
+        {
+            Guid gid = Guid.NewGuid();
+            string guid = gid.ToString();
+
+            //get items from product repo
+            var items = new List<OrderItem>();
+
+                var itemOrdered = new ProductItemOrdered(product.Id, product.ProductName, product.MainImage);
+                var orderItem = new OrderItem(itemOrdered, product.DiscountPrice, quantity);
+                items.Add(orderItem);
+            
+
+            //get delivery method
+
+            var deliveryMethod = await _unitOfWork.Repository<DeliveryMethod>().GetByIdAsync(deliveryMethodId);
+
+            //calc subtotal
+            var subtotal = items.Sum(item => item.Price * item.Quantity);
+
+            //create order
+            var order = new Order(buyerEmail, shippingAddress, deliveryMethod, items, subtotal, guid, (PaymentMethod)paymentMethod);
+            //save to db
+            order.CreatedDate = DateTime.Now;
+            _unitOfWork.Repository<Order>().Add(order);
+            var result = await _unitOfWork.Complete();
+            if (result <= 0) return null;
+
+            //delete basket async
+            
+            //return order
+            return order;
+        }
+
         public async Task<IReadOnlyList<DeliveryMethod>> GetDeliveryMethodsAsync()
         {
             return await _unitOfWork.Repository<DeliveryMethod>().ListAllAsync();
@@ -101,6 +135,13 @@ namespace BLL.Infrastructure.Services
             return await _unitOfWork.Repository<Order>().ListAsync(spec);
         }
 
+        public async Task<IReadOnlyList<Order>> GetOrdersByEmail(string email)
+        {
+            var spec = new OrdersSpecification(email, true); ;
+
+            return await _unitOfWork.Repository<Order>().ListAsync(spec);
+        }
+
 
         public async Task UpdateOrderStatus(Order order)
         {
@@ -112,6 +153,17 @@ namespace BLL.Infrastructure.Services
         {
             _unitOfWork.Repository<Order>().Delete(order);
             await _unitOfWork.Complete();
+        }
+
+        public async Task UpdateProduct(int productid,int qty, bool increment)
+        {
+            var specwithId = new ProductSpecification(productid);
+            var productWithId = await _unitOfWork.Repository<Product>().GetEntitiesWithSpec(specwithId);
+
+            productWithId.Quantity = (increment) ? productWithId.Quantity + qty :
+                (productWithId.Quantity != 0) ? productWithId.Quantity - qty : 0;
+            _unitOfWork.Repository<Product>().Update(productWithId);
+            int result = await _unitOfWork.Complete();
         }
 
     }

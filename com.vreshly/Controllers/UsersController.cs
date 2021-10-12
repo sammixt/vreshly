@@ -8,6 +8,8 @@ using BLL.Interface;
 using BLL.Specifications;
 using com.vreshly.Dtos;
 using com.vreshly.Errors;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
@@ -83,6 +85,19 @@ namespace com.vreshly.Controllers
             var userDto = _mapper.Map<User, UserDetailDto>(users);
             return View(userDto);
         }
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+        public async Task<ActionResult> UserDetail()
+        {
+            var _userName = User.Claims
+                          .First(c => c.Type == "UserName").Value;
+            var _email = User.Claims
+                           .First(c => c.Type == "Email").Value;
+            var spec = new UserSpecification(_userName);
+            var users = await _unitOfWork.Repository<User>().GetEntitiesWithSpec(spec);
+            var userDto = _mapper.Map<User, UserDetailDto>(users);
+            return View("EditUser", userDto);
+        }
+        
 
         [HttpPut]
         public async Task<ActionResult> UpdateUserInfo([FromBody] UserDto model)

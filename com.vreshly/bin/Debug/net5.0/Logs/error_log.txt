@@ -1,0 +1,32 @@
+﻿10/11/2021 10:50:46 AM An error occurred Exception Message : The operation has timed out. with stack trace :    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at com.vreshly.EmailProcessor.Mailer.Send(MailMessage mailMessage) in /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/EmailProcessor/Mailer.cs:line 67 and Inner Message : 
+10/11/2021 10:57:02 AM An error occurred Exception Message : Failure sending mail. with stack trace :    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at com.vreshly.EmailProcessor.Mailer.Send(MailMessage mailMessage) in /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/EmailProcessor/Mailer.cs:line 67 and Inner Message : System.IO.IOException: Unable to read data from the transport connection: The connection was closed.
+   at System.Net.Mail.SmtpReplyReaderFactory.ProcessRead(Byte[] buffer, Int32 offset, Int32 read, Boolean readLine)
+   at System.Net.Mail.SmtpReplyReaderFactory.ReadLines(SmtpReplyReader caller, Boolean oneLine)
+   at System.Net.Mail.SmtpReplyReaderFactory.ReadLine(SmtpReplyReader caller)
+   at System.Net.Mail.SmtpConnection.GetConnection(String host, Int32 port)
+   at System.Net.Mail.SmtpTransport.GetConnection(String host, Int32 port)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+10/11/2021 11:12:05 An error occurred Exception Message : The operation has timed out. with stack trace :    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at com.vreshly.EmailProcessor.Mailer.Send(MailMessage mailMessage) in /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/EmailProcessor/Mailer.cs:line 67 and Inner Message : 
+10/11/2021 11:15:43 An error occurred Exception Message : The operation has timed out. with stack trace :    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at com.vreshly.EmailProcessor.Mailer.Send(MailMessage mailMessage) in /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/EmailProcessor/Mailer.cs:line 67 and Inner Message : 
+10/11/2021 11:35:32 An error occurred Exception Message : The operation has timed out. with stack trace :    at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at com.vreshly.EmailProcessor.Mailer.Send(MailMessage mailMessage) in /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/EmailProcessor/Mailer.cs:line 67 and Inner Message : 
+10/11/2021 13:36:09 An error occurred Exception Message : Service not available, closing transmission channel. The server response was: Server busy, too many connections with stack trace :    at System.Net.Mail.SmtpConnection.GetConnection(String host, Int32 port)
+   at System.Net.Mail.SmtpTransport.GetConnection(String host, Int32 port)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at com.vreshly.EmailProcessor.Mailer.Send(MailMessage mailMessage) in /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/EmailProcessor/Mailer.cs:line 66 and Inner Message : 
+10/11/2021 13:54:54 An error occurred Exception Message : Service not available, closing transmission channel. The server response was: Server busy, too many connections with stack trace :    at System.Net.Mail.SmtpConnection.GetConnection(String host, Int32 port)
+   at System.Net.Mail.SmtpTransport.GetConnection(String host, Int32 port)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at com.vreshly.EmailProcessor.Mailer.Send(MailMessage mailMessage) in /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/EmailProcessor/Mailer.cs:line 66 and Inner Message : 
+10/11/2021 13:58:02 An error occurred Exception Message : Service not available, closing transmission channel. The server response was: Server busy, too many connections with stack trace :    at System.Net.Mail.SmtpConnection.GetConnection(String host, Int32 port)
+   at System.Net.Mail.SmtpTransport.GetConnection(String host, Int32 port)
+   at System.Net.Mail.SmtpClient.GetConnection()
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at com.vreshly.EmailProcessor.Mailer.Send(MailMessage mailMessage) in /Users/sasmuelezeala/Documents/SammyProjects/vreshly/com.vreshly/EmailProcessor/Mailer.cs:line 66 and Inner Message : 

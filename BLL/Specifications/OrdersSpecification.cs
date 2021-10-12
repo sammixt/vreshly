@@ -34,5 +34,12 @@ namespace BLL.Specifications
             AddInclude(o => o.OrderItems);
             AddInclude(o => o.DeliveryMethod);
         }
+
+        public OrdersSpecification(string email, bool byEmail)
+            : base(x => x.BuyerEmail.ToLower().Trim() == email.ToLower().Trim())
+        {
+            AddInclude(o => o.OrderItems);
+            AddInclude(o => o.DeliveryMethod);
+        }
     }
 }

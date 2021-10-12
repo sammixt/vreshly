@@ -22,5 +22,7 @@ namespace BLL.Entities
         public RecurringFrequency Frequency { get; set; } = RecurringFrequency.Others;
 
         public Nullable<DateTime> NextDelievery { get; set; }
+
+        public Nullable<DateTime> PreviousDeliveryDate { get; set; }
     }
 }
